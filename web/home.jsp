@@ -38,7 +38,7 @@
                 <div class="d-flex align-items-center flex-column">
                     <div class="d-flex align-items-center mb-2">
                         <a href="Login.jsp" class="btn btn-outline-primary me-2 featured-item">Đăng nhập</a>
-                        <button class="btn btn-primary featured-item">Đăng kí</button>
+                        <a href="Signup.jsp" class="btn btn-primary featured-item">Đăng kí</a>
                     </div>
                     <input type="text" class="form-control" style="width: 300px;" placeholder="Tìm phòng trọ..." aria-label="Search"> <!-- Thay đổi width tại đây -->
                 </div>
