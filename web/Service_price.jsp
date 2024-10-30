@@ -29,8 +29,8 @@
                 </div>
 
                 <div class="d-flex">
-                    <button class="btn btn-outline-primary me-2 featured-item">login</button>
-                    <button class="btn btn-primary featured-item">Sign up</button>
+                    <a href="Login.jsp" class="btn btn-outline-primary me-2 featured-item">Đăng nhập</a>
+                    <a href="Signup.jsp" class="btn btn-primary featured-item">Đăng ký</a>
                 </div>
             </div>
         </nav>
@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse" id="navbarLinks">
                     <ul class="navbar-nav mx-auto w-100 justify-content-around">
                         <li class="nav-item active">
-                            <a class="nav-link featured-item" href="home.jsp" style="color: #ededed;">Trang Chủ</a> <!-- Màu chữ -->
+                            <a class="nav-link featured-item" href="HomeServlet" style="color: #ededed;">Trang Chủ</a> <!-- Màu chữ -->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link featured-item" href="payment.jsp" style="color: #f5f4f4;">Thanh Toán</a> <!-- Màu chữ -->
@@ -66,20 +66,20 @@
         <h6 class="mb-3">Ưu điểm của ApartmentProVjp.com:</h6>
         <ul class="list-group list-group-flush">
             <li class="list-group-item" style="background-color: #FEF3E4;"> 
-                <i class="bi bi-check2"></i> <strong>Top đầu Google</strong> về từ khóa: cho thuê phòng trọ, phòng trọ hồ chí minh, phòng trọ hà nội, thuê nhà...
+                <i class="bi bi-check2"></i> <strong>Top đầu Google</strong> về từ khóa: cho thuê phòng trọ, phòng trọ hồ chí minh, phòng trọ hà nội,...
             </li>
 
             <li class="list-group-item" style="background-color: #FEF3E4;">
-                <i class="bi bi-check2"></i> Phongtro123.com tự hào có lượng dữ liệu bài đăng lớn nhất trong lĩnh vực cho thuê phòng trọ với hơn <strong>103.348 tin</strong>...
+                <i class="bi bi-check2"></i> ApartmentProVjp.com tự hào có lượng dữ liệu bài đăng lớn nhất trong lĩnh vực cho thuê phòng trọ với hơn <strong>103.348 tin</strong>...
             </li>
             <li class="list-group-item" style="background-color: #FEF3E4;">
-                <i class="bi bi-check2"></i> Phongtro123.com tự hào có số lượng người dùng đăng tin và hơn <strong>2.500.000 lượt pageview</strong> mỗi tháng.
+                <i class="bi bi-check2"></i> ApartmentProVjp.com tự hào có số lượng người dùng đăng tin và hơn <strong>2.500.000 lượt pageview</strong> mỗi tháng.
             </li>
             <li class="list-group-item" style="background-color: #FEF3E4;">
-                <i class="bi bi-check2"></i> Phongtro123.com tự hào được sự tin tưởng của hơn <strong>116.998 khách hàng</strong> là chủ nhà, đại lý, môi giới...
+                <i class="bi bi-check2"></i> ApartmentProVjp.com tự hào được sự tin tưởng của hơn <strong>116.998 khách hàng</strong> là chủ nhà, đại lý, môi giới...
             </li>
             <li class="list-group-item" style="background-color: #FEF3E4;">
-                <i class="bi bi-check2"></i> Phongtro123.com tự hào ghi nhận <strong>88.879 giao dịch thành công</strong> với hiệu quả đạt tới <strong>85%</strong> tổng tin đăng.
+                <i class="bi bi-check2"></i> ApartmentProVjp.com tự hào ghi nhận <strong>88.879 giao dịch thành công</strong> với hiệu quả đạt tới <strong>85%</strong> tổng tin đăng.
             </li>
 
         </ul>
