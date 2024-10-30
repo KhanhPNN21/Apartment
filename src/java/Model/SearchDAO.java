@@ -75,7 +75,7 @@ public class SearchDAO {
             query.append(" AND l.District = ?");
         }
         if (ward != null && !ward.trim().isEmpty()) {
-            query.append(" AND l.ward = N?");
+            query.append(" AND l.ward = ?");
         }
         System.out.println(district+" "+ward);
         if (priceMin != null) {
