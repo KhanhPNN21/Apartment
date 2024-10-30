@@ -179,7 +179,7 @@
                                     <a href="Signup.jsp">Tạo tài khoản mới 🎉</a>
                                 </p>
                                 <p>
-                                    <a href="Home.jsp"><i class="fas"></i> Trở về trang chủ 🏠</a>
+                                    <a href="home.jsp"><i class="fas"></i> Trở về trang chủ 🏠</a>
                                 </p>
                             </div>
                         </form>
