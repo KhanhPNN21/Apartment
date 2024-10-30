@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package Controller;
 
 import Model.Rooms;
@@ -20,12 +19,12 @@ import java.util.List;
  * @author Tai
  */
 public class SearchServlet extends HttpServlet {
-   
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String district = request.getParameter("district");
-        String ward = request.getParameter("ward"); 
+        String ward = request.getParameter("ward");
         String price = request.getParameter("price");
         String area = request.getParameter("area");
 
@@ -36,17 +35,23 @@ public class SearchServlet extends HttpServlet {
         } else if ("between1mand2m".equals(price)) {
             priceMin = 1000000;
             priceMax = 2000000;
-        } else if ("more2m".equals(price)) {
+        } else if ("between2mand5m".equals(price)) {
             priceMin = 2000000;
+            priceMax = 5000000;
+        } else if ("upper5m".equals(price)) {
+            priceMin = 5000000;
         }
 
-        if ("under_50".equals(area)) {
+        if ("under20".equals(area)) {
+            areaMax = 20;
+        } else if ("between20and30".equals(area)) {
+            areaMin = 20;
+            areaMax = 30;
+        } else if ("between30and50".equals(area)) {
+            areaMin = 30;
             areaMax = 50;
-        } else if ("50_100".equals(area)) {
+        } else if ("upper50".equals(area)) {
             areaMin = 50;
-            areaMax = 100;
-        } else if ("over_100".equals(area)) {
-            areaMin = 100;
         }
 
         SearchDAO searchDAO = new SearchDAO();
