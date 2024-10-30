@@ -15,5 +15,9 @@
         <h1>Hello World!</h1>
         jflksjdflkjlsdjfkwefrwerfweljsalkdjf
         jkbjnbnmbmnbmn
+<<<<<<< HEAD
+=======
+        bncbvcbvcbvvb
+>>>>>>> origin/master
     </body>rưe
 </html>
