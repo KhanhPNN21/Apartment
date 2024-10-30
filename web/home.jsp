@@ -151,7 +151,7 @@
                                 <c:forEach var="room" items="${roomList}">
                                     <!-- Phần tử liệt kê phòng trọ -->
                                     <div class="listing-item mb-4 p-3 border rounded featured-item">
-                                        <a href="roomDetail.jsp?id=${room.roomId}" class="text-decoration-none text-dark">
+                                        <a href="DetailServlet?roomId=${room.roomId}" class="text-decoration-none text-dark">
                                             <div class="row">
                                                 <!-- Cột hiển thị hình ảnh -->
                                                 <div class="col-md-4">

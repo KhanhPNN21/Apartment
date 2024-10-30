@@ -13,33 +13,33 @@ public class RoomDAO {
 
     DBContext dbContext = new DBContext();
 
-    public Rooms getRoomById(int id) {
+    public Detail getRoomById(int id) {
 
-        try (Connection con = dbContext.getConnection(); 
-                PreparedStatement ps = con.prepareStatement("SELECT r.*, a.*, p.*, l.*, ri.*\n"
-                + "FROM Rooms r\n"
-                + "JOIN Apartment a ON r.Apartment_id = a.apartment_id\n"
-                + "LEFT JOIN Post p ON r.Room_id = p.Room_id\n"
-                + "JOIN Location l ON a.Location_id = l.Location_Id\n"
-                + "LEFT JOIN Rooms_img ri ON r.Room_id = ri.Room_id\n"
+        try (Connection con = dbContext.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT r.*, p.*, a.*, l.*, i.*\n"
+                + "FROM Rooms r join Post p on r.room_id = p.room_id\n"
+                + "join Rooms_img i on r.Room_id = i.Room_id\n"
+                + "join Apartment a on r.Apartment_id = a.apartment_id\n"
+                + "join Location l on l.location_id = a.location_id\n"
                 + "where r.Room_id = ?")) {
 
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                Rooms room = new Rooms(
+                Detail room = new Detail(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getInt(3),
                         rs.getInt(4),
                         rs.getInt(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getString(8),
-                        rs.getString(9),
-                        rs.getString(10),
-                        rs.getString(11),
-                        rs.getInt(12)
+                        rs.getString(16),
+                        rs.getDate(8),
+                        rs.getString(12),
+                        rs.getString(13),
+                        rs.getInt(17),
+                        rs.getString(22),
+                        rs.getString(21),
+                        rs.getString(20),
+                        rs.getString(25)
                 );
                 return room;
             }
