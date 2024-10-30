@@ -39,7 +39,21 @@
                         <a href="Login.jsp" class="btn btn-outline-primary me-2 featured-item">Đăng nhập</a>
                         <a href="Signup.jsp" class="btn btn-primary featured-item">Đăng kí</a>
                     </div>
-                    <input type="text" class="form-control" style="width: 300px;" placeholder="Tìm phòng trọ..." aria-label="Search"> <!-- Thay đổi width tại đây -->
+                    <form action="SearchServlet" method="GET" class="search-form mb-4" id="searchForm">
+                        <div class="input-group">
+                            <input type="text" class="form-control" style="width: 300px;" name="name" placeholder="Tìm phòng trọ..." aria-label="Search" onkeypress="handleKeyPress(event)">
+                        </div>
+                    </form>
+
+                    <script>
+                        function handleKeyPress(event) {
+                            // Kiểm tra nếu phím nhấn là phím Enter
+                            if (event.key === "Enter") {
+                                event.preventDefault(); // Ngăn chặn hành động mặc định của Enter
+                                document.getElementById('searchForm').submit(); // Gửi biểu mẫu
+                            }
+                        }
+                    </script>
                 </div>
 
 

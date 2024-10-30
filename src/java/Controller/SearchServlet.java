@@ -64,4 +64,19 @@ public class SearchServlet extends HttpServlet {
         request.setAttribute("rooms", rooms);
         request.getRequestDispatcher("search.jsp").forward(request, response);
     }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+
+        SearchDAO searchDAO = new SearchDAO();
+        List<Rooms> foundRooms = searchDAO.searchRoomByApartmentName(name);
+
+        // Đặt thuộc tính để gửi dữ liệu đến JSP
+        request.setAttribute("roomList", foundRooms);
+        request.setAttribute("searchQuery", name);
+        
+        // Chuyển hướng đến trang kết quả tìm kiếm (ví dụ: searchResult.jsp)
+        request.getRequestDispatcher("search.jsp").forward(request, response);
+    }
 }
