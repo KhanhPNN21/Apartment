@@ -11,7 +11,7 @@ package Model;
 
 public class Rooms {
     private int roomId;
-    private int price;
+    private String price;
     private int area;
     private int roomNumber;
     private int apartmentId;
@@ -26,7 +26,7 @@ public class Rooms {
     public Rooms() {
     }
 
-    public Rooms(int roomId, int price, int area, int roomNumber, int apartmentId, String apartmentName, String description, String ward, String imgUrl, String title , String postdate ,int rank) {
+    public Rooms(int roomId, String price, int area, int roomNumber, int apartmentId, String apartmentName, String description, String ward, String imgUrl, String title, String postdate, int rank) {
         this.roomId = roomId;
         this.price = price;
         this.area = area;
@@ -49,11 +49,11 @@ public class Rooms {
         this.roomId = roomId;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -136,6 +136,8 @@ public class Rooms {
     public void setRank(int rank) {
         this.rank = rank;
     }
+
+    
    
     @Override
     public String toString() {

@@ -35,7 +35,7 @@ public class Home_DAO {
                 while (rs.next()) {
                     Rooms room = new Rooms(
                             rs.getInt(1), 
-                            rs.getInt(2), 
+                            rs.getString(2), 
                             rs.getInt(3),
                             rs.getInt(4),
                             rs.getInt(5),
