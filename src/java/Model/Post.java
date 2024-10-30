@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
  * @author acer
  */
 public class Post {
-      private int postId;
+    private int postId;
     private int userId;
     private String postDate;
     private int roomId;

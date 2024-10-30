@@ -143,9 +143,9 @@
                                     </div>
                                     <div class="col-md-1"></div>
                                     <div class="col-md-4">
-                                        <label for="rentPrice" class="form-label">Giá cho thuê/tháng (VND)</label>
-                                        <input type="number" class="form-control" id="rentPrice" name="rentPrice" required=""
-                                               oninput="this.value = this.value.replace(/[^0-9]/g, '');" placeholder="Nhập giá cho thuê">
+                                        <label for="rentPrice" class="form-label">Giá cho thuê triệu/tháng (VND)</label>
+                                        <input type="text" class="form-control" id="rentPrice" name="rentPrice" required=""
+                                                      placeholder="Nhập giá cho thuê">
                                     </div>
                                 </div>        
                                 <div class="mb-3 row">

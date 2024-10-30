@@ -90,12 +90,12 @@ public class Post_DAO {
     
     
 
-    public int getRooms(int price, int area, int room_number, int apartment_id) throws Exception {
+    public int getRooms(String price, int area, int room_number, int apartment_id) throws Exception {
         String sql = "INSERT INTO Rooms  (price,area, Room_number,Apartment_id) VALUES (?, ?, ?,?)";
         Connection con = dbContext.getConnection(); // Lấy kết nối từ dbContext
 
         try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) { // Sử dụng `con` thay vì `dbContext`
-            stmt.setInt(1, price);
+            stmt.setString(1, price);
             stmt.setInt(2, area);
             stmt.setInt(3, room_number);
             stmt.setInt(4, apartment_id);

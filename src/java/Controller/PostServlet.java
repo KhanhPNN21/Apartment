@@ -43,7 +43,7 @@ public class PostServlet extends HttpServlet {
         int userId = Integer.parseInt(request.getParameter("userId"));
         int available_room = Integer.parseInt(request.getParameter("roomAvailable"));
         int area = Integer.parseInt(request.getParameter("area"));
-        int price = Integer.parseInt(request.getParameter("rentPrice"));
+        String price = request.getParameter("rentPrice");
         int room_number = Integer.parseInt(request.getParameter("roomNumber"));
         int rank = Integer.parseInt(request.getParameter("level"));
         int daylimit = Integer.parseInt(request.getParameter("duration"));
