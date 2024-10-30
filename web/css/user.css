@@ -1,0 +1,38 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Oct 26, 2024, 9:47:05 AM
+    Author     : acer
+*/
+
+/*QUản Lý Tài Khoản*/
+ .dropdownmenu{
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 5px;
+            min-width: 150px;
+            z-index: 1000;
+        }
+
+        /* Hiển thị menu khi di chuột */
+        .dropdown:hover .dropdownmenu{
+            display: block;
+        }
+
+        /* Các tùy chọn trong menu */
+        .dropdownmenu a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* Tùy chọn khi di chuột */
+      .dropdownmenu a:hover {
+            background-color: #f1f1f1;
+        }
