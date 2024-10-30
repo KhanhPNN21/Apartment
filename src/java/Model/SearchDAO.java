@@ -8,8 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchDAO {
+
     DBContext dbContext = new DBContext();
-  
+
     public List<Rooms> searchRoom(String district, String ward, Integer priceMin, Integer priceMax, Integer areaMin, Integer areaMax) {
         List<Rooms> rooms = new ArrayList<>();
         StringBuilder query = new StringBuilder("SELECT r.*, p.*, a.*, l.*, i.* "
@@ -19,40 +20,63 @@ public class SearchDAO {
                 + "JOIN Location l ON l.location_id = a.location_id WHERE 1=1");
 
         // Add conditions based on non-null parameters
-        if (district != null) query.append(" AND l.District = N?");
-        if (ward != null) query.append(" AND l.ward = N?");
-        if (priceMin != null) query.append(" AND price > ?");
-        if (priceMax != null) query.append(" AND price < ?");
-        if (areaMin != null) query.append(" AND area > ?");
-        if (areaMax != null) query.append(" AND area < ?");
+        if (district != null) {
+            query.append(" AND l.District = N?");
+        }
+        if (ward != null) {
+            query.append(" AND l.ward = N?");
+        }
+        if (priceMin != null) {
+            query.append(" AND price > ?");
+        }
+        if (priceMax != null) {
+            query.append(" AND price < ?");
+        }
+        if (areaMin != null) {
+            query.append(" AND area > ?");
+        }
+        if (areaMax != null) {
+            query.append(" AND area < ?");
+        }
 
-        try (Connection con = dbContext.getConnection(); 
-             PreparedStatement stmt = con.prepareStatement(query.toString())) {
-            
+        try (Connection con = dbContext.getConnection(); PreparedStatement stmt = con.prepareStatement(query.toString())) {
+
             int paramIndex = 1;
-            if (district != null) stmt.setString(paramIndex++, district);
-            if (ward != null) stmt.setString(paramIndex++, ward);
-            if (priceMin != null) stmt.setInt(paramIndex++, priceMin);
-            if (priceMax != null) stmt.setInt(paramIndex++, priceMax);
-            if (areaMin != null) stmt.setInt(paramIndex++, areaMin);
-            if (areaMax != null) stmt.setInt(paramIndex++, areaMax);
+            if (district != null) {
+                stmt.setString(paramIndex++, district);
+            }
+            if (ward != null) {
+                stmt.setString(paramIndex++, ward);
+            }
+            if (priceMin != null) {
+                stmt.setInt(paramIndex++, priceMin);
+            }
+            if (priceMax != null) {
+                stmt.setInt(paramIndex++, priceMax);
+            }
+            if (areaMin != null) {
+                stmt.setInt(paramIndex++, areaMin);
+            }
+            if (areaMax != null) {
+                stmt.setInt(paramIndex++, areaMax);
+            }
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 rooms.add(new Rooms(
-                            rs.getInt(1),
-                            rs.getString(2),
-                            rs.getInt(3),
-                            rs.getInt(4),
-                            rs.getInt(5),
-                            rs.getString(6),
-                            rs.getString(7),
-                            rs.getString(8),
-                            rs.getString(9),
-                            rs.getString(10),
-                            rs.getString(11),
-                            rs.getInt(12)
-                    ));
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getInt(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getInt(12)
+                ));
             }
         } catch (Exception e) {
             e.printStackTrace();
