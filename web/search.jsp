@@ -159,16 +159,16 @@
                 <div class="col-md-3">
                     <h5>Xem theo giá</h5>
                     <ul class="list-group mb-4">
-                        <li class="list-group-item" onclick="setPriceFilter('under_1m', this)">Dưới 1 triệu</li>
-                        <li class="list-group-item" onclick="setPriceFilter('between_1_2m', this)">Từ 1 - 2 triệu</li>
-                        <li class="list-group-item" onclick="setPriceFilter('between_2_3m', this)">Từ 2 - 3 triệu</li>
+                        <li class="list-group-item" onclick="setPriceFilter('under1m', this)">Dưới 1 triệu</li>
+                        <li class="list-group-item" onclick="setPriceFilter('between1mand2m', this)">Từ 1 - 2 triệu</li>
+                        <li class="list-group-item" onclick="setPriceFilter('between2mand3m', this)">Từ 2 - 3 triệu</li>
                     </ul>
 
                     <h5>Xem theo diện tích</h5>
                     <ul class="list-group">
-                        <li class="list-group-item" onclick="setAreaFilter('under_20m2', this)">Dưới 20 m²</li>
-                        <li class="list-group-item" onclick="setAreaFilter('between_20_30m2', this)">Từ 20 - 30 m²</li>
-                        <li class="list-group-item" onclick="setAreaFilter('between_30_50m2', this)">Từ 30 - 50 m²</li>
+                        <li class="list-group-item" onclick="setAreaFilter('under20m2', this)">Dưới 20 m²</li>
+                        <li class="list-group-item" onclick="setAreaFilter('between20and30', this)">Từ 20 - 30 m²</li>
+                        <li class="list-group-item" onclick="setAreaFilter('between30and50', this)">Từ 30 - 50 m²</li>
                     </ul>
                 </div>
                 <style>

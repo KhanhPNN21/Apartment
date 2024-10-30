@@ -6,7 +6,6 @@
 
 <%@page import="java.util.List"%>
 <%@page import="Model.Rooms"%>
-<%@page import="Model.Rooms"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -15,7 +14,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ApartmentProvje</title>
+        <title>ApartmentProvjp</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/home.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">

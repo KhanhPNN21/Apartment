@@ -91,7 +91,7 @@ Home_DAO homeDao = new Home_DAO();
                 // Tạo session cho người dùng
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                session.setAttribute("fullname", user.getUserName());
+                session.setAttribute("fullName", user.getFullName());
                 session.setAttribute("id", user.getUserId());
                 session.setAttribute("amount", user.getAccountBalance());
                 // Tạo cookie để lưu thông tin người dùng

@@ -18,7 +18,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="user.jsp">Trang chủ</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="#">Bảng giá dịch vụ</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="#">Hỗ trợ</a></li>
                     </ul>
@@ -64,7 +64,10 @@
                                 <a href="#" class="nav-link">Liên hệ</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-danger">Thoát</a>
+                                <a href="#" class="nav-link text-danger" onclick="document.getElementById('logoutForm').submit()">Đăng xuất</a>
+                                <form id="logoutForm" action="LoginServlet" method="post" style="display: none;">
+                                    <input type="hidden" name="action" value="logout">
+                                </form>
                             </li>
                         </ul>  
                     </div>

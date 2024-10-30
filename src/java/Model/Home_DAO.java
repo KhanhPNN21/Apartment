@@ -78,6 +78,7 @@ public class Home_DAO {
                 Users user = new Users(
                         rs.getInt("User_id"),
                         rs.getString("User_name"),
+                        rs.getString("Full_name"),
                         rs.getString("Phone"),
                         rs.getString("Email"),
                         rs.getString("Password"),

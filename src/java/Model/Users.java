@@ -12,6 +12,7 @@ public class Users {
    
     private int userId;
     private String userName;
+    private String fullName;
     private String phone;
     private String email;
     private String password;
@@ -20,9 +21,10 @@ public class Users {
     public Users() {
     }
 
-    public Users(int userId, String userName, String phone, String email, String password, int accountBalance) {
+    public Users(int userId, String userName, String fullName, String phone, String email, String password, int accountBalance) {
         this.userId = userId;
         this.userName = userName;
+        this.fullName = fullName;
         this.phone = phone;
         this.email = email;
         this.password = password;
@@ -43,6 +45,14 @@ public class Users {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPhone() {
@@ -76,5 +86,4 @@ public class Users {
     public void setAccountBalance(int accountBalance) {
         this.accountBalance = accountBalance;
     }
-
 }

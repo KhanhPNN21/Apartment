@@ -6,7 +6,6 @@
 
 <%@page import="java.util.List"%>
 <%@page import="Model.Rooms"%>
-<%@page import="Model.Rooms"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -43,7 +42,7 @@
                             </button>
 
                             <div class="dropdownmenu">
-                                <a href="postHistory.jsp">Thông tin cá nhân</a>
+                                <a href="posthistory.jsp">Thông tin cá nhân</a>
                                 <a href="#" onclick="document.getElementById('logoutForm').submit()">Đăng xuất</a>
                                 <form id="logoutForm" action="LoginServlet" method="post" style="display: none;">
                                     <input type="hidden" name="action" value="logout">

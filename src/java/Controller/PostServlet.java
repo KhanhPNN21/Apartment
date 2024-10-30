@@ -17,9 +17,6 @@ import java.util.List;
 @WebServlet(name = "PostServlet", urlPatterns = {"/PostServlet"})
 public class PostServlet extends HttpServlet {
 
- 
-  
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
