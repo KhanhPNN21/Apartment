@@ -15,10 +15,10 @@ public class Rooms {
     private int area;
     private int roomNumber;
     private int apartmentId;
-    private String apartmentName; // Thêm thuộc tính apartmentName để ánh xạ
-    private String description;    // Thêm thuộc tính description để ánh xạ
-    private String ward;           // Thêm thuộc tính ward để ánh xạ
-    private String imgUrl;         // Thêm thuộc tính imgUrl để ánh xạ
+    private String apartmentName; 
+    private String description;   
+    private String ward;          
+    private String imgUrl;        
     private String title;
     private String postdate;
     private int rank;
@@ -136,8 +136,6 @@ public class Rooms {
     public void setRank(int rank) {
         this.rank = rank;
     }
-
-    
    
     @Override
     public String toString() {

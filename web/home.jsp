@@ -66,65 +66,62 @@
                 </div>
             </div>
         </nav>
- <section class="hero-section text-center py-5">
-    <div class="container">
-        <h2 class="mb-4">Tìm Kiếm Phòng Trọ</h2>
-        <div class="search-bar row g-3 align-items-end">
-            <div class="col-md-2">
-                <label for="district" class="form-label"></label>
-                <select id="district" class="form-select" name="district">
-                    <option value="">Chọn quận huyện</option>
-                    <option value="lien_chieu">Quận Liên Chiểu</option>
-                    <option value="hai_chau">Quận Hải Châu</option>
-                    <option value="ngu_hanh_son">Quận Ngũ Hành Sơn</option>
-                    <option value="son_tra">Quận Sơn Trà</option>
-                    <option value="cam_le">Quận Cẩm Lệ</option>
-                    <option value="thanh_khe">Quận Thanh Khê</option>
-                    <option value="hoa_vang">Huyện Hòa Vang</option>
-                    <option value="hoang_sa">Huyện Hoàng Sa</option>
-                </select>
+        <section class="hero-section text-center py-5">
+            <div class="container">
+                <form action="SearchServlet" method="GET" class="search-bar row g-3 align-items-end">
+                    <div class="col-md-2">
+                        <label for="district" class="form-label"></label>
+                        <select id="district" class="form-select" name="district" onchange="this.form.submit()">
+                            <option value="">Chọn quận huyện</option>
+                            <option value="lien_chieu">Quận Liên Chiểu</option>
+                            <option value="hai_chau">Quận Hải Châu</option>
+                            <option value="ngu_hanh_son">Quận Ngũ Hành Sơn</option>
+                            <option value="son_tra">Quận Sơn Trà</option>
+                            <option value="cam_le">Quận Cẩm Lệ</option>
+                            <option value="thanh_khe">Quận Thanh Khê</option>
+                            <option value="hoa_vang">Huyện Hòa Vang</option>
+                            <option value="hoang_sa">Huyện Hoàng Sa</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label for="ward" class="form-label"></label>
+                        <select id="ward" class="form-select" name="ward" onchange="this.form.submit()">
+                            <option value="">Chọn phường xã</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label for="price" class="form-label"></label>
+                        <select id="price" class="form-select" name="price" onchange="this.form.submit()">
+                            <option value="">Chọn mức giá</option>
+                            <option value="under1m">Dưới 1 triệu</option>
+                            <option value="between1mand2m">1 - 2 triệu</option>
+                            <option value="between2mand5m">2 - 5 triệu</option>
+                            <option value="upper5m">Trên 5 triệu</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label for="area" class="form-label"></label>
+                        <select id="area" class="form-select" name="area" onchange="this.form.submit()">
+                            <option value="">Chọn diện tích</option>
+                            <option value="under20">Dưới 20 m²</option>
+                            <option value="between20and30">20 - 30 m²</option>
+                            <option value="between30and50">30 - 50 m²</option>
+                            <option value="upper50">Trên 50 m²</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-primary w-100">Tìm kiếm</button>
+                    </div>
+                </form>
             </div>
-
-            <div class="col-md-2">
-                <label for="ward" class="form-label"></label>
-                <select id="ward" class="form-select" name="ward">
-                    <option value="">Chọn phường xã</option>
-                </select>
-            </div>
-
-            <div class="col-md-2">
-                <label for="price" class="form-label"></label>
-                <select id="price" class="form-select" name="price">
-                    <option value="">Chọn mức giá</option>
-                    <option value="under1m">Dưới 1 triệu</option>
-                    <option value="between1mand2m">1 - 2 triệu</option>
-                    <option value="between2mand5m">2 - 5 triệu</option>
-                    <option value="upper5m">Trên 5 triệu</option>
-                </select>
-            </div>
-
-            <div class="col-md-2">
-                <label for="area" class="form-label"></label>
-                <select id="area" class="form-select" name="area">
-                    <option value="">Chọn diện tích</option>
-                    <option value="under20">Dưới 20 m²</option>
-                    <option value="between20and30">20 - 30 m²</option>
-                    <option value="between30and50">30 - 50 m²</option>
-                    <option value="upper50">Trên 50 m²</option>
-                </select>
-            </div>
-
-            <div class="col-md-2">
-                <button class="btn btn-primary w-100">Tìm kiếm</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-
+        </section>
 
         <div class=" text-center" style="margin-top: 30px;">
-            <h1 >Tìm kiếm chỗ thuê ưng ý</h1>
+            <h1>Tìm kiếm chỗ thuê ưng ý</h1>
             <h6>Kênh thông tin Phòng trọ số 1 Đà Nẵng - Website đăng tin, tìm phòng trọ cùng hiệu quả với 1.000.000+ tin đăng và 2.500.000 lượt xem mỗi tháng.</h6>
         </div> <!-- Featured Areas -->
         <section class="featured-section py-5 text-center">
@@ -165,16 +162,16 @@
                                             <div class="col-md-8">
                                                 <c:choose>
                                                     <c:when test="${room.rank == 4}">
-                                                    <strong><h5 class="mb-2 title-4"> <div style="color:orange" class="stars">★★★★★</div>${room.title}</h5></strong> 
+                                                        <strong><h5 class="mb-2 title-4"> <div style="color:orange" class="stars">★★★★★</div>${room.title}</h5></strong> 
                                                     </c:when>
-                                                        <c:when test="${room.rank == 3}">
-                                                    <strong><h5 class="mb-2 title-3"> <div style="color: orange" class="stars">★★★★</div>${room.title}</h5></strong> 
+                                                    <c:when test="${room.rank == 3}">
+                                                        <strong><h5 class="mb-2 title-3"> <div style="color: orange" class="stars">★★★★</div>${room.title}</h5></strong> 
                                                     </c:when>
-                                                     <c:when test="${room.rank == 2}">
-                                                    <strong><h5 class="mb-2 title-2"> <div style="color: orange" class="stars">★★★</div>${room.title}</h5></strong> 
+                                                    <c:when test="${room.rank == 2}">
+                                                        <strong><h5 class="mb-2 title-2"> <div style="color: orange" class="stars">★★★</div>${room.title}</h5></strong> 
                                                     </c:when>
-                                                     <c:when test="${room.rank == 1}">
-                                                    <strong><h5 class="mb-2 title-1"> <div style="color: orange" class="stars">★★</div>${room.title}</h5></strong> 
+                                                    <c:when test="${room.rank == 1}">
+                                                        <strong><h5 class="mb-2 title-1"> <div style="color: orange" class="stars">★★</div>${room.title}</h5></strong> 
                                                     </c:when>
                                                 </c:choose>
                                                 <ul class="list-unstyled">
@@ -183,7 +180,7 @@
                                                     <li><strong>Địa Chỉ:</strong> ${room.ward}</li>
                                                     <li><strong>Số Phòng:</strong> ${room.roomNumber}</li>
                                                     <li><strong>Ngày Đăng:</strong> ${room.postdate}</li>
-                                                                                                     </ul>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -215,9 +212,9 @@
 
 
         <div class="container my-5 p-4 rounded shadow" style="background-color:#eedfcc">
-            <h2 class="text-center mb-4">Tại sao lại chọn ApartmentProVjp.com?</h2>
+            <h2 class="text-center mb-4">Tại sao lại chọn ApartmentProvjp.com?</h2>
             <p class="text-center">
-                Chúng tôi biết bạn có rất nhiều lựa chọn, nhưng ApartmentProVjp.com tự hào là trang web đứng top google về các từ khóa: 
+                Chúng tôi biết bạn có rất nhiều lựa chọn, nhưng ApartmentProvjp.com tự hào là trang web đứng top google về các từ khóa: 
                 <span class="highlight">cho thuê phòng trọ, nhà trọ, thuê nhà nguyên căn, cho thuê căn hộ, tìm người ở ghép, cho thuê mặt bằng...</span> 
                 Vì vậy tin của bạn đăng trên website sẽ tiếp cận được với nhiều khách hàng hơn, do đó giao dịch nhanh hơn, tiết kiệm chi phí hơn
             </p>
@@ -235,7 +232,9 @@
             <div class="text-center feedback">
                 Chi phí thấp, hiệu quả tối đa
                 <div style="color: orange; " class="stars">★★★★★</div>
-                "Trước khi biết website phongtro123, mình phải tốn nhiều công sức và chi phí cho việc đăng tin cho thuê: từ việc phát tờ rơi, dán giấy, và đăng lên các website khác nhưng hiệu quả không cao. Từ khi biết website phongtro123.com, mình đã thử đăng tin lên và đánh giá hiệu quả khá cao trong khi chi phí khá thấp, không còn tình trạng phòng trống kéo dài."
+                "Trước khi biết website ApartmentProvjp, mình phải tốn nhiều công sức và chi phí cho việc đăng tin cho thuê: 
+                từ việc phát tờ rơi, dán giấy, và đăng lên các website khác nhưng hiệu quả không cao. 
+                Từ khi biết website ApartmentProvjp.com, mình đã thử đăng tin lên và đánh giá hiệu quả khá cao trong khi chi phí khá thấp, không còn tình trạng phòng trống kéo dài."
                 <br>— Anh Khánh (chủ hệ thống phòng trọ tại Tp.Đà Nẵng)
             </div>
             <div class="text-center cta mt-4">
@@ -245,8 +244,8 @@
                 <button class="btn">Đăng tin ngay</button>
             </div>
         </div>
-        <footer class="text-center py-4" style="background-color: 	#cdaa7d">
-            <p style="font-family: sans-serif ;" >&copy; 2024 ApartmentProvje. All rights reserved.</p>
+        <footer class="text-center py-4" style="background-color: #cdaa7d">
+            <p style="font-family: sans-serif ;" >&copy; 2024 ApartmentProvjp. All rights reserved.</p>
         </footer>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -254,41 +253,41 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.min.js"></script>
 
         <script>
-            //Phường/Xã theo Quận/Huyện
-            const wardsByDistrict = {
-                "lien_chieu": ["Phường Hòa Hiệp Bắc", "Phường Hòa Hiệp Nam", "Phường Hòa Khánh Bắc", "Phường Hòa Khánh Nam", "Phường Hòa Minh"],
+                    //Phường/Xã theo Quận/Huyện
+                    const wardsByDistrict = {
+                        "lien_chieu": ["Phường Hòa Hiệp Bắc", "Phường Hòa Hiệp Nam", "Phường Hòa Khánh Bắc", "Phường Hòa Khánh Nam", "Phường Hòa Minh"],
 
-                "hai_chau": ["Phường Bình Hiên", "Phường Bình Thuận", "Phường Hải Châu 1", "Phường Hải Châu 2", "Phường Hòa Cường Bắc", "Phường Hòa Cường Nam", "Phường Hòa Thuận Đông",
-                    "Phường Hòa Thuận Tây", "Phường Nam Dương", "Phường Phước Ninh", "Phường Thạch Thang", "Phường Thanh Bình", "Phường Thuận Phước"],
+                        "hai_chau": ["Phường Bình Hiên", "Phường Bình Thuận", "Phường Hải Châu 1", "Phường Hải Châu 2", "Phường Hòa Cường Bắc", "Phường Hòa Cường Nam", "Phường Hòa Thuận Đông",
+                            "Phường Hòa Thuận Tây", "Phường Nam Dương", "Phường Phước Ninh", "Phường Thạch Thang", "Phường Thanh Bình", "Phường Thuận Phước"],
 
-                "ngu_hanh_son": ["Phường Hòa Quý", "Phường Khuê Mỹ", "Phường Mỹ An", "Phường Hòa Hải"],
+                        "ngu_hanh_son": ["Phường Hòa Quý", "Phường Khuê Mỹ", "Phường Mỹ An", "Phường Hòa Hải"],
 
-                "son_tra": ["Phường An Hải Bắc", "Phường An Hải Đông", "Phường An Hải Tây", "Phường Mân Thái", "Phường Nại Hiên Đông", "Phường Phước Mỹ", "Phường Thọ Quang"],
+                        "son_tra": ["Phường An Hải Bắc", "Phường An Hải Đông", "Phường An Hải Tây", "Phường Mân Thái", "Phường Nại Hiên Đông", "Phường Phước Mỹ", "Phường Thọ Quang"],
 
-                "cam_le": ["Phường Hòa An", "Phường Hòa Phát", "Phường Hòa Thọ Đông", "Phường Hòa Thọ Tây", "Phường Khuê Trung", "Phường Hòa Xuân"],
+                        "cam_le": ["Phường Hòa An", "Phường Hòa Phát", "Phường Hòa Thọ Đông", "Phường Hòa Thọ Tây", "Phường Khuê Trung", "Phường Hòa Xuân"],
 
-                "thanh_khe": ["Phường An Khê", "Phường Chính Gián", "Phường Hòa Khê", "Phường Tam Thuận", "Phường Tân Chính", "Phường Thạc Gián", "Phường Thanh Khê Đông", "Phường Thanh Khê Tây", "Phường Vĩnh Trung", "Phường Xuân Hà"],
+                        "thanh_khe": ["Phường An Khê", "Phường Chính Gián", "Phường Hòa Khê", "Phường Tam Thuận", "Phường Tân Chính", "Phường Thạc Gián", "Phường Thanh Khê Đông", "Phường Thanh Khê Tây", "Phường Vĩnh Trung", "Phường Xuân Hà"],
 
-                "hoa_vang": ["Xã Hòa Bắc", "Xã Hòa Châu", "Xã Hòa Khương", "Xã Hòa Liên", "Xã Hòa Nhơn", "Xã Hòa Ninh", "Xã Hòa Phong", "Xã Hòa Phú", "Xã Hòa Phước", "Xã Hòa Sơn", "Xã Hòa Tiến"],
+                        "hoa_vang": ["Xã Hòa Bắc", "Xã Hòa Châu", "Xã Hòa Khương", "Xã Hòa Liên", "Xã Hòa Nhơn", "Xã Hòa Ninh", "Xã Hòa Phong", "Xã Hòa Phú", "Xã Hòa Phước", "Xã Hòa Sơn", "Xã Hòa Tiến"],
 
-                "hoang_sa": ["Huyện Đảo Hoàng Sa"]
-            };
+                        "hoang_sa": ["Huyện Đảo Hoàng Sa"]
+                    };
 
-            document.getElementById('district').addEventListener('change', function () {
-                const district = this.value;
-                const wardSelect = document.getElementById('ward');
+                    document.getElementById('district').addEventListener('change', function () {
+                        const district = this.value;
+                        const wardSelect = document.getElementById('ward');
 
-                wardSelect.innerHTML = '<option value="">Chọn phường xã</option>';
+                        wardSelect.innerHTML = '<option value="">Chọn phường xã</option>';
 
-                if (district && wardsByDistrict[district]) {
-                    wardsByDistrict[district].forEach(function (ward) {
-                        const option = document.createElement('option');
-                        option.value = ward;
-                        option.textContent = ward;
-                        wardSelect.appendChild(option);
+                        if (district && wardsByDistrict[district]) {
+                            wardsByDistrict[district].forEach(function (ward) {
+                                const option = document.createElement('option');
+                                option.value = ward;
+                                option.textContent = ward;
+                                wardSelect.appendChild(option);
+                            });
+                        }
                     });
-                }
-            });
         </script>
 
     </body>
