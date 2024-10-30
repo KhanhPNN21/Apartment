@@ -151,38 +151,40 @@
                                 <c:forEach var="room" items="${roomList}">
                                     <!-- Phần tử liệt kê phòng trọ -->
                                     <div class="listing-item mb-4 p-3 border rounded featured-item">
-                                        <div class="row">
-                                            <!-- Cột hiển thị hình ảnh -->
-                                            <div class="col-md-4">
-                                                <img src="https://pt123.cdn.static123.com/images/thumbs/450x300/fit/2021/03/10/z2372642429419-09c9c7a541863ae55ad41b3e267136f4_1615391265.jpg" 
-                                                     alt="Image" class="img-fluid rounded">
-                                            </div>
+                                        <a href="roomDetail.jsp?id=${room.roomId}" class="text-decoration-none text-dark">
+                                            <div class="row">
+                                                <!-- Cột hiển thị hình ảnh -->
+                                                <div class="col-md-4">
+                                                    <img src="https://pt123.cdn.static123.com/images/thumbs/450x300/fit/2021/03/10/z2372642429419-09c9c7a541863ae55ad41b3e267136f4_1615391265.jpg" 
+                                                         alt="Image" class="img-fluid rounded">
+                                                </div>
 
-                                            <!-- Cột hiển thị thông tin chi tiết -->
-                                            <div class="col-md-8">
-                                                <c:choose>
-                                                    <c:when test="${room.rank == 4}">
-                                                        <strong><h5 class="mb-2 title-4"> <div style="color:orange" class="stars">★★★★★</div>${room.title}</h5></strong> 
-                                                    </c:when>
-                                                    <c:when test="${room.rank == 3}">
-                                                        <strong><h5 class="mb-2 title-3"> <div style="color: orange" class="stars">★★★★</div>${room.title}</h5></strong> 
-                                                    </c:when>
-                                                    <c:when test="${room.rank == 2}">
-                                                        <strong><h5 class="mb-2 title-2"> <div style="color: orange" class="stars">★★★</div>${room.title}</h5></strong> 
-                                                    </c:when>
-                                                    <c:when test="${room.rank == 1}">
-                                                        <strong><h5 class="mb-2 title-1"> <div style="color: orange" class="stars">★★</div>${room.title}</h5></strong> 
-                                                    </c:when>
-                                                </c:choose>
-                                                <ul class="list-unstyled">
-                                                    <li><strong>Giá:</strong> ${room.price} VND</li>
-                                                    <li><strong>Diện Tích:</strong> ${room.area} m²</li>
-                                                    <li><strong>Địa Chỉ:</strong> ${room.ward}</li>
-                                                    <li><strong>Số Phòng:</strong> ${room.roomNumber}</li>
-                                                    <li><strong>Ngày Đăng:</strong> ${room.postdate}</li>
-                                                </ul>
+                                                <!-- Cột hiển thị thông tin chi tiết -->
+                                                <div class="col-md-8">
+                                                    <c:choose>
+                                                        <c:when test="${room.rank == 4}">
+                                                            <strong><h5 class="mb-2 title-4"> <div style="color:orange" class="stars">★★★★★</div>${room.title}</h5></strong> 
+                                                        </c:when>
+                                                        <c:when test="${room.rank == 3}">
+                                                            <strong><h5 class="mb-2 title-3"> <div style="color: orange" class="stars">★★★★</div>${room.title}</h5></strong> 
+                                                        </c:when>
+                                                        <c:when test="${room.rank == 2}">
+                                                            <strong><h5 class="mb-2 title-2"> <div style="color: orange" class="stars">★★★</div>${room.title}</h5></strong> 
+                                                        </c:when>
+                                                        <c:when test="${room.rank == 1}">
+                                                            <strong><h5 class="mb-2 title-1"> <div style="color: orange" class="stars">★★</div>${room.title}</h5></strong> 
+                                                        </c:when>
+                                                    </c:choose>
+                                                    <ul class="list-unstyled">
+                                                        <li><strong>Giá:</strong> ${room.price} VND</li>
+                                                        <li><strong>Diện Tích:</strong> ${room.area} m²</li>
+                                                        <li><strong>Địa Chỉ:</strong> ${room.ward}</li>
+                                                        <li><strong>Số Phòng:</strong> ${room.roomNumber}</li>
+                                                        <li><strong>Ngày Đăng:</strong> ${room.postdate}</li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </c:forEach>
                             </c:when>
@@ -253,41 +255,41 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.min.js"></script>
 
         <script>
-                    //Phường/Xã theo Quận/Huyện
-                    const wardsByDistrict = {
-                        "lien_chieu": ["Phường Hòa Hiệp Bắc", "Phường Hòa Hiệp Nam", "Phường Hòa Khánh Bắc", "Phường Hòa Khánh Nam", "Phường Hòa Minh"],
+                            //Phường/Xã theo Quận/Huyện
+                            const wardsByDistrict = {
+                                "lien_chieu": ["Phường Hòa Hiệp Bắc", "Phường Hòa Hiệp Nam", "Phường Hòa Khánh Bắc", "Phường Hòa Khánh Nam", "Phường Hòa Minh"],
 
-                        "hai_chau": ["Phường Bình Hiên", "Phường Bình Thuận", "Phường Hải Châu 1", "Phường Hải Châu 2", "Phường Hòa Cường Bắc", "Phường Hòa Cường Nam", "Phường Hòa Thuận Đông",
-                            "Phường Hòa Thuận Tây", "Phường Nam Dương", "Phường Phước Ninh", "Phường Thạch Thang", "Phường Thanh Bình", "Phường Thuận Phước"],
+                                "hai_chau": ["Phường Bình Hiên", "Phường Bình Thuận", "Phường Hải Châu 1", "Phường Hải Châu 2", "Phường Hòa Cường Bắc", "Phường Hòa Cường Nam", "Phường Hòa Thuận Đông",
+                                    "Phường Hòa Thuận Tây", "Phường Nam Dương", "Phường Phước Ninh", "Phường Thạch Thang", "Phường Thanh Bình", "Phường Thuận Phước"],
 
-                        "ngu_hanh_son": ["Phường Hòa Quý", "Phường Khuê Mỹ", "Phường Mỹ An", "Phường Hòa Hải"],
+                                "ngu_hanh_son": ["Phường Hòa Quý", "Phường Khuê Mỹ", "Phường Mỹ An", "Phường Hòa Hải"],
 
-                        "son_tra": ["Phường An Hải Bắc", "Phường An Hải Đông", "Phường An Hải Tây", "Phường Mân Thái", "Phường Nại Hiên Đông", "Phường Phước Mỹ", "Phường Thọ Quang"],
+                                "son_tra": ["Phường An Hải Bắc", "Phường An Hải Đông", "Phường An Hải Tây", "Phường Mân Thái", "Phường Nại Hiên Đông", "Phường Phước Mỹ", "Phường Thọ Quang"],
 
-                        "cam_le": ["Phường Hòa An", "Phường Hòa Phát", "Phường Hòa Thọ Đông", "Phường Hòa Thọ Tây", "Phường Khuê Trung", "Phường Hòa Xuân"],
+                                "cam_le": ["Phường Hòa An", "Phường Hòa Phát", "Phường Hòa Thọ Đông", "Phường Hòa Thọ Tây", "Phường Khuê Trung", "Phường Hòa Xuân"],
 
-                        "thanh_khe": ["Phường An Khê", "Phường Chính Gián", "Phường Hòa Khê", "Phường Tam Thuận", "Phường Tân Chính", "Phường Thạc Gián", "Phường Thanh Khê Đông", "Phường Thanh Khê Tây", "Phường Vĩnh Trung", "Phường Xuân Hà"],
+                                "thanh_khe": ["Phường An Khê", "Phường Chính Gián", "Phường Hòa Khê", "Phường Tam Thuận", "Phường Tân Chính", "Phường Thạc Gián", "Phường Thanh Khê Đông", "Phường Thanh Khê Tây", "Phường Vĩnh Trung", "Phường Xuân Hà"],
 
-                        "hoa_vang": ["Xã Hòa Bắc", "Xã Hòa Châu", "Xã Hòa Khương", "Xã Hòa Liên", "Xã Hòa Nhơn", "Xã Hòa Ninh", "Xã Hòa Phong", "Xã Hòa Phú", "Xã Hòa Phước", "Xã Hòa Sơn", "Xã Hòa Tiến"],
+                                "hoa_vang": ["Xã Hòa Bắc", "Xã Hòa Châu", "Xã Hòa Khương", "Xã Hòa Liên", "Xã Hòa Nhơn", "Xã Hòa Ninh", "Xã Hòa Phong", "Xã Hòa Phú", "Xã Hòa Phước", "Xã Hòa Sơn", "Xã Hòa Tiến"],
 
-                        "hoang_sa": ["Huyện Đảo Hoàng Sa"]
-                    };
+                                "hoang_sa": ["Huyện Đảo Hoàng Sa"]
+                            };
 
-                    document.getElementById('district').addEventListener('change', function () {
-                        const district = this.value;
-                        const wardSelect = document.getElementById('ward');
+                            document.getElementById('district').addEventListener('change', function () {
+                                const district = this.value;
+                                const wardSelect = document.getElementById('ward');
 
-                        wardSelect.innerHTML = '<option value="">Chọn phường xã</option>';
+                                wardSelect.innerHTML = '<option value="">Chọn phường xã</option>';
 
-                        if (district && wardsByDistrict[district]) {
-                            wardsByDistrict[district].forEach(function (ward) {
-                                const option = document.createElement('option');
-                                option.value = ward;
-                                option.textContent = ward;
-                                wardSelect.appendChild(option);
+                                if (district && wardsByDistrict[district]) {
+                                    wardsByDistrict[district].forEach(function (ward) {
+                                        const option = document.createElement('option');
+                                        option.value = ward;
+                                        option.textContent = ward;
+                                        wardSelect.appendChild(option);
+                                    });
+                                }
                             });
-                        }
-                    });
         </script>
 
     </body>

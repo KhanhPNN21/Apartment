@@ -10,6 +10,39 @@ import java.util.List;
 public class SearchDAO {
 
     DBContext dbContext = new DBContext();
+    
+    public List<Rooms> searchRoomByApartmentName(String name) {
+        List<Rooms> rooms = new ArrayList<>();
+        String sql = "SELECT * FROM Rooms WHERE apartment_name LIKE ?";
+
+        try (Connection con = dbContext.getConnection(); 
+                PreparedStatement stmt = con.prepareStatement(sql)) {
+
+            stmt.setString(1, "%" + name + "%");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Rooms room = new Rooms(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getInt(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getInt(12)
+                );
+                rooms.add(room);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rooms;
+    }
 
     public List<Rooms> searchRoom(String district, String ward, Integer priceMin, Integer priceMax, Integer areaMin, Integer areaMax) {
         List<Rooms> rooms = new ArrayList<>();
@@ -19,7 +52,6 @@ public class SearchDAO {
                 + "JOIN Apartment a ON r.Apartment_id = a.apartment_id "
                 + "JOIN Location l ON l.location_id = a.location_id WHERE 1=1");
 
-        // Add conditions based on non-null parameters
         if (district != null) {
             query.append(" AND l.District = N?");
         }

@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.sql.*, Model.Rooms, Model.Room_DAO" %>
+<%@ page import="java.sql.*, Model.Rooms, Model.RoomDAO" %>
 <html lang="vi">
     <head>
         <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
