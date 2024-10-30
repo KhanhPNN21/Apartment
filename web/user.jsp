@@ -18,7 +18,7 @@
         <title>ApartmentProvje</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/home.css"/>
-        <link rel="stylesheet" href="css/user.css"/>
+<!--        <link rel="stylesheet" href="css/user.css"/>-->
 
     </head>
     <body>
@@ -67,7 +67,7 @@
                 <div class="collapse navbar-collapse" id="navbarLinks">
                     <ul class="navbar-nav mx-auto w-100 justify-content-around">
                         <li class="nav-item active">
-                            <a class="nav-link featured-item" href="home.jsp" style="color: #ededed;">Trang Chủ</a> <!-- Màu chữ -->
+                            <a class="nav-link featured-item" href="user.jsp" style="color: #ededed;">Trang Chủ</a> <!-- Màu chữ -->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link featured-item" href="Service_price.jsp" style="color: #f5f4f4;">Bảng Giá Dịch Vụ</a> <!-- Màu chữ -->

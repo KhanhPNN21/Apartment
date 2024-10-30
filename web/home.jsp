@@ -54,13 +54,13 @@
                 <div class="collapse navbar-collapse" id="navbarLinks">
                     <ul class="navbar-nav mx-auto w-100 justify-content-around">
                         <li class="nav-item active">
-                            <a class="nav-link featured-item" href="home.jsp" style="color: #ededed;">Trang Chủ</a> <!-- Màu chữ -->
+                            <a class="nav-link featured-item" href="home.jsp" style="color: #ededed;"><h6>Trang Chủ</h6></a> <!-- Màu chữ -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link featured-item" href="payment.jsp" style="color: #f5f4f4;">Liên Hệ</a> <!-- Màu chữ -->
+                            <a class="nav-link featured-item" href="payment.jsp" style="color: #f5f4f4;"><h6>Liên Hệ</h6></a> <!-- Màu chữ -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Service_price.jsp" style="color: #fefbfb;"><h6 class="featured-item">Bảng Giá Dịch Vụ</h6></a> <!-- Màu chữ -->
+                            <a class="nav-link" href="Service_price.jsp" style="color: #fefbfb;"><h6>Bảng Giá Dịch Vụ</h6></a> <!-- Màu chữ -->
                         </li>
                     </ul>
                 </div>
