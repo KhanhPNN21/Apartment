@@ -11,12 +11,13 @@ package Model;
 
 public class Rooms {
     private int roomId;
-    private String price;
+    private int price;
     private int area;
     private int roomNumber;
     private int apartmentId;
     private String apartmentName; 
     private String description;   
+    private String district;
     private String ward;          
     private String imgUrl;        
     private String title;
@@ -26,7 +27,7 @@ public class Rooms {
     public Rooms() {
     }
 
-    public Rooms(int roomId, String price, int area, int roomNumber, int apartmentId, String apartmentName, String description, String ward, String imgUrl, String title, String postdate, int rank) {
+    public Rooms(int roomId, int price, int area, int roomNumber, int apartmentId, String apartmentName, String description, String district, String ward, String imgUrl, String title, String postdate, int rank) {
         this.roomId = roomId;
         this.price = price;
         this.area = area;
@@ -34,6 +35,7 @@ public class Rooms {
         this.apartmentId = apartmentId;
         this.apartmentName = apartmentName;
         this.description = description;
+        this.district = district;
         this.ward = ward;
         this.imgUrl = imgUrl;
         this.title = title;
@@ -49,11 +51,11 @@ public class Rooms {
         this.roomId = roomId;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -136,13 +138,17 @@ public class Rooms {
     public void setRank(int rank) {
         this.rank = rank;
     }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
    
     @Override
     public String toString() {
         return "Rooms{" + "roomId=" + roomId + ", price=" + price + ", area=" + area + ", roomNumber=" + roomNumber + ", apartmentId=" + apartmentId + ", apartmentName=" + apartmentName + ", description=" + description + ", ward=" + ward + ", imgUrl=" + imgUrl + ", title=" + title + '}';
-    }
-    
-
-   
-    
+    }   
 }

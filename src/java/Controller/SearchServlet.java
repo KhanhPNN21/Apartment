@@ -7,7 +7,6 @@ package Controller;
 import Model.Rooms;
 import Model.SearchDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,7 +26,8 @@ public class SearchServlet extends HttpServlet {
         String ward = request.getParameter("ward");
         String price = request.getParameter("price");
         String area = request.getParameter("area");
-
+        
+        System.out.println(district + " " + ward);
         Integer priceMin = null, priceMax = null, areaMin = null, areaMax = null;
 
         if ("under1m".equals(price)) {

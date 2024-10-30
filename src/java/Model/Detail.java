@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class Detail {
     private int roomId;
-    private String price;
+    private int price;
     private int area;
     private int roomNumber;
     private int apartmentId;
@@ -28,7 +28,7 @@ public class Detail {
     public Detail() {
     }
 
-    public Detail(int roomId, String price, int area, int roomNumber, int apartmentId, String apartmentName, Date postDate, String title, String description, int rank, String district, String ward, String street, String imgUrl, String fullName, String phone, String email) {
+    public Detail(int roomId, int price, int area, int roomNumber, int apartmentId, String apartmentName, Date postDate, String title, String description, int rank, String district, String ward, String street, String imgUrl, String fullName, String phone, String email) {
         this.roomId = roomId;
         this.price = price;
         this.area = area;
@@ -56,11 +56,11 @@ public class Detail {
         this.roomId = roomId;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

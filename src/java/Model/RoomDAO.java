@@ -28,7 +28,7 @@ public class RoomDAO {
             if (rs.next()) {
                 Detail room = new Detail(
                         rs.getInt(1),
-                        rs.getString(2),
+                        rs.getInt(2),
                         rs.getInt(3),
                         rs.getInt(4),
                         rs.getInt(5),

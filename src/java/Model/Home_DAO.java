@@ -20,7 +20,7 @@ public class Home_DAO {
         try {
             con = dbContext.getConnection();
             String query = "SELECT r.Room_id, r.Price, r.Area, r.Room_number, r.Apartment_id,\n"
-                    + "       a.apartment_name, p.description, l.Ward, ri.Img_url,\n"
+                    + "       a.apartment_name, p.description, l.district, l.Ward, ri.Img_url,\n"
                     + "       p.Title, p.Post_date, p.Rank\n"
                     + "FROM Rooms r\n"
                     + "JOIN Apartment a ON r.Apartment_id = a.apartment_id\n"
@@ -34,7 +34,7 @@ public class Home_DAO {
                 while (rs.next()) {
                     Rooms room = new Rooms(
                             rs.getInt(1),
-                            rs.getString(2),
+                            rs.getInt(2),
                             rs.getInt(3),
                             rs.getInt(4),
                             rs.getInt(5),
@@ -44,7 +44,8 @@ public class Home_DAO {
                             rs.getString(9),
                             rs.getString(10),
                             rs.getString(11),
-                            rs.getInt(12)
+                            rs.getString(12),
+                            rs.getInt(13)
                     );
                     roomList.add(room);
                 }
@@ -70,7 +71,7 @@ public class Home_DAO {
         try (
                 Connection con = dbContext.getConnection(); PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, username);
-            ps.setString(2, password); 
+            ps.setString(2, password);
 
             ResultSet rs = ps.executeQuery();
 
