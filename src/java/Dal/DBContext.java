@@ -7,7 +7,7 @@ package Dal;
  *
  * @author acer
  */
-import java.sql.Connection; // Sửa lại import đúng
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
