@@ -15,12 +15,13 @@ public class RoomDAO {
 
     public Detail getRoomById(int id) {
 
-        try (Connection con = dbContext.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT r.*, p.*, a.*, l.*, i.*\n"
-                + "FROM Rooms r join Post p on r.room_id = p.room_id\n"
-                + "join Rooms_img i on r.Room_id = i.Room_id\n"
-                + "join Apartment a on r.Apartment_id = a.apartment_id\n"
-                + "join Location l on l.location_id = a.location_id\n"
-                + "where r.Room_id = ?")) {
+        try (Connection con = dbContext.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT r.*, p.*, a.*, l.*, i.*, u.*\n"
+                + "                FROM Rooms r join Post p on r.room_id = p.room_id\n"
+                + "                join Rooms_img i on r.Room_id = i.Room_id\n"
+                + "                join Apartment a on r.Apartment_id = a.apartment_id\n"
+                + "                join Location l on l.location_id = a.location_id\n"
+                + "				join Users u on u.User_id = p.User_id\n"
+                + "                where r.Room_id = ?")) {
 
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -35,11 +36,14 @@ public class RoomDAO {
                         rs.getDate(8),
                         rs.getString(12),
                         rs.getString(13),
-                        rs.getInt(17),
+                        rs.getInt(10),
                         rs.getString(22),
                         rs.getString(21),
                         rs.getString(20),
-                        rs.getString(25)
+                        rs.getString(25),
+                        rs.getString(28),
+                        rs.getString(29),
+                        rs.getString(30)
                 );
                 return room;
             }

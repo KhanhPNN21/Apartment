@@ -16,15 +16,19 @@ public class Detail {
     private Date postDate;
     private String title;
     private String description;
-    private int locationId;
+    private int rank;
     private String district;
     private String ward;
     private String street;
     private String imgUrl;
+    private String fullName;
     private String phone;
     private String email;
 
-    public Detail(int roomId, String price, int area, int roomNumber, int apartmentId, String apartmentName, Date postDate, String title, String description, int locationId, String district, String ward, String street, String imgUrl) {
+    public Detail() {
+    }
+
+    public Detail(int roomId, String price, int area, int roomNumber, int apartmentId, String apartmentName, Date postDate, String title, String description, int rank, String district, String ward, String street, String imgUrl, String fullName, String phone, String email) {
         this.roomId = roomId;
         this.price = price;
         this.area = area;
@@ -34,14 +38,14 @@ public class Detail {
         this.postDate = postDate;
         this.title = title;
         this.description = description;
-        this.locationId = locationId;
+        this.rank = rank;
         this.district = district;
         this.ward = ward;
         this.street = street;
         this.imgUrl = imgUrl;
-    }
-
-    public Detail() {
+        this.fullName = fullName;
+        this.phone = phone;
+        this.email = email;
     }
 
     public int getRoomId() {
@@ -116,12 +120,12 @@ public class Detail {
         this.description = description;
     }
 
-    public int getLocationId() {
-        return locationId;
+    public int getRank() {
+        return rank;
     }
 
-    public void setLocationId(int locationId) {
-        this.locationId = locationId;
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 
     public String getDistrict() {
@@ -156,10 +160,27 @@ public class Detail {
         this.imgUrl = imgUrl;
     }
 
-    @Override
-    public String toString() {
-        return "Room{" + "roomId=" + roomId + ", price=" + price + ", area=" + area + ", roomNumber=" + roomNumber + ", apartmentId=" + apartmentId + ", apartmentName=" + apartmentName + ", postDate=" + postDate + ", title=" + title + ", description=" + description + ", locationId=" + locationId + ", district=" + district + ", ward=" + ward + ", street=" + street + ", imgUrl=" + imgUrl + ", phone=" + phone + ", email=" + email + '}';
+    public String getFullName() {
+        return fullName;
     }
 
-    
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

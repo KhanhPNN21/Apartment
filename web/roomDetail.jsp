@@ -62,7 +62,7 @@
                     <div class="row">
                         <!-- First row with 2 attributes -->
                         <div class="col-md-6">
-                            <p>Mã tin: <span class="fw-bold"></span></p>
+                            <p>Mã tin: <span class="fw-bold">${room.roomId}</span></p>
                         </div>
                         <div class="col-md-6">
                             <p>Khu vực: <span class="fw-bold">${room.ward}, ${room.district}</span></p>
@@ -72,7 +72,7 @@
                     <div class="row">
                         <!-- Second row with 2 attributes -->
                         <div class="col-md-6">
-                            <p>Cấp độ tin tức: <span class="fw-bold"></span></p>
+                            <p>Cấp độ tin tức: <span class="fw-bold">${room.rank}</span></p>
                         </div>
                         <div class="col-md-6">
                             <p>Ngày đăng: <span class="fw-bold">${room.postDate}</span></p>
@@ -83,9 +83,9 @@
 
                     <!-- Contact information -->
                     <h5 class="fw-bold mt-4 text-primary">Thông tin liên hệ</h5>
-                    <p>Tên: <span class="fw-bold">${contactName}</span></p>
-                    <p>SĐT: <span class="fw-bold">${contactPhone}</span></p>
-                    <p>Email: <span class="fw-bold">${contactEmail}</span></p>
+                    <p>Tên: <span class="fw-bold">${room.fullName}</span></p>
+                    <p>SĐT: <span class="fw-bold">${room.phone}</span></p>
+                    <p>Email: <span class="fw-bold">${room.email}</span></p>
                 </div>
 
                 <div class="col-md-4">
