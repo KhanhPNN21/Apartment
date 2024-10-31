@@ -156,9 +156,6 @@
                         </c:choose>
 
                         <p class="text-center">Rất vui mừng khi được gặp lại bạn!</p> 
-                        <c:if test="${not empty mess}">
-                            <p class="text-danger text-center" style="font-size: 1.2rem; margin-top: 1rem;">⚠️ ${mess} ⚠️</p>
-                        </c:if>
 
                         <form action="LoginServlet" method="post">
                             <input type="hidden" name="action" value="login">
@@ -218,5 +215,67 @@
                 this.querySelector('i').classList.toggle('fa-eye-slash');
             });
         </script>
+        <script>
+            // Lấy giá trị của "mess" từ phía server
+            let mess = "${mess}";
+
+            // Kiểm tra nếu mess không rỗng và hiển thị thông báo
+            if (mess) {
+                // Tạo thẻ để hiển thị thông báo lỗi
+                const messageContainer = document.createElement("div");
+                messageContainer.className = "popup-message";
+
+                // Nội dung của thông báo và nút "OK"
+                messageContainer.innerHTML = `
+            <span>⚠️ ${mess} ⚠️</span>
+            <button class="ok-button">OK</button>
+        `;
+
+                // Thêm thông báo vào đầu của body
+                document.body.appendChild(messageContainer);
+
+                // Xử lý sự kiện click của nút "OK" để ẩn thông báo
+                const okButton = messageContainer.querySelector(".ok-button");
+                okButton.addEventListener("click", () => {
+                    document.body.removeChild(messageContainer);
+                });
+            }
+        </script>
+
+        <style>
+            /* Style cho popup thông báo */
+            .popup-message {
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #f8d7da;
+                color: #721c24;
+                padding: 10px 20px;
+                border: 1px solid #f5c6cb;
+                border-radius: 5px;
+                font-size: 1.2rem;
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            /* Style cho nút "OK" */
+            .ok-button {
+                background-color: #721c24;
+                color: #fff;
+                border: none;
+                border-radius: 3px;
+                padding: 5px 10px;
+                cursor: pointer;
+                font-size: 1rem;
+            }
+
+            .ok-button:hover {
+                background-color: #501318;
+            }
+        </style>
+
     </body>
 </html>

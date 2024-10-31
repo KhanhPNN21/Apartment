@@ -251,5 +251,21 @@
                 sdtMessage.style.display = 'none';
             });
         </script>
+        
+        <script>
+            //Check 2 pass và confirPass khác thì không cho vô
+            document.addEventListener("DOMContentLoaded", function () {
+                const passwordInput = document.getElementById("inputPassReg");
+                const confirmPasswordInput = document.getElementById("inputConfirmPass");
+                const registerButton = document.querySelector("button[type='submit']");
+                registerButton.addEventListener("click", function (event) {
+                    if (passwordInput.value !== confirmPasswordInput.value) {
+                        event.preventDefault();
+                        alert("Mật khẩu và xác nhận mật khẩu không khớp!");
+                        confirmPasswordInput.focus();
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
