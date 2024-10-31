@@ -1,15 +1,18 @@
 package Model;
+
 import Dal.DBContext;
 import java.sql.Connection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  *
  * @author acer
  */
 public class Post_DAO {
-      DBContext dbContext = new DBContext();
+
+    DBContext dbContext = new DBContext();
 
 //    
 //    public User getUserbyId(int id){
@@ -20,7 +23,7 @@ public class Post_DAO {
             String description, String title, int timeLimit) throws Exception {
         Connection con = null;
         String sql = "INSERT INTO Post (user_id,room_id,rank,amount,title,Description,time_limit) VALUES (?, ?, ?, ?, ?, ?,? )";
-         con = dbContext.getConnection(); // Lấy kết nối từ dbContext
+        con = dbContext.getConnection(); // Lấy kết nối từ dbContext
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, user_id);
             stmt.setInt(2, room_id);
@@ -86,16 +89,13 @@ public class Post_DAO {
             }
         }
     }
-    
-    
-    
 
-    public int getRooms(String price, int area, int room_number, int apartment_id) throws Exception {
+    public int getRooms(int price, int area, int room_number, int apartment_id) throws Exception {
         String sql = "INSERT INTO Rooms  (price,area, Room_number,Apartment_id) VALUES (?, ?, ?,?)";
         Connection con = dbContext.getConnection(); // Lấy kết nối từ dbContext
 
         try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) { // Sử dụng `con` thay vì `dbContext`
-            stmt.setString(1, price);
+            stmt.setInt(1, price);
             stmt.setInt(2, area);
             stmt.setInt(3, room_number);
             stmt.setInt(4, apartment_id);
@@ -110,13 +110,11 @@ public class Post_DAO {
             }
         }
     }
-    
-    
+
     public List<Post> getPostsByUserId(int userId) {
         List<Post> posts = new ArrayList<>();
 
-        try (Connection con = dbContext.getConnection()
-             ;PreparedStatement statement = con.prepareStatement("SELECT * FROM Post WHERE User_id = ?")) {
+        try (Connection con = dbContext.getConnection(); PreparedStatement statement = con.prepareStatement("SELECT * FROM Post WHERE User_id = ?")) {
             statement.setInt(1, userId);
             ResultSet resultSet = statement.executeQuery();
 
@@ -140,15 +138,144 @@ public class Post_DAO {
 
         return posts;
     }
-    
-    public void deletePost(int post_id , int room_id ) throws SQLException{
-         try (Connection con = dbContext.getConnection()){
-            PreparedStatement statement = con.prepareStatement("Delete FROM Post WHERE Post_id = ?"); 
+
+    public void deletePost(int post_id, int room_id) throws SQLException {
+        try (Connection con = dbContext.getConnection()) {
+            PreparedStatement statement = con.prepareStatement("Delete FROM Post WHERE Post_id = ?");
             statement.setInt(1, post_id);
-            ResultSet resultSet = statement.executeQuery();
-            
-            PreparedStatement st = con.prepareStatement("Delete From room WHERE Room_id = ?");
+            statement.executeUpdate();
+
+            PreparedStatement st = con.prepareStatement("Delete From rooms WHERE Room_id = ?");
+            st.setInt(1, room_id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+
+        }
+
     }
 
-}
+    public int updatePost(int post_id, String newDescription, String newTitle) {
+
+        ResultSet rs = null;
+        int roomId = -1;
+        try (Connection con = dbContext.getConnection()) {
+            // Câu lệnh SQL để cập nhật Description và Title
+            String updateSQL = "UPDATE Post SET Description = ?, Title = ? WHERE Post_id = ?";
+            PreparedStatement st = con.prepareStatement(updateSQL);
+            st.setString(1, newDescription);
+            st.setString(2, newTitle);
+            st.setInt(3, post_id);
+            st.executeUpdate();
+
+            // Truy vấn để lấy room_id sau khi cập nhật
+            String selectSQL = "SELECT Room_id FROM Post WHERE Post_id = ?";
+            PreparedStatement statement = con.prepareStatement(selectSQL);
+            statement.setInt(1, post_id);
+            rs = statement.executeQuery();
+            if (rs.next()) {
+                roomId = rs.getInt("Room_id");
+            }
+        } catch (SQLException e) {
+
+        } finally {
+            // Đóng các tài nguyên
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+
+        return roomId;
+    }
+
+    public int updateRoom(int room_id, int price, int room_number, int area) {
+
+        ResultSet rs = null;
+        int apartmentId = -1;
+        try (Connection con = dbContext.getConnection()) {
+            // Câu lệnh SQL để cập nhật Description và Title
+            String updateSQL = "UPDATE Rooms SET Price = ?, Room_number = ?, Area = ? WHERE Room_id = ?";
+            PreparedStatement stmt = con.prepareStatement(updateSQL);
+            stmt.setInt(1, price);
+            stmt.setInt(2, room_number);
+            stmt.setInt(3, area);
+            stmt.setInt(4, room_id);
+            stmt.executeUpdate();
+
+            // Truy vấn để lấy room_id sau khi cập nhật
+            String selectSQL = "SELECT Apartment_id FROM Rooms WHERE Room_id = ?";
+            PreparedStatement statement = con.prepareStatement(selectSQL);
+            statement.setInt(1, room_id);
+            rs = statement.executeQuery();
+            if (rs.next()) {
+                apartmentId = rs.getInt("Apartment_id");
+            }
+        } catch (SQLException e) {
+        } finally {
+            // Đóng các tài nguyên
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+            }
+        }
+
+        return apartmentId;
+    }
+
+    public int updateApartment(int apartment_id, String apartmentName, int available_room) {
+
+        ResultSet rs = null;
+        int locationId = -1;
+        try (Connection con = dbContext.getConnection()) {
+            // Câu lệnh SQL để cập nhật Description và Title
+            String updateSQL = "UPDATE Apartment SET apartment_name = ?, available_room = ? WHERE apartment_id = ?";
+            PreparedStatement stmt = con.prepareStatement(updateSQL);
+            stmt.setString(1, apartmentName);
+            stmt.setInt(2, available_room);
+            stmt.setInt(3, apartment_id);
+            stmt.executeUpdate();
+
+            // Truy vấn để lấy room_id sau khi cập nhật
+            String selectSQL = "SELECT Location_id FROM Apartment WHERE apartment_id = ?";
+            PreparedStatement statement = con.prepareStatement(selectSQL);
+            statement.setInt(1, apartment_id);
+            rs = statement.executeQuery();
+            if (rs.next()) {
+                locationId = rs.getInt("Apartment_id");
+            }
+        } catch (SQLException e) {
+        } finally {
+            // Đóng các tài nguyên
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+            }
+        }
+
+        return locationId;
+    }
+
+    public void updateLocation(int location_id, String street, String ward, String district) {
+        String sql = "UPDATE Location SET Street = ?, Ward = ?, District = ? WHERE Location_id = ?";
+
+        try (Connection con = dbContext.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, street);
+            stmt.setString(2, ward);
+            stmt.setString(3, district);
+            stmt.setInt(4, location_id);
+            stmt.executeUpdate();
+           
+        } catch (SQLException e) {
+            
+            throw new RuntimeException("Failed to update location.", e);
+        }
+    }
+
 }

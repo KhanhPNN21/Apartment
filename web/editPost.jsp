@@ -73,17 +73,18 @@
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-body">
-                            <h4>Đăng tin mới</h4>
+                            <h4>Chỉnh sửa bài đăng-Mã tin:${postId} </h4>
                             <div class="alert alert-danger">
                                 Nếu bạn đã từng đăng tin trên ApartmentProVjp.com, hãy sử dụng chức năng GIA HẠN / NÂNG CẤP để làm mới.
                             </div>
-                            <form action="PostServlet?userId=${param.userId}" method="POST" >
-                                <!-- Location Section -->
+                            <form action="PostServlet"  method="GET" >
+                                   <input type="hidden" name="userId" value="${sessionScope.user.userId}">
+                                   <input type="hidden" name="postId" value="${postId}">
                                 <div class="row mb-3">
                                     <div class="col-md-3">
                                         <label for="district" class="form-label">Quận/Huyện</label>
-                                        <select id="district" class="form-select" name="district" >
-                                            <option value="">Chọn quận huyện</option>
+                                        <select id="district" class="form-select" name="district"  >
+                                            <option value="${detail.district}" >${detail.district}</option>
                                             <option value="lien_chieu">Quận Liên Chiểu</option>
                                             <option value="hai_chau">Quận Hải Châu</option>
                                             <option value="ngu_hanh_son">Quận Ngũ Hành Sơn</option>
@@ -98,7 +99,7 @@
                                     <div class="col-md-3">
                                         <label for="ward" class="form-label">Phường/Xã</label>
                                         <select id="ward" class="form-select" name="ward">
-                                            <option value="">Chọn phường xã</option>
+                                            <option value="${detail.ward}">${detail.ward}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -106,12 +107,12 @@
                                 <!-- House Information -->
                                 <div class="mb-3">
                                     <label for="houseNumber" class="form-label">Số nhà</label>
-                                    <input type="text" class="form-control" required="" placeholder="Nhập số nhà và đường" id="houseNumber" name="houseNumber">
+                                    <input type="text" class="form-control" required="" value="${detail.street}" id="houseNumber" name="houseNumber">
                                 </div>
                                 
                                 <div class="mb-3">
                                     <label for="apartmentName" class="form-label">Tên chung cư/căn hộ</label>
-                                    <input type="text" class="form-control" required="" placeholder="Nhập tên chung cư/căn hộ" id="apartmentName" name="apartmentName">
+                                    <input type="text" class="form-control" required="" value="${detail.apartmentName}" id="apartmentName" name="apartmentName">
                                 </div>    
 
                                 <!-- Description Section -->
@@ -122,42 +123,42 @@
 
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Tiêu đề</label>
-                                    <input type="text" class="form-control" placeholder="Nhập tiêu đề bài đăng" id="title" name="title" required="">
+                                    <input type="text" class="form-control" value="${detail.title}" id="title" name="title" required="">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Mô tả</label>
-                                    <textarea type="text" class="form-control" placeholder="Nhập mô tả" id="description" name="description"></textarea>
+                                    <input type="text" class="form-control" value="${detail.description}" id="description" name="description">
                                 </div>    
 
                                 <div class="mb-3">
                                     <label for="ownerName" class="form-label">Tên người cho thuê</label>
-                                    <input type="text" class="form-control" id="ownerName" value="${sessionScope.user.fullName}"
+                                    <input type="text" class="form-control" id="ownerName" value="${detail.fullName}"
                                            name="ownerName"  readonly>
                                 </div>
                                 <div class="mb-3 row">   
                                     <div class="col-md-4">
                                         <label for="phoneNumber" class="form-label">Số điện thoại</label>
                                         <input type="tel" class="form-control" id="phoneNumber"  
-                                               name="phoneNumber"  value="${sessionScope.user.phone}" readonly>
+                                               name="phoneNumber"  value="${detail.phone}" readonly>
                                     </div>
                                     <div class="col-md-1"></div>
                                     <div class="col-md-4">
                                         <label for="rentPrice" class="form-label">Giá cho thuê triệu/tháng (VND)</label>
                                         <input type="number" class="form-control" id="rentPrice" name="rentPrice" required=""
-                                                      placeholder="Nhập giá cho thuê">
+                                                      value="${detail.price}">
                                     </div>
                                 </div>        
                                 <div class="mb-3 row">
                                     <div class="col-md-4">
                                         <label for="area" class="form-label">Diện tích (m²)</label>
                                         <input type="number" class="form-control" id="area" name="area" required=""
-                                               oninput="this.value = this.value.replace(/[^0-9]/g, '');" placeholder="Nhập diện tích">
+                                               oninput="this.value = this.value.replace(/[^0-9]/g, '');" value="${detail.area}">
                                     </div>
                                                                        
                                     <div class="col-md-4">
                                         <label for="roomNumber" class="form-label">Số phòng</label>
-                                        <input type="number" required="" class="form-control" id="roomNumber" name="roomNumber" placeholder="Nhập số phòng">
+                                        <input type="number" required="" class="form-control" id="roomNumber" name="roomNumber" value="${detail.roomNumber}">
                                     </div>
                                     
                                     <div class="col-md-4">
@@ -171,38 +172,8 @@
                                     <input type="file" class="form-control" id="images" name="images[]" multiple accept=".jpg, .jpeg, .png, .img">
                                     <small class="form-text text-muted">Chọn nhiều hình ảnh (JPG, PNG, IMG).</small>
                                 </div>
-                                
-                                <br><div class="mb-3">
-                                    <h4>Tiền đăng</h4>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="level" class="form-label">Cấp độ bài đăng</label>
-                                    <select id="level" class="form-select" name="level" onchange="updatePrice()">
-                                        <option value="">Chọn cấp độ</option>
-                                        <option value="1">Cấp độ 1</option>
-                                        <option value="2">Cấp độ 2</option>
-                                        <option value="3">Cấp độ 3</option>
-                                        <option value="4">Cấp độ 4</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="duration" class="form-label">Số ngày tồn tại bài đăng</label>
-                                    <select id="duration" class="form-select" name="duration" onchange="updatePrice()">
-                                        <option value="">Chọn số ngày</option>
-                                        <option value="3">3 ngày</option>
-                                        <option value="7">7 ngày</option>
-                                        <option value="30">30 ngày</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="price" class="form-label">Giá bài đăng (VNĐ)</label>
-                                    <input type="text" class="form-control" id="price" placeholder="Số tiền" name="price" readonly>
-                                </div>
-
-                                <button type="submit" id="submitBtn" class="btn btn-primary">Đăng tin</button>
+                                <br>
+                                <button type="submit" id="submitBtn" name="command" value="updatePost" class="btn btn-primary">Chỉnh sửa</button>
                             </form>
                         </div>
                     </div>
@@ -237,7 +208,7 @@
                 const district = this.value;
                 const wardSelect = document.getElementById('ward');
 
-                wardSelect.innerHTML = '<option value="">Chọn phường xã</option>';
+                wardSelect.innerHTML = ' <option value="${detail.ward}">${detail.ward}</option>';
 
                 if (district && wardsByDistrict[district]) {
                     wardsByDistrict[district].forEach(function (ward) {
@@ -260,45 +231,5 @@
             });
         </script>
         
-        <script>
-            function updatePrice() {
-                const level = document.getElementById('level').value;
-                const duration = document.getElementById('duration').value;
-                let price = 0;
-
-                const prices = {
-                    1: {3: 10000, 7: 20000, 30: 90000},
-                    2: {3: 20000, 7: 40000, 30: 180000},
-                    3: {3: 30000, 7: 60000, 30: 270000},
-                    4: {3: 50000, 7: 100000, 30: 450000}
-                };
-
-                if (level && duration) {
-                    price = prices[level][duration] || 0;
-                }
-
-                document.getElementById('price').value = price;
-            }
-        </script>
-        
-        <script>
-            document.getElementById('submitBtn').addEventListener('click', function(event) {
-                const levelSelect = document.getElementById('level');
-                if (rentalFormSelect.value === "") {
-                    event.preventDefault();
-                    alert("Vui lòng chọn cấp độ bài đăng trước khi đăng tin!");
-                }
-            });
-        </script>
-        
-        <script>
-            document.getElementById('submitBtn').addEventListener('click', function(event) {
-                const durationSelect = document.getElementById('duration');
-                if (rentalFormSelect.value === "") {
-                    event.preventDefault();
-                    alert("Vui lòng chọn chọn số ngày tồn tại bài đăng trước khi đăng tin!");
-                }
-            });
-        </script>
     </body>
 </html>
