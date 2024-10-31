@@ -100,8 +100,8 @@
                         <p>Mã thành viên: ${sessionScope.user.userId}</p>
                         <p>TK Chính: ${sessionScope.user.accountBalance}</p>
                         <div class="row mb-3">
-                            <a href="recharge.jsp" class="btn btn-warning btn-sm mb-2">Nạp tiền</a>
-                            <a href="post.jsp" class="btn btn-danger btn-sm mb-3">Đăng tin</a>
+                            <a href="recharge.jsp?userId=${sessionScope.user.userId}" class="btn btn-warning btn-sm mb-2">Nạp tiền</a>
+                            <a href="post.jsp?userId=${sessionScope.user.userId}" class="btn btn-danger btn-sm mb-3">Đăng tin</a>
                         </div>   
                         <hr>
 
