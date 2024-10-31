@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -27,7 +28,6 @@ public class SearchServlet extends HttpServlet {
         String price = request.getParameter("price");
         String area = request.getParameter("area");
         
-        System.out.println(district + " " + ward);
         Integer priceMin = null, priceMax = null, areaMin = null, areaMax = null;
 
         if ("under1m".equals(price)) {
