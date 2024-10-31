@@ -61,6 +61,7 @@ public class SearchServlet extends HttpServlet {
         request.setAttribute("price", price);
         request.setAttribute("area", area);
         request.setAttribute("rooms", rooms);
+        request.setAttribute("count", rooms.size());
         request.getRequestDispatcher("search.jsp").forward(request, response);
     }
     
@@ -73,8 +74,8 @@ public class SearchServlet extends HttpServlet {
 
         // Đặt thuộc tính để gửi dữ liệu đến JSP
         request.setAttribute("roomList", foundRooms);
-        request.setAttribute("searchQuery", name);
-        
+        request.setAttribute("count", foundRooms.size());
+        request.setAttribute("searchQuery", name);        
         // Chuyển hướng đến trang kết quả tìm kiếm (ví dụ: searchResult.jsp)
         request.getRequestDispatcher("search.jsp").forward(request, response);
     }

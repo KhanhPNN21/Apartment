@@ -15,7 +15,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-         <nav class="navbar navbar-expand-lg ">
+        <nav class="navbar navbar-expand-lg ">
             <div class="container d-flex justify-content-between">
                 <a class="navbar-brand" href="#">ApartmentProvjp.com</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,21 @@
                         <a href="Login.jsp" class="btn btn-outline-primary me-2 featured-item">Đăng nhập</a>
                         <a href="Signup.jsp" class="btn btn-primary featured-item">Đăng kí</a>
                     </div>
-                    <input type="text" class="form-control" style="width: 300px;" placeholder="Tìm phòng trọ..." aria-label="Search"> <!-- Thay đổi width tại đây -->
+                    <form action="SearchServlet" method="GET" class="search-form mb-4" id="searchForm">
+                        <div class="input-group">
+                            <input type="text" class="form-control" style="width: 300px;" name="searchQuery" placeholder="Tìm phòng trọ..." aria-label="Search" onkeypress="handleKeyPress(event)">
+                        </div>
+                    </form>
+
+                    <script>
+                        function handleKeyPress(event) {
+                            // Kiểm tra nếu phím nhấn là phím Enter
+                            if (event.key === "Enter") {
+                                event.preventDefault(); // Ngăn chặn hành động mặc định của Enter
+                                document.getElementById('searchForm').submit(); // Gửi biểu mẫu
+                            }
+                        }
+                    </script>
                 </div>
 
 
@@ -45,13 +59,13 @@
                 <div class="collapse navbar-collapse" id="navbarLinks">
                     <ul class="navbar-nav mx-auto w-100 justify-content-around">
                         <li class="nav-item active">
-                            <a class="nav-link featured-item" href="home.jsp" style="color: #ededed;"><h6>Trang Chủ</h6></a> <!-- Màu chữ -->
+                            <a class="nav-link featured-item" href="HomeServlet" style="color: #ededed;">Trang Chủ</a> <!-- Màu chữ -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link featured-item" href="payment.jsp" style="color: #f5f4f4;"><h6>Liên Hệ</h6></a> <!-- Màu chữ -->
+                            <a class="nav-link featured-item" href="Service_price.jsp" style="color: #f5f4f4;">Bảng Giá Dịch Vụ</a> <!-- Màu chữ -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Service_price.jsp" style="color: #fefbfb;"><h6>Bảng Giá Dịch Vụ</h6></a> <!-- Màu chữ -->
+                            <a class="nav-link" href="" style="color: #fefbfb;"><h6 class="featured-item">Hỗ Trợ</h6></a> <!-- Màu chữ -->
                         </li>
                     </ul>
                 </div>

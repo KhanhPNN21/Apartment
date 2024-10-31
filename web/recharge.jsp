@@ -12,74 +12,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Recharge Account</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <jsp:include page="post/style.jsp" />
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1874CD;">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white" href="#">ApartmentProVjp.com</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Rooms</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Houses</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="container-fluid">
-            <div class="row">
-                <!-- Sidebar with full viewport height -->
-                <div class="col-md-3 min-vh-100" style="background-color: #D0D0D0;">
-                    <div class="p-3">
-                        <h4>Trung Trịnh</h4>
-                        <p>Mã thành viên: 145976</p>
-                        <p>TK Chính: 0</p>
-                        <div class="row mb-3">
-                            <a href="recharge.jsp" class="btn btn-warning btn-sm mb-2">Nạp tiền</a>
-                            <a href="post.jsp" class="btn btn-danger btn-sm mb-3">Đăng tin</a>
-                        </div> 
-                        <hr>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a href="post_history.jsp" class="nav-link">Quản lý tin đăng</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="editUserInfor.jsp" class="nav-link">Sửa thông tin cá nhân</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="recharge.jsp" class="nav-link">Nạp tiền vào tài khoản</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="recharge_history.jsp" class="nav-link">Lịch sử nạp tiền</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="payment_history.jsp" class="nav-link">Lịch sử thanh toán</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Bảng giá dịch vụ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Liên hệ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-danger">Thoát</a>
-                            </li>
-                        </ul>  
-                    </div>
-                </div>
-
-                <!-- Main Content -->
+        <jsp:include page="post/headerPost.jsp" />
+        <jsp:include page="post/leftPost.jsp" />
                 <div class="col-md-9">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3>Nạp tiền vào tài khoản</h3>
-                        <div class="bg-light p-2 rounded text-end">
-                            <p class="mb-0">Số dư tài khoản</p>
-                            <h4 class="text-success">0đ</h4>
-                        </div>
                     </div>
                     
                     <h5>Mời bạn chọn phương thức nạp tiền</h5>
@@ -108,7 +49,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="bankTransferModalLabel">Form Chuyển khoản</h5>
+                                    <h5 class="modal-title" id="bankTransferModalLabel">Chuyển khoản</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -132,7 +73,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="creditCardModalLabel">Form Thẻ tín dụng</h5>
+                                    <h5 class="modal-title" id="creditCardModalLabel">Thẻ tín dụng</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">

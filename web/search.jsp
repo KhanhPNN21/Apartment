@@ -8,38 +8,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tìm kiếm phòng trọ</title>
+        <link rel="stylesheet" href="css/home.css"/>
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            .nav-bar {
-                background-color: #1874CD;
-                color: white;
-            }
-            .search-bar {
-                background-color: #f8f9fa;
-                padding: 20px;
-            }
-            .popular-areas img {
-                width: 100%;
-                height: auto;
-            }
-            .result-card img {
-                width: 100%;
-                height: auto;
-            }
-        </style>
+
     </head>
     <body>
-
-        <nav class="navbar nav-bar py-3">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white" href="#">ApartmentProVip.com</a>
-                <div class="d-flex">
-                    <span class="me-3 text-white">Xin chào, <strong>Trung Trinh</strong></span>
-                    <a href="#" class="btn btn-outline-light btn-sm me-2">Quản lý tài khoản</a>
-                    <a href="#" class="btn btn-danger btn-sm">Đăng tin miễn phí</a>
-                </div>
-            </div>
-        </nav>
+        <% 
+            // Kiểm tra thuộc tính 'user' trong session
+            if (session.getAttribute("user") != null) {
+                // Người dùng đã đăng nhập, include trang a.jsp
+        %>
+        <jsp:include page="headeruser.jsp" />
+        <% 
+            } else {
+                // Người dùng chưa đăng nhập, include trang b.jsp
+        %>
+        <jsp:include page="headerhome.jsp" />
+        <% 
+            } 
+        %>
 
         <!-- Search Section -->
         <div class="search-bar">
@@ -65,7 +52,7 @@
                         <label for="ward" class="form-label"></label>
                         <select id="ward" class="form-select" name="ward" onchange="this.form.submit()">
                             <option value="">Chọn phường xã</option>
-                            
+
                         </select>
                     </div>
 
@@ -99,16 +86,16 @@
         </div>
 
         <div class="container mt-5">
-            <h4 class="mb-4">Tổng "Số lượng tìm thấy" kết quả (cái này ko thích hoặc thấy đếm khó quá thì vứt cũng được)</h4>
+            <h4 class="mb-4">Tổng ${count} kết quả tìm thấy</h4>
             <div class="row">
                 <div class="col-md-9">
                     <!-- Result Item -->
                     <c:choose>
                         <c:when test="${not empty rooms}">
                             <c:forEach var="room" items="${rooms}">
-                                    <!-- Phần tử liệt kê phòng trọ -->
-                                    <div class="listing-item mb-4 p-3 border rounded featured-item">
-                                        <a href="DetailServlet?roomId=${room.roomId}" class="text-decoration-none text-dark">
+                                <!-- Phần tử liệt kê phòng trọ -->
+                                <div class="listing-item mb-4 p-3 border rounded featured-item">
+                                    <a href="DetailServlet?roomId=${room.roomId}" class="text-decoration-none text-dark">
                                         <div class="row">
                                             <!-- Cột hiển thị hình ảnh -->
                                             <div class="col-md-4">
@@ -141,9 +128,9 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        </a>
-                                    </div>
-                                </c:forEach>
+                                    </a>
+                                </div>
+                            </c:forEach>
                         </c:when>
                         <c:otherwise>
                             <p>Không có phòng nào.</p>
@@ -225,4 +212,4 @@
         </script>
 
     </body>
-</html>/*
+</html>

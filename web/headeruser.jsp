@@ -41,7 +41,21 @@
                         </div>
                         <a href="post.jsp?userId=${sessionScope.user.userId}" class="btn btn-danger featured-item">Đăng Tin Miễn Phí </a>
                     </div>
-                    <input type="text" class="form-control" style="width: 300px;" placeholder="Tìm phòng trọ..." aria-label="Search">
+                    <form action="SearchServlet" method="GET" class="search-form mb-4" id="searchForm">
+                        <div class="input-group">
+                            <input type="text" class="form-control" style="width: 300px;" name="searchQuery" placeholder="Tìm phòng trọ..." aria-label="Search" onkeypress="handleKeyPress(event)">
+                        </div>
+                    </form>
+
+                    <script>
+                        function handleKeyPress(event) {
+                            // Kiểm tra nếu phím nhấn là phím Enter
+                            if (event.key === "Enter") {
+                                event.preventDefault(); // Ngăn chặn hành động mặc định của Enter
+                                document.getElementById('searchForm').submit(); // Gửi biểu mẫu
+                            }
+                        }
+                    </script>
                 </div>
 
 
@@ -55,13 +69,13 @@
                 <div class="collapse navbar-collapse" id="navbarLinks">
                     <ul class="navbar-nav mx-auto w-100 justify-content-around">
                         <li class="nav-item active">
-                            <a class="nav-link featured-item" href="user.jsp" style="color: #ededed;">Trang Chủ</a> <!-- Màu chữ -->
+                            <a class="nav-link featured-item" href="HomeServlet" style="color: #ededed;">Trang Chủ</a> <!-- Màu chữ -->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link featured-item" href="Service_price.jsp" style="color: #f5f4f4;">Bảng Giá Dịch Vụ</a> <!-- Màu chữ -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="" style="color: #fefbfb;"><h6 class="featured-item">Trợ Giúp</h6></a> <!-- Màu chữ -->
+                            <a class="nav-link" href="" style="color: #fefbfb;"><h6 class="featured-item">Hỗ Trợ</h6></a> <!-- Màu chữ -->
                         </li>
                     </ul>
                 </div>

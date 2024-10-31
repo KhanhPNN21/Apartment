@@ -7,67 +7,13 @@
         <title>Post a Property</title>
         <!-- Bootstrap 5.3.3 CDN -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <jsp:include page="post/style.jsp" />
     </head>
     <body>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #1874CD;">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white" href="#">ApartmentProVjp.com</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Bảng giá dịch vụ</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Hỗ trợ</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="container-fluid ">
-            <div class="row" >
-                <!-- Sidebar -->
-                <div class="col-md-3" style="background-color: #D0D0D0;">
-
-                    <div class="p-3" style="background-color: #D0D0D0;">
-                        <h4>${sessionScope.user.userName}</h4>
-                        <p>Mã thành viên: ${sessionScope.user.userId}</p>
-                        <p>TK Chính: ${sessionScope.user.accountBalance}</p>
-                        <div class="row mb-3">
-                            <a href="recharge.jsp" class="btn btn-warning btn-sm mb-2">Nạp tiền</a>
-                            <a href="post.jsp" class="btn btn-danger btn-sm mb-3">Đăng tin</a>
-                        </div>   
-                        <hr>
-
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a href="PostServlet?command=history&userId=${sessionScope.user.userId}" class="nav-link">Quản lý tin đăng</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="editUserInfor.jsp" class="nav-link">Sửa thông tin cá nhân</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="recharge.jsp" class="nav-link">Nạp tiền vào tài khoản</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="recharge_history.jsp" class="nav-link">Lịch sử nạp tiền</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="payment_history.jsp" class="nav-link">Lịch sử thanh toán</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Bảng giá dịch vụ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Liên hệ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-danger">Thoát</a>
-                            </li>
-                        </ul> 
-                    </div>
-                </div>
+        <jsp:include page="post/headerPost.jsp" />
+        <jsp:include page="post/leftPost.jsp" />
 
                 <!-- Main Content -->
                 <div class="col-md-9">
@@ -183,44 +129,7 @@
 
         <!-- Bootstrap JS and Popper.js -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            //Phường/Xã theo Quận/Huyện
-            const wardsByDistrict = {
-                "lien_chieu": ["Phường Hòa Hiệp Bắc", "Phường Hòa Hiệp Nam", "Phường Hòa Khánh Bắc", "Phường Hòa Khánh Nam", "Phường Hòa Minh"],
-
-                "hai_chau": ["Phường Bình Hiên", "Phường Bình Thuận", "Phường Hải Châu 1", "Phường Hải Châu 2", "Phường Hòa Cường Bắc", "Phường Hòa Cường Nam", "Phường Hòa Thuận Đông",
-                "Phường Hòa Thuận Tây", "Phường Nam Dương", "Phường Phước Ninh", "Thạch Thang", "Thanh Bình", "Thuận Phước"],
-
-                "ngu_hanh_son": ["Phường Hòa Quý", "Phường Khuê Mỹ", "Phường Mỹ An", "Phường Hòa Hải"],
-
-                "son_tra": ["Phường An Hải Bắc", "Phường An Hải Đông", "Phường An Hải Tây", "Phường Mân Thái", "Phường Nại Hiên Đông", "Phường Phước Mỹ", "Phường Thọ Quang"],
-
-                "cam_le": ["Phường Hòa An", "Phường Hòa Phát", "Phường Hòa Thọ Đông", "Phường Hòa Thọ Tây", "Phường Khuê Trung", "Phường Hòa Xuân"],
-
-                "thanh_khe": ["Phường An Khê", "Phường Chính Gián", "Phường Hòa Khê", "Phường Tam Thuận", "Phường Tân Chính", "Phường Thạc Gián", "Phường Thanh Khê Đông", "Phường Thanh Khê Tây", "Phường Vĩnh Trung", "Phường Xuân Hà"],
-
-                "hoa_vang": ["Xã Hòa Bắc", "Xã Hòa Châu", "Xã Hòa Khương", "Xã Hòa Liên", "Xã Hòa Nhơn", "Xã Hòa Ninh", "Xã Hòa Phong", "Xã Hòa Phú", "Xã Hòa Phước", "Xã Hòa Sơn", "Xã Hòa Tiến"],
-
-                "hoang_sa": ["Huyện Đảo Hoàng Sa"]
-                };
-
-            document.getElementById('district').addEventListener('change', function () {
-                const district = this.value;
-                const wardSelect = document.getElementById('ward');
-
-                wardSelect.innerHTML = ' <option value="${detail.ward}">${detail.ward}</option>';
-
-                if (district && wardsByDistrict[district]) {
-                    wardsByDistrict[district].forEach(function (ward) {
-                    const option = document.createElement('option');
-                    option.value = ward;
-                    option.textContent = ward;
-                    wardSelect.appendChild(option);
-                    });
-                }
-            });
-        </script>
-        
+        <jsp:include page="post/selectward.jsp" />      
         <script>
             document.getElementById('submitBtn').addEventListener('click', function(event) {
                 const districtSelect = document.getElementById('district');
