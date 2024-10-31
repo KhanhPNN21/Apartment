@@ -30,7 +30,7 @@
                             <a href="editUserInfor.jsp" class="nav-link">Cập nhật thông tin cá nhân</a>
                         </li>
                         <li class="nav-item">
-                            <a href="recharge_history.jsp" class="nav-link">Lịch sử nạp tiền</a>
+                            <a href="RechargeServlet?userId=${sessionScope.user.userId}" class="nav-link">Lịch sử nạp tiền</a>
                         </li>
                         <li class="nav-item">
                             <a href="payment_history.jsp" class="nav-link">Lịch sử thanh toán</a>

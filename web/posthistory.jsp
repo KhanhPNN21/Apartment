@@ -16,17 +16,16 @@
         <jsp:include page="post/leftPost.jsp" />
                 <!-- Main Content -->
                 <div class="content col-md-9" style="margin-top: 3px">
-                    <div class="p-3 " style="color: black; ">
+                    <div class="pt-3 pb-2 mb-3 border-bottom">
                         <h2>Quản lý tin đăng</h2>
                     </div>
-                     
                     
                     <div>
                     <!-- Table for listing posts -->
-                    <c:if test="${listPost == null}">
+                    <c:if test="${empty listPost}">
                         <h3>Không có tin đăng nào.</h3>
                     </c:if>
-                    <c:if test="${listPost != null}">
+                    <c:if test="${not empty listPost}">
                     <table class="table table-bordered mt-3 ">
                         <thead class="text-center">
                             <tr>

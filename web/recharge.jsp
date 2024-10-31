@@ -53,13 +53,15 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form action="RechargeServlet" method="POST">
+                                         <input type="hidden" name="userID" value="${sessionScope.user.userId}">
+                                         <input type="hidden" name="paymentMethod" value="Chuyển khoản">
                                         <div>
                                             <img src="img/qr_code.jpg" class="img-fluid" alt="QR Code">
                                         </div>
                                         <div>
                                             <label for="amount" class="form-label">Số tiền</label>
-                                            <input type="number" class="form-control" id="amount" name="amountRecharge" placeholder="Nhập số tiền">
+                                            <input type="number" class="form-control" id="amount" name="amountRecharge" placeholder="Nhập số tiền" required>
                                         </div>
                                         <br>
                                         <button type="submit" class="btn btn-primary">Chuyển khoản</button>
@@ -77,26 +79,28 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form action="RechargeServlet" method="POST">
+                                         <input type="hidden" name="paymentMethod" value="Thẻ tín dụng">
+                                         <input type="hidden" name="userID" value="${sessionScope.user.userId}">
                                         <div class="mb-3">
                                             <label for="creditCardNumber" class="form-label">Số thẻ</label>
-                                            <input type="text" class="form-control" id="creditCardNumber" placeholder="Số thẻ tín dụng">
+                                            <input type="text" class="form-control" id="creditCardNumber" placeholder="Số thẻ tín dụng" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="cardHolderName" class="form-label">Tên chủ thẻ</label>
-                                            <input type="text" class="form-control" id="cardHolderName" placeholder="Tên chủ thẻ">
+                                            <input type="text" class="form-control" id="cardHolderName" placeholder="Tên chủ thẻ" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="expiryDate" class="form-label">Ngày hết hạn</label>
-                                            <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY">
+                                            <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="cvv" class="form-label">CVV</label>
-                                            <input type="text" class="form-control" id="cvv" placeholder="Mã CVV">
+                                            <input type="text" class="form-control" id="cvv" placeholder="Mã CVV" required>
                                         </div>
                                         <div>
                                             <label for="amount" class="form-label">Số tiền</label>
-                                            <input type="number" class="form-control" id="amount" name="amountRecharge"  placeholder="Nhập số tiền">
+                                            <input type="number" class="form-control" id="amount" name="amountRecharge"  placeholder="Nhập số tiền" required>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Thanh toán</button>
                                     </form>

@@ -33,6 +33,30 @@ public class paymentDAO {
         }
     }
      
+     public List<Payment> getPaymentsByUserId(int userId) {
+        List<Payment> payments = new ArrayList<>();
+        String query = "SELECT Payment_id, Amount, Method, Pay_date FROM Payment WHERE User_id = ?";
+
+        try (Connection con = dbContext.getConnection();
+             PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setInt(1, userId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int paymentId = resultSet.getInt("Payment_id");
+                    int amount = resultSet.getInt("Amount");
+                    String method = resultSet.getString("Method");
+                    String payDate = resultSet.getString("Pay_date");
+
+                    Payment payment = new Payment(paymentId,userId,payDate,amount, method);
+                    payments.add(payment);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return payments;
+    }
      
      
      
