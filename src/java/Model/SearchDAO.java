@@ -79,16 +79,16 @@ public class SearchDAO {
         }
         System.out.println(district+" "+ward);
         if (priceMin != null) {
-            query.append(" AND price > ?");
+            query.append(" AND price >= ?");
         }
         if (priceMax != null) {
-            query.append(" AND price < ?");
+            query.append(" AND price <= ?");
         }
         if (areaMin != null) {
-            query.append(" AND area > ?");
+            query.append(" AND area >= ?");
         }
         if (areaMax != null) {
-            query.append(" AND area < ?");
+            query.append(" AND area <= ?");
         }
 
         try (Connection con = dbContext.getConnection(); 

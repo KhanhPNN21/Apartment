@@ -1,9 +1,3 @@
-<%-- 
-    Document   : search
-    Created on : Oct 26, 2024, 12:09:11 PM
-    Author     : Tai
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="Model.Rooms"%>
@@ -229,4 +223,4 @@
         </script>
 
     </body>
-</html>
+</html>/*
