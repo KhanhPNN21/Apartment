@@ -38,6 +38,7 @@ public class ForgotServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         RequestDispatcher dispatcher = null;
@@ -58,6 +59,7 @@ public class ForgotServlet extends HttpServlet {
             props.put("mail.smtp.port", "465");
 
             Session session = Session.getDefaultInstance(props, new jakarta.mail.Authenticator() {
+                @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
                     return new PasswordAuthentication("kiensinh20212022@gmail.com", "post cxmk rxxs sddg");
                 }

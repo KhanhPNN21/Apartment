@@ -80,7 +80,7 @@ public class SearchDAO {
                 + "LEFT JOIN Rooms_img ri ON r.Room_id = ri.Room_id\n"
                 + "where 1=1");
         
-        if (district != null) {
+        if (district != null && !district.trim().isEmpty()) {
             district = districtMap.get(district);
             query.append(" AND l.District = ?");
         }
@@ -105,7 +105,7 @@ public class SearchDAO {
                 PreparedStatement stmt = con.prepareStatement(query.append(" ORDER BY p.Rank DESC").toString())) {
             System.out.println("Final Query: " + query.toString());
             int paramIndex = 1;
-            if (district != null) {
+            if (district != null && !district.trim().isEmpty()) {
                 stmt.setString(paramIndex++, district);
             }
             if (ward != null && !ward.trim().isEmpty()) {
