@@ -108,6 +108,7 @@
                             <c:forEach var="room" items="${rooms}">
                                     <!-- Phần tử liệt kê phòng trọ -->
                                     <div class="listing-item mb-4 p-3 border rounded featured-item">
+                                        <a href="DetailServlet?roomId=${room.roomId}" class="text-decoration-none text-dark">
                                         <div class="row">
                                             <!-- Cột hiển thị hình ảnh -->
                                             <div class="col-md-4">
@@ -140,6 +141,7 @@
                                                 </ul>
                                             </div>
                                         </div>
+                                        </a>
                                     </div>
                                 </c:forEach>
                         </c:when>

@@ -15,13 +15,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-      <section class="hero-section text-center py-5">
+       <section class="hero-section text-center py-5">
             <div class="container">
-                <h2 class="mb-4">Tìm Kiếm Phòng Trọ</h2>
-                <div class="search-bar row g-3 align-items-end">
+                <form action="SearchServlet" method="GET" class="search-bar row g-3 align-items-end">
                     <div class="col-md-2">
                         <label for="district" class="form-label"></label>
-                        <select id="district" class="form-select" name="district">
+                        <select id="district" class="form-select" name="district" onchange="this.form.submit()">
                             <option value="">Chọn quận huyện</option>
                             <option value="lien_chieu">Quận Liên Chiểu</option>
                             <option value="hai_chau">Quận Hải Châu</option>
@@ -36,14 +35,14 @@
 
                     <div class="col-md-2">
                         <label for="ward" class="form-label"></label>
-                        <select id="ward" class="form-select" name="ward">
+                        <select id="ward" class="form-select" name="ward" onchange="this.form.submit()">
                             <option value="">Chọn phường xã</option>
                         </select>
                     </div>
 
                     <div class="col-md-2">
                         <label for="price" class="form-label"></label>
-                        <select id="price" class="form-select" name="price">
+                        <select id="price" class="form-select" name="price" onchange="this.form.submit()">
                             <option value="">Chọn mức giá</option>
                             <option value="under1m">Dưới 1 triệu</option>
                             <option value="between1mand2m">1 - 2 triệu</option>
@@ -54,7 +53,7 @@
 
                     <div class="col-md-2">
                         <label for="area" class="form-label"></label>
-                        <select id="area" class="form-select" name="area">
+                        <select id="area" class="form-select" name="area" onchange="this.form.submit()">
                             <option value="">Chọn diện tích</option>
                             <option value="under20">Dưới 20 m²</option>
                             <option value="between20and30">20 - 30 m²</option>
@@ -64,10 +63,11 @@
                     </div>
 
                     <div class="col-md-2">
-                        <button class="btn btn-primary w-100">Tìm kiếm</button>
+                        <button type="button" class="btn btn-primary w-100">Tìm kiếm</button>
                     </div>
-                </div>
+                </form>
             </div>
         </section>
+
     </body>
 </html>
