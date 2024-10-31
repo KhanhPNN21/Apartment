@@ -109,8 +109,8 @@
                                 <td>${p.timeLimit}-Ngày</td>
                                 <td>${p.rank}</td>
                                 <td>${p.amount}</td>
-                                <td><a href="#" class="btn btn-danger">Xóa bài viết</a>
-                                    <a href="#" class="btn btn-warning">Chỉnh sửa bài viết</a></td>
+                                <td><a href="PostServlet?command=delete&userId=${sessionScope.user.userId}&roomId=${p.roomId}&postId=${p.postId}" class="btn btn-danger">Xóa bài viết</a>
+                                    <a href="PostServlet?command=update&roomId=${p.roomId}&postId=${p.postId}" class="btn btn-warning">Chỉnh sửa bài viết</a></td>
                             </tr>
                               </c:forEach>
                         </tbody>

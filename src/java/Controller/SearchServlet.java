@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -27,7 +28,6 @@ public class SearchServlet extends HttpServlet {
         String price = request.getParameter("price");
         String area = request.getParameter("area");
         
-        System.out.println(district + " " + ward);
         Integer priceMin = null, priceMax = null, areaMin = null, areaMax = null;
 
         if ("under1m".equals(price)) {
@@ -62,6 +62,21 @@ public class SearchServlet extends HttpServlet {
         request.setAttribute("price", price);
         request.setAttribute("area", area);
         request.setAttribute("rooms", rooms);
+        request.getRequestDispatcher("search.jsp").forward(request, response);
+    }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+
+        SearchDAO searchDAO = new SearchDAO();
+        List<Rooms> foundRooms = searchDAO.searchRoomByApartmentName(name);
+
+        // Đặt thuộc tính để gửi dữ liệu đến JSP
+        request.setAttribute("roomList", foundRooms);
+        request.setAttribute("searchQuery", name);
+        
+        // Chuyển hướng đến trang kết quả tìm kiếm (ví dụ: searchResult.jsp)
         request.getRequestDispatcher("search.jsp").forward(request, response);
     }
 }
