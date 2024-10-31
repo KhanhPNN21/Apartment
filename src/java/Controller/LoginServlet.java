@@ -20,7 +20,9 @@ import jakarta.servlet.http.HttpSession;
  * @author acer
  */
 public class LoginServlet extends HttpServlet {
-Home_DAO homeDao = new Home_DAO();
+
+    Home_DAO homeDao = new Home_DAO();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -59,7 +61,7 @@ Home_DAO homeDao = new Home_DAO();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         // Kiểm tra session trước khi xử lý các yêu cầu
+        // Kiểm tra session trước khi xử lý các yêu cầu
         HttpSession session = request.getSession(false); // Không tạo session mới nếu không có
         if (session == null || session.getAttribute("user") == null) {
             // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
@@ -78,7 +80,7 @@ Home_DAO homeDao = new Home_DAO();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String action = request.getParameter("action");
+        String action = request.getParameter("action");
 
         if ("login".equals(action)) { // Kiểm tra xem có phải là đăng nhập không
             String username = request.getParameter("username");
@@ -100,7 +102,7 @@ Home_DAO homeDao = new Home_DAO();
                 response.addCookie(userCookie);
                 // Ghi log trước khi chuyển hướng
                 System.out.println("Đăng nhập thành công cho người dùng: " + username);
-                
+
                 // Chuyển hướng đến danh sách sách
                 response.sendRedirect("HomeServlet");
             } else {
@@ -113,7 +115,8 @@ Home_DAO homeDao = new Home_DAO();
             logout(request, response); // Gọi phương thức logout để xử lý
         }
     }
- private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate(); // Hủy session
@@ -127,6 +130,7 @@ Home_DAO homeDao = new Home_DAO();
         // Chuyển hướng về trang đăng nhập
         response.sendRedirect("HomeServlet");
     }
+
     /**
      * Returns a short description of the servlet.
      *

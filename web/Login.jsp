@@ -141,6 +141,20 @@
                 <div class="col-md-5">
                     <div class="card">
                         <h2 class="text-center mb-3">Chào mừng trở lại!</h2>
+                        <%-- Phần này sẽ hiển thị thông báo thành công hoặc thất bại nếu có status từ NewPasswordServlet --%>
+                        <c:choose>
+                            <c:when test="${status == 'resetSuccess'}">
+                                <div class="alert alert-success text-center">
+                                    Mật khẩu đã được đặt lại thành công! Bạn có thể đăng nhập với mật khẩu mới.
+                                </div>
+                            </c:when>
+                            <c:when test="${status == 'resetFailed'}">
+                                <div class="alert alert-danger text-center">
+                                    Đặt lại mật khẩu thất bại. Vui lòng thử lại.
+                                </div>
+                            </c:when>
+                        </c:choose>
+
                         <p class="text-center">Rất vui mừng khi được gặp lại bạn!</p> 
                         <c:if test="${not empty mess}">
                             <p class="text-danger text-center" style="font-size: 1.2rem; margin-top: 1rem;">⚠️ ${mess} ⚠️</p>
@@ -168,7 +182,7 @@
                                     <input name="remember" value="1" type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Nhớ mật khẩu 🔒</label>
                                 </div>
-                                <a href="Forget_pass.jsp" class="small-text">Quên mật khẩu? 🕵️‍♂️</a>
+                                <a href="forgotPassword.jsp" class="small-text">Quên mật khẩu? 🕵️‍♂️</a>
                             </div>
 
                             <div class="d-grid">
