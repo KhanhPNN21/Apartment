@@ -31,7 +31,7 @@
                             </button>
 
                             <div class="dropdownmenu">
-                                <a href="posthistory.jsp">Thông tin cá nhân</a>
+                                <a href="PostServlet?command=history&userId=${sessionScope.user.userId}" class="nav-link">Thông tin cá nhân</a>
                                 <a href="#" onclick="document.getElementById('logoutForm').submit()">Đăng xuất</a>
                                 <form id="logoutForm" action="LoginServlet" method="post" style="display: none;">
                                     <input type="hidden" name="action" value="logout">
