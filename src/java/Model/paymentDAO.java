@@ -60,6 +60,28 @@ public class paymentDAO {
      
      
      
-     
+   public List<paymentHistory> getPaymentHistoryByUserId(int userId) throws SQLException {
+    List<paymentHistory> historyList = new ArrayList<>();
+    ResultSet rs = null;
+    try {
+        Connection con = dbContext.getConnection();
+        String sql = "SELECT Post_id, Amount, Post_date FROM Post WHERE User_id = ?";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setInt(1, userId);
+        rs = pst.executeQuery();
+
+        while (rs.next()) {
+            int postId = rs.getInt("Post_id");
+            int amount = rs.getInt("Amount");
+            String postDate = rs.getString("Post_date");
+
+            paymentHistory history = new paymentHistory(postId, amount, postDate);
+            historyList.add(history);
+        }
+    } finally {
+        if (rs != null) rs.close();
+    }
+    return historyList;
+}  
      
 }

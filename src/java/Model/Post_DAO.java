@@ -21,10 +21,14 @@ public class Post_DAO {
 //    }
     public void getPost(int user_id, int room_id, int rank, int amount,
             String description, String title, int timeLimit) throws Exception {
-        Connection con = null;
+
+      
         String sql = "INSERT INTO Post (user_id,room_id,rank,amount,title,Description,time_limit) VALUES (?, ?, ?, ?, ?, ?,? )";
-        con = dbContext.getConnection(); // Lấy kết nối từ dbContext
-        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+        String sqlUpdateBalance = "UPDATE Users SET Account_balance = Account_balance - ? WHERE User_id = ?";
+        try ( Connection con = dbContext.getConnection()) {
+            
+       
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, user_id);
             stmt.setInt(2, room_id);
             stmt.setInt(3, rank);
@@ -33,10 +37,40 @@ public class Post_DAO {
             stmt.setString(6, description);
             stmt.setInt(7, timeLimit);
             stmt.executeUpdate();
+            
+        PreparedStatement pstUpdateBalance = con.prepareStatement(sqlUpdateBalance);
+        pstUpdateBalance.setInt(1,amount);
+        pstUpdateBalance.setInt(2, user_id);
+        pstUpdateBalance.executeUpdate();
+
 
         } catch (Exception e) {
         }
     }
+    
+
+public int getAccountBalance(int userId) throws SQLException {
+    Connection connection = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+
+    try {
+        connection = dbContext.getConnection();
+        String sql = "SELECT Account_balance FROM Users WHERE User_id = ?";
+        pst = connection.prepareStatement(sql);
+        pst.setInt(1, userId);
+        rs = pst.executeQuery();
+
+        if (rs.next()) {
+            return rs.getInt("Account_balance");
+        }
+    } finally {
+        if (rs != null) rs.close();
+        if (pst != null) pst.close();
+        if (connection != null) connection.close();
+    }
+    return 0; // Trả về 0 nếu không tìm thấy user
+}
 
     public int getLocation(String district, String ward, String street) throws Exception {
         String sql = "INSERT INTO Location (Street, Ward, District) VALUES (?, ?, ?)";

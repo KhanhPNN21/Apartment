@@ -71,10 +71,14 @@ public class PostServlet extends HttpServlet {
         int room_id_raw = pDao.getRooms(price, area, room_number, apartment_id_raw);
         
         // Lưu post
-        pDao.getPost(userId, room_id_raw, rank, amount, description, title, daylimit);
-        
-        // Điều hướng về trang chủ
-        response.sendRedirect("HomeServlet");
+        int currentAcountBalance = pDao.getAccountBalance(userId);
+        if ( currentAcountBalance < amount) {
+             request.setAttribute("error",  "Số dư tài khoản hiện tại của bản không đủ");
+             request.getRequestDispatcher("post.jsp" ).forward(request, response);
+        }
+             pDao.getPost(userId, room_id_raw, rank, amount, description, title, daylimit);
+             response.sendRedirect("HomeServlet");
+ 
         
     } catch (NumberFormatException e) {
         e.printStackTrace();

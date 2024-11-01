@@ -6,6 +6,7 @@ package Controller;
 
 import Model.Payment;
 import Model.paymentDAO;
+import Model.paymentHistory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,8 +15,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
-
 
 /**
  *
@@ -41,7 +40,7 @@ public class RechargeServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RechargeServlet</title>");            
+            out.println("<title>Servlet RechargeServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet RechargeServlet at " + request.getContextPath() + "</h1>");
@@ -62,7 +61,17 @@ public class RechargeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getPayment(request, response);
+         String command = request.getParameter("command");
+        
+       switch(command)
+       {
+           case "getRecharge" : 
+               getRecharge(request, response);
+             break;
+           case "getPayment" :
+               getHistoryPayment(request, response);
+               break;  
+    }
     }
 
     /**
@@ -79,37 +88,37 @@ public class RechargeServlet extends HttpServlet {
         Recharge(request, response);
     }
 
-    
-        public void Recharge(HttpServletRequest request, HttpServletResponse response)
+    public void Recharge(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String userId_raw = request.getParameter("userID");
-            String amount_raw = request.getParameter("amountRecharge");
-            String method = request.getParameter("paymentMethod");
-            paymentDAO pDAO = new paymentDAO();
-            int userId,amount;
-             try {
-                userId = Integer.parseInt(userId_raw);
-                amount = Integer.parseInt(amount_raw);
-                pDAO.depositAmount(userId, amount, method);
-                response.sendRedirect("recharge.jsp?userId="+userId);
-            } catch (Exception e) {
-            }
-            
+        String userId_raw = request.getParameter("userID");
+        String amount_raw = request.getParameter("amountRecharge");
+        String method = request.getParameter("paymentMethod");
+        paymentDAO pDAO = new paymentDAO();
+        int userId, amount;
+        try {
+            userId = Integer.parseInt(userId_raw);
+            amount = Integer.parseInt(amount_raw);
+            pDAO.depositAmount(userId, amount, method);
+            response.sendRedirect("recharge.jsp?userId=" + userId);
+        } catch (Exception e) {
         }
-        
-        public void getPayment (HttpServletRequest request, HttpServletResponse response)
+
+    }
+
+    public void getRecharge(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-              String userId_raw = request.getParameter("userId");
-               paymentDAO pDAO = new paymentDAO();
-               int userId;
-               try {
-               userId = Integer.parseInt(userId_raw);
-               List<Payment> payList = pDAO.getPaymentsByUserId(userId);
-               request.setAttribute("payList", payList);
-               request.getRequestDispatcher("rechargeHistory.jsp").forward(request, response);
-            } catch (Exception e) {
-            }
+        String userId_raw = request.getParameter("userId");
+        paymentDAO pDAO = new paymentDAO();
+        int userId;
+        try {
+            userId = Integer.parseInt(userId_raw);
+            List<Payment> payList = pDAO.getPaymentsByUserId(userId);
+            request.setAttribute("payList", payList);
+            request.getRequestDispatcher("rechargeHistory.jsp").forward(request, response);
+        } catch (Exception e) {
         }
+    }
+
     /**
      * Returns a short description of the servlet.
      *
@@ -120,5 +129,17 @@ public class RechargeServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
+    public void getHistoryPayment(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String userId_raw = request.getParameter("userId");
+        paymentDAO pDAO = new paymentDAO();
+        int userId;
+        try {
+            userId = Integer.parseInt(userId_raw);
+            List<paymentHistory> payHis = pDAO.getPaymentHistoryByUserId(userId);
+            request.setAttribute("payHis", payHis);
+            request.getRequestDispatcher("payment_history.jsp").forward(request, response);
+        } catch (Exception e) {
+        }
+    }
 }

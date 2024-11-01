@@ -30,10 +30,10 @@
                             <a href="editUserInfor.jsp" class="nav-link">Cập nhật thông tin cá nhân</a>
                         </li>
                         <li class="nav-item">
-                            <a href="RechargeServlet?userId=${sessionScope.user.userId}" class="nav-link">Lịch sử nạp tiền</a>
+                            <a href="RechargeServlet?command=getRecharge&userId=${sessionScope.user.userId}" class="nav-link">Lịch sử nạp tiền</a>
                         </li>
                         <li class="nav-item">
-                            <a href="payment_history.jsp" class="nav-link">Lịch sử thanh toán</a>
+                            <a href="RechargeServlet?command=getPayment&userId=${sessionScope.user.userId}" class="nav-link">Lịch sử thanh toán</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link text-danger" onclick="document.getElementById('logoutForm').submit()">Đăng xuất</a>
