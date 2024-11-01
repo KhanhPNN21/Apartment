@@ -31,12 +31,12 @@
                             <tr>
                                 <th>Mã tin</th>
                                 <th>Tiêu đề</th>                              
-                                <th>Ngày bắt đầu</th>
+                                <th>Ngày đăng</th>
                                 <th>Ngày hết hạn</th>
                                 <th>Thời hạn bài đăng</th>
                                 <th>Cấp độ</th>
                                 <th>Tiền trả</th>
-                                <th>Chỉnh sửa</th>
+                                <th>Cập nhật</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,11 +46,15 @@
                                 <td>${p.title}</td>
                                 <td>${p.postDate}</td>
                                 <td>${p.getExpiryDate()}</td>
-                                <td>${p.timeLimit}-Ngày</td>
+                                <td>${p.timeLimit} Ngày</td>
                                 <td>${p.rank}</td>
                                 <td>${p.amount}</td>
-                                <td><a href="PostServlet?command=delete&userId=${sessionScope.user.userId}&roomId=${p.roomId}&postId=${p.postId}" class="btn btn-danger">Xóa bài viết</a>
-                                    <a href="PostServlet?command=update&roomId=${p.roomId}&postId=${p.postId}" class="btn btn-warning">Chỉnh sửa bài viết</a></td>
+                                <td>
+                                    <a href="PostServlet?command=delete&userId=${sessionScope.user.userId}&roomId=${p.roomId}&postId=${p.postId}" class="btn btn-danger">Xóa</a>
+                                    <a href="PostServlet?command=update&roomId=${p.roomId}&postId=${p.postId}" class="btn btn-warning">Chỉnh sửa</a>
+                                    <a href="extendPost.jsp?command=extend&userId=${sessionScope.user.userId}&postId=${p.postId}&rank=${p.rank}&timeLimit=${p.timeLimit}&expiryDate=${p.getExpiryDate()}&amount=${p.amount}" class="btn btn-primary">Gia hạn</a>
+                                </td>
+                                
                             </tr>
                               </c:forEach>
                         </tbody>

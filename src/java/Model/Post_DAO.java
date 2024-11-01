@@ -3,6 +3,7 @@ package Model;
 import Dal.DBContext;
 import java.sql.Connection;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +23,10 @@ public class Post_DAO {
     public void getPost(int user_id, int room_id, int rank, int amount,
             String description, String title, int timeLimit) throws Exception {
 
-      
         String sql = "INSERT INTO Post (user_id,room_id,rank,amount,title,Description,time_limit) VALUES (?, ?, ?, ?, ?, ?,? )";
         String sqlUpdateBalance = "UPDATE Users SET Account_balance = Account_balance - ? WHERE User_id = ?";
-        try ( Connection con = dbContext.getConnection()) {
-            
-       
+        try (Connection con = dbContext.getConnection()) {
+
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, user_id);
             stmt.setInt(2, room_id);
@@ -37,40 +36,44 @@ public class Post_DAO {
             stmt.setString(6, description);
             stmt.setInt(7, timeLimit);
             stmt.executeUpdate();
-            
-        PreparedStatement pstUpdateBalance = con.prepareStatement(sqlUpdateBalance);
-        pstUpdateBalance.setInt(1,amount);
-        pstUpdateBalance.setInt(2, user_id);
-        pstUpdateBalance.executeUpdate();
 
+            PreparedStatement pstUpdateBalance = con.prepareStatement(sqlUpdateBalance);
+            pstUpdateBalance.setInt(1, amount);
+            pstUpdateBalance.setInt(2, user_id);
+            pstUpdateBalance.executeUpdate();
 
         } catch (Exception e) {
         }
     }
-    
 
-public int getAccountBalance(int userId) throws SQLException {
-    Connection connection = null;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
+    public int getAccountBalance(int userId) throws SQLException {
+        Connection connection = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
 
-    try {
-        connection = dbContext.getConnection();
-        String sql = "SELECT Account_balance FROM Users WHERE User_id = ?";
-        pst = connection.prepareStatement(sql);
-        pst.setInt(1, userId);
-        rs = pst.executeQuery();
+        try {
+            connection = dbContext.getConnection();
+            String sql = "SELECT Account_balance FROM Users WHERE User_id = ?";
+            pst = connection.prepareStatement(sql);
+            pst.setInt(1, userId);
+            rs = pst.executeQuery();
 
-        if (rs.next()) {
-            return rs.getInt("Account_balance");
+            if (rs.next()) {
+                return rs.getInt("Account_balance");
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
         }
-    } finally {
-        if (rs != null) rs.close();
-        if (pst != null) pst.close();
-        if (connection != null) connection.close();
+        return 0; // Trả về 0 nếu không tìm thấy user
     }
-    return 0; // Trả về 0 nếu không tìm thấy user
-}
 
     public int getLocation(String district, String ward, String street) throws Exception {
         String sql = "INSERT INTO Location (Street, Ward, District) VALUES (?, ?, ?)";
@@ -305,11 +308,41 @@ public int getAccountBalance(int userId) throws SQLException {
             stmt.setString(3, district);
             stmt.setInt(4, location_id);
             stmt.executeUpdate();
-           
+
         } catch (SQLException e) {
-            
+
             throw new RuntimeException("Failed to update location.", e);
         }
     }
 
+    public void checkAndExtendPost(int userId, int postId, String expiryDate, int duration, int price) throws SQLException {
+        String updateSQL;
+        LocalDate currentDate = LocalDate.now();
+        LocalDate localDate = LocalDate.parse(expiryDate);
+        String sqlUpdateBalance = "UPDATE Users SET Account_balance = Account_balance - ? WHERE User_id = ?";
+        
+        try (Connection con = dbContext.getConnection()) {
+            // Nếu bài đăng đã hết hạn, cập nhật lại postDate và các trường khác
+            if (currentDate.isAfter(localDate)) {
+                updateSQL = "UPDATE post SET post_date = ?, time_limit = ?, amount = ? WHERE post_id = ?";
+                PreparedStatement updatePs = con.prepareStatement(updateSQL);
+                updatePs.setDate(1, java.sql.Date.valueOf(currentDate));
+                updatePs.setInt(2, duration);
+                updatePs.setInt(3, price);
+                updatePs.setInt(4, postId);
+                updatePs.executeUpdate();
+            } else { // Nếu bài đăng chưa hết hạn, chỉ cập nhật expiryDate, timeLimit, và amount
+                updateSQL = "UPDATE post SET time_limit = ?, amount = ? WHERE post_id = ?";
+                PreparedStatement updatePs = con.prepareStatement(updateSQL);
+                updatePs.setInt(1, duration);
+                updatePs.setInt(2, price);
+                updatePs.setInt(3, postId);
+                updatePs.executeUpdate();
+            }
+            PreparedStatement pstUpdateBalance = con.prepareStatement(sqlUpdateBalance);
+            pstUpdateBalance.setInt(1, price);
+            pstUpdateBalance.setInt(2, userId);
+            pstUpdateBalance.executeUpdate();
+        }       
+    }
 }

@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
  * @author acer
  */
 public class Post {
+
     private int postId;
     private int userId;
     private String postDate;
@@ -108,7 +109,8 @@ public class Post {
     public void setTimeLimit(int timeLimit) {
         this.timeLimit = timeLimit;
     }
-public String getExpiryDate() {
+
+    public String getExpiryDate() {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate startDate = LocalDate.parse(this.postDate, formatter);
@@ -120,5 +122,5 @@ public String getExpiryDate() {
             return null;
         }
     }
-   
+
 }
