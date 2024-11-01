@@ -283,7 +283,7 @@ public class Post_DAO {
             statement.setInt(1, apartment_id);
             rs = statement.executeQuery();
             if (rs.next()) {
-                locationId = rs.getInt("Apartment_id");
+                locationId = rs.getInt("Location_id");
             }
         } catch (SQLException e) {
         } finally {
