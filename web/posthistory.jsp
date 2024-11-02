@@ -22,7 +22,7 @@
         <jsp:include page="post/headerPost.jsp" />
         <jsp:include page="post/leftPost.jsp" />
                 <!-- Main Content -->
-                <div class="content col-md-9" style="margin-top: 3px">
+                <div class="content col-md-9 main-content" style="margin-top: 3px">
                     <div class="pt-3 pb-2 mb-3 border-bottom">
                         <h2>Quản lý tin đăng</h2>
                     </div>

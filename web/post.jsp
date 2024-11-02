@@ -23,19 +23,22 @@
         <jsp:include page="post/headerPost.jsp" />
         <jsp:include page="post/leftPost.jsp" />
         <!-- Main Content -->
-        <div class="col-md-9">
-            <div class="card my-3">
-                <div class="card-body">
+        <div class="col-md-9 main-content">
+            <div>
+                <div >
                     <h4>Đăng tin mới</h4>
-                    <div class="alert alert-danger" style="background-color: #FFCC99; color: black ">
-                        Nếu bạn đã từng đăng tin trên ApartmentProVjp.com, hãy sử dụng chức năng GIA HẠN / NÂNG CẤP để làm mới.
+                    <!-- Warning message -->
+                    <div class="alert alert-danger" style="background-color: #FFCC99; color: black">
+                        Nếu bạn đã từng đăng tin trên G2 House, hãy sử dụng chức năng GIA HẠN / NÂNG CẤP để làm mới.
                     </div>
-                    <form action="PostServlet?userId=${param.userId}" method="POST" >
-                         <c:if test="${not empty requestScope.error}">
+
+                    <!-- Property Posting Form -->
+                    <form action="PostServlet?userId=${param.userId}" method="POST">
+                        <c:if test="${not empty requestScope.error}">
                             <div class="alert alert-danger" style="background-color: #FFCC99; color: black ">${requestScope.error}</div>
                         </c:if>
                         <jsp:include page="post/postDetail.jsp" />
-                       
+
                     </form>
                 </div>
             </div>

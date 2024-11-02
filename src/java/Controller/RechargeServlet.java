@@ -149,7 +149,7 @@ public class RechargeServlet extends HttpServlet {
             userId = Integer.parseInt(userId_raw);
             List<paymentHistory> payHis = pDAO.getPaymentHistoryByUserId(userId);
             request.setAttribute("payHis", payHis);
-            request.getRequestDispatcher("payment_history.jsp").forward(request, response);
+            request.getRequestDispatcher("paymentHistory.jsp").forward(request, response);
         } catch (Exception e) {
         }
     }
