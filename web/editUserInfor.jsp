@@ -5,6 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession session1 = request.getSession(false);
+    if (session1 == null || session1.getAttribute("user") == null) {
+        response.sendRedirect("Login.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="vi">
     <head>
@@ -18,7 +25,7 @@
     <body>
         <jsp:include page="post/headerPost.jsp" />
         <jsp:include page="post/leftPost.jsp" />
-                <div class="col-md-9">
+                <div class="col-md-9 main-content">
                     <div class="pt-3 pb-2 mb-3 border-bottom">
                         <h2>Cập nhật thông tin cá nhân</h2>
                     </div>

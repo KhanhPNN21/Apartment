@@ -1,5 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%
+    HttpSession session1 = request.getSession(false);
+    if (session1 == null || session1.getAttribute("user") == null) {
+        response.sendRedirect("Login.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,7 +58,7 @@
                 </div>
             </div>
                 <!-- Main Content -->
-                <div class="content col-md-9" style="margin-top: 3px">
+                <div class="content col-md-9 main-content" style="margin-top: 3px">
                     <div class="pt-3 pb-2 mb-3 border-bottom">
                         <h2>Quản lý tin đăng</h2>
                     </div>

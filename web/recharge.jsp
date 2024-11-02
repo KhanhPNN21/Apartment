@@ -5,6 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession session1 = request.getSession(false);
+    if (session1 == null || session1.getAttribute("user") == null) {
+        response.sendRedirect("Login.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,7 +25,7 @@
     <body>
         <jsp:include page="post/headerPost.jsp" />
         <jsp:include page="post/leftPost.jsp" />
-                <div class="col-md-9">
+                <div class="col-md-9 main-content">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3>Nạp tiền vào tài khoản</h3>
                     </div>
@@ -26,7 +33,7 @@
                     <h5>Mời bạn chọn phương thức nạp tiền</h5>
                     <div class="row">
                         <div class="col-md-4 mb-3">
-                            <div class="card" style="width: 300px; height: 200px" id="bankTransferCard">
+                            <div class="card" style="width: 300px; height: 200px; border: 2px solid #83C0DF" id="bankTransferCard">
                                 <div class="card-body">
                                     <img class="card-img img-fluid"  src="https://www.pngitem.com/pimgs/m/333-3330392_bank-transfer-logo-png-transparent-png.png" alt="Bank Transfer" style="width: 300px; height: 150px">
                                     <h5 class="card-title text-center">Chuyển khoản</h5>
@@ -35,9 +42,10 @@
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <div class="card" style="width: 300px; height: 200px" id="creditCard">
+                            <div class="card" style="width: 300px; height: 200px; border: 2px solid #83C0DF" id="creditCard">
                                 <div class="card-body">
-                                    <img class="card-img img-fluid"  src="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/11/27/du-no-the-tin-dung.jpg" alt="Visa" style="width: 300px; height: 150px">
+                                    <img class="card-img img-fluid" src="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/11/27/du-no-the-tin-dung.jpg" alt="Visa" style="width: 300px; height: 150px">
+                                    
                                     <h5 class="card-title text-center">Thẻ tín dụng</h5>
                                 </div>
                             </div>

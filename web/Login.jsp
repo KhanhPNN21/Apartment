@@ -6,6 +6,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <!-- JSTL Core Library -->
+<%
+    HttpSession session1 = request.getSession(false);
+    if (session1 != null && session1.getAttribute("user") != null) {
+        // Người dùng đã đăng nhập, chuyển hướng tới listBooks.jsp
+        response.sendRedirect("HomeServlet");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="vi">
     <head>
@@ -129,6 +137,7 @@
         </style>
     </head>
     <body>
+        
         <div class="gradient-overlay"></div>
         <div class="container">
             <div class="row justify-content-center align-items-center">
