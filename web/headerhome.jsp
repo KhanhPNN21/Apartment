@@ -66,7 +66,7 @@
                             <a class="nav-link featured-item" href="Service_price.jsp" style="color: #f5f4f4;">Bảng Giá Dịch Vụ</a> <!-- Màu chữ -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="" style="color: #fefbfb;"><h6 class="featured-item">Hỗ Trợ</h6></a> <!-- Màu chữ -->
+                            <a class="nav-link" href="support.jsp" style="color: #fefbfb;"><h6 class="featured-item">Hỗ Trợ</h6></a> <!-- Màu chữ -->
                         </li>
                     </ul>
                 </div>
