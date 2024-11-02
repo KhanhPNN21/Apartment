@@ -101,7 +101,6 @@ public class SearchDAO {
         }
 
         try (Connection con = dbContext.getConnection(); PreparedStatement stmt = con.prepareStatement(query.append(" ORDER BY p.Rank DESC").toString())) {
-            System.out.println("Final Query: " + query.toString());
             int paramIndex = 1;
             if (district != null && !district.trim().isEmpty()) {
                 stmt.setString(paramIndex++, district);
