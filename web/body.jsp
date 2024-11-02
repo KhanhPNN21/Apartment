@@ -93,10 +93,49 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="col-md-1"> </div>
-                    <div class="col-md-4">
+                        
+                    <div class="col-md-4" style="margin-left: 3% ">
                         <h3>NEWS</h3>
                         <p>Latest updates and news related to real estate</p>
+
+                        <!-- Card Bài báo 1 -->
+                        <div class="card mb-4" style="background: transparent; border: 1px solid #BCDEEE;">
+                            <div>
+                                <div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">An toàn phòng cháy, chữa cháy ở các khu trọ: Những vấn đề đặt ra</h5>
+                                        <p class="card-text">Thời gian qua, tại một số tỉnh, thành trong nước liên tiếp xảy ra các vụ cháy chung cư mini, nhà cho thuê trọ</p>
+                                        <a href="http://laocaitv.vn/chinh-tri-xa-hoi/an-toan-phong-chay-chua-chay-o-cac-khu-tro-nhung-van-de-dat-ra" class="btn btn-primary">Đọc thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Bài báo 2 -->
+                        <div class="card mb-4" style="background: transparent; border: 1px solid #BCDEEE;">
+                            <div class="row g-0">
+                                <div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Người trẻ ở nhà thuê</h5>
+                                        <p class="card-text">Điều gì đang xảy ra trong thị trường cho thuê? Hãy xem xét những xu hướng và thay đổi.</p>
+                                        <a href="https://vnexpress.net/nguoi-tre-o-nha-thue-tron-doi-la-xu-the-tat-yeu-4587728.html" class="btn btn-primary">Đọc thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Bài báo 3 -->
+                        <div class="card mb-4" style="background: transparent; border: 1px solid #BCDEEE;">
+                            <div>
+                                <div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Những lưu ý khi thuê nhà</h5>
+                                        <p class="card-text">Các lưu ý hữu ích dành cho người thuê nhà để có được một trải nghiệm tốt nhất trong việc tìm kiếm nhà cho thuê.</p>
+                                        <a href="https://dantri.com.vn/bat-dong-san/kinh-nghiem-thue-nha-nhanh-va-hieu-qua-cho-nguoi-it-kinh-nghiem-20240515130148020.htm" class="btn btn-primary">Đọc thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -145,41 +184,41 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.min.js"></script>
 
         <script>
-                            //Phường/Xã theo Quận/Huyện
-                            const wardsByDistrict = {
-                                "lien_chieu": ["Phường Hòa Hiệp Bắc", "Phường Hòa Hiệp Nam", "Phường Hòa Khánh Bắc", "Phường Hòa Khánh Nam", "Phường Hòa Minh"],
+            //Phường/Xã theo Quận/Huyện
+            const wardsByDistrict = {
+                "lien_chieu": ["Phường Hòa Hiệp Bắc", "Phường Hòa Hiệp Nam", "Phường Hòa Khánh Bắc", "Phường Hòa Khánh Nam", "Phường Hòa Minh"],
 
-                                "hai_chau": ["Phường Bình Hiên", "Phường Bình Thuận", "Phường Hải Châu 1", "Phường Hải Châu 2", "Phường Hòa Cường Bắc", "Phường Hòa Cường Nam", "Phường Hòa Thuận Đông",
-                                    "Phường Hòa Thuận Tây", "Phường Nam Dương", "Phường Phước Ninh", "Phường Thạch Thang", "Phường Thanh Bình", "Phường Thuận Phước"],
+                "hai_chau": ["Phường Bình Hiên", "Phường Bình Thuận", "Phường Hải Châu 1", "Phường Hải Châu 2", "Phường Hòa Cường Bắc", "Phường Hòa Cường Nam", "Phường Hòa Thuận Đông",
+                    "Phường Hòa Thuận Tây", "Phường Nam Dương", "Phường Phước Ninh", "Phường Thạch Thang", "Phường Thanh Bình", "Phường Thuận Phước"],
 
-                                "ngu_hanh_son": ["Phường Hòa Quý", "Phường Khuê Mỹ", "Phường Mỹ An", "Phường Hòa Hải"],
+                "ngu_hanh_son": ["Phường Hòa Quý", "Phường Khuê Mỹ", "Phường Mỹ An", "Phường Hòa Hải"],
 
-                                "son_tra": ["Phường An Hải Bắc", "Phường An Hải Đông", "Phường An Hải Tây", "Phường Mân Thái", "Phường Nại Hiên Đông", "Phường Phước Mỹ", "Phường Thọ Quang"],
+                "son_tra": ["Phường An Hải Bắc", "Phường An Hải Đông", "Phường An Hải Tây", "Phường Mân Thái", "Phường Nại Hiên Đông", "Phường Phước Mỹ", "Phường Thọ Quang"],
 
-                                "cam_le": ["Phường Hòa An", "Phường Hòa Phát", "Phường Hòa Thọ Đông", "Phường Hòa Thọ Tây", "Phường Khuê Trung", "Phường Hòa Xuân"],
+                "cam_le": ["Phường Hòa An", "Phường Hòa Phát", "Phường Hòa Thọ Đông", "Phường Hòa Thọ Tây", "Phường Khuê Trung", "Phường Hòa Xuân"],
 
-                                "thanh_khe": ["Phường An Khê", "Phường Chính Gián", "Phường Hòa Khê", "Phường Tam Thuận", "Phường Tân Chính", "Phường Thạc Gián", "Phường Thanh Khê Đông", "Phường Thanh Khê Tây", "Phường Vĩnh Trung", "Phường Xuân Hà"],
+                "thanh_khe": ["Phường An Khê", "Phường Chính Gián", "Phường Hòa Khê", "Phường Tam Thuận", "Phường Tân Chính", "Phường Thạc Gián", "Phường Thanh Khê Đông", "Phường Thanh Khê Tây", "Phường Vĩnh Trung", "Phường Xuân Hà"],
 
-                                "hoa_vang": ["Xã Hòa Bắc", "Xã Hòa Châu", "Xã Hòa Khương", "Xã Hòa Liên", "Xã Hòa Nhơn", "Xã Hòa Ninh", "Xã Hòa Phong", "Xã Hòa Phú", "Xã Hòa Phước", "Xã Hòa Sơn", "Xã Hòa Tiến"],
+                "hoa_vang": ["Xã Hòa Bắc", "Xã Hòa Châu", "Xã Hòa Khương", "Xã Hòa Liên", "Xã Hòa Nhơn", "Xã Hòa Ninh", "Xã Hòa Phong", "Xã Hòa Phú", "Xã Hòa Phước", "Xã Hòa Sơn", "Xã Hòa Tiến"],
 
-                                "hoang_sa": ["Huyện Đảo Hoàng Sa"]
-                            };
+                "hoang_sa": ["Huyện Đảo Hoàng Sa"]
+            };
 
-                            document.getElementById('district').addEventListener('change', function () {
-                                const district = this.value;
-                                const wardSelect = document.getElementById('ward');
+            document.getElementById('district').addEventListener('change', function () {
+                const district = this.value;
+                const wardSelect = document.getElementById('ward');
 
-                                wardSelect.innerHTML = '<option value="">Chọn phường xã</option>';
+                wardSelect.innerHTML = '<option value="">Chọn phường xã</option>';
 
-                                if (district && wardsByDistrict[district]) {
-                                    wardsByDistrict[district].forEach(function (ward) {
-                                        const option = document.createElement('option');
-                                        option.value = ward;
-                                        option.textContent = ward;
-                                        wardSelect.appendChild(option);
-                                    });
-                                }
-                            });
+                if (district && wardsByDistrict[district]) {
+                    wardsByDistrict[district].forEach(function (ward) {
+                        const option = document.createElement('option');
+                        option.value = ward;
+                        option.textContent = ward;
+                        wardSelect.appendChild(option);
+                    });
+                }
+            });
         </script>
-        </div>
+    </div>
 </html>

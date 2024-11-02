@@ -26,9 +26,9 @@
         <jsp:include page="post/headerPost.jsp" />
         <jsp:include page="post/leftPost.jsp" />
                 <div class="col-md-9 main-content">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
+                    <a class="d-flex justify-content-between align-items-center mb-4">
                         <h3>Nạp tiền vào tài khoản</h3>
-                    </div>
+                    </a>
                     
                     <h5>Mời bạn chọn phương thức nạp tiền</h5>
                     <div class="row">

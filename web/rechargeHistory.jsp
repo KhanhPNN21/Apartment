@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html lang="vi">
     <head>
-         <meta charset="UTF-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Recharge Account</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,29 +24,29 @@
         <jsp:include page="post/style.jsp" />
     </head>
     <body>
-        
-       
-      <jsp:include page="post/headerPost.jsp" />
-       <jsp:include page="post/leftPost.jsp" />
-                <!-- Main Content -->
-                <div class="col-md-9 main-content">
-                    <div class="pt-3 pb-2 mb-3 border-bottom">
-                        <h2 >Lịch sử nạp tiền</h2>
-                    </div>
-                    <c:if test="${empty payList}">
-                        <h3>Bạn chưa có giao dịch nào.</h3>
-                    </c:if>
-                    <c:if test="${not empty payList}">
-                    <table class="table table-bordered">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Ngày nạp</th>
-                                <th>Mã giao dịch</th>
-                                <th>Phương thức</th>
-                                <th>Số tiền</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+
+
+        <jsp:include page="post/headerPost.jsp" />
+        <jsp:include page="post/leftPost.jsp" />
+        <!-- Main Content -->
+        <div class="col-md-9 main-content">
+            <div class="pt-3 pb-2 mb-3 border-bottom">
+                <h2 >Lịch sử nạp tiền</h2>
+            </div>
+            <c:if test="${empty payList}">
+                <h3>Bạn chưa có giao dịch nào.</h3>
+            </c:if>
+            <c:if test="${not empty payList}">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Ngày nạp</th>
+                            <th>Mã giao dịch</th>
+                            <th>Phương thức</th>
+                            <th>Số tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <c:forEach var="p" items="${payList}">
                             <tr>
                                 <td>${p.payDate}</td>
@@ -54,15 +54,15 @@
                                 <td>${p.method}</td>
                                 <td>${p.amount}</td>
                             </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
-                        </c:if>
-                </div>
-            </div>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </c:if>
         </div>
+    </div>
+</div>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
