@@ -12,7 +12,7 @@ import java.util.Map;
 public class SearchDAO {
 
     DBContext dbContext = new DBContext();
-    
+
     private static final Map<String, String> districtMap = new HashMap<>();
 
     static {
@@ -38,8 +38,7 @@ public class SearchDAO {
                 + "LEFT JOIN Rooms_img ri ON r.Room_id = ri.Room_id\n"
                 + "WHERE apartment_name LIKE ?";
 
-        try (Connection con = dbContext.getConnection(); 
-                PreparedStatement stmt = con.prepareStatement(sql)) {
+        try (Connection con = dbContext.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)) {
 
             stmt.setString(1, "%" + name + "%");
             ResultSet rs = stmt.executeQuery();
@@ -67,7 +66,7 @@ public class SearchDAO {
         }
         return rooms;
     }
-    
+
     public List<Rooms> searchRoom(String district, String ward, Integer priceMin, Integer priceMax, Integer areaMin, Integer areaMax) {
         List<Rooms> rooms = new ArrayList<>();
         StringBuilder query = new StringBuilder("SELECT r.Room_id, r.Price, r.Area, r.Room_number, r.Apartment_id,\n"
@@ -79,7 +78,7 @@ public class SearchDAO {
                 + "JOIN Location l ON a.Location_id = l.Location_Id\n"
                 + "LEFT JOIN Rooms_img ri ON r.Room_id = ri.Room_id\n"
                 + "where 1=1");
-        
+
         if (district != null && !district.trim().isEmpty()) {
             district = districtMap.get(district);
             query.append(" AND l.District = ?");
@@ -101,8 +100,7 @@ public class SearchDAO {
             query.append(" AND area <= ?");
         }
 
-        try (Connection con = dbContext.getConnection(); 
-                PreparedStatement stmt = con.prepareStatement(query.append(" ORDER BY p.Rank DESC").toString())) {
+        try (Connection con = dbContext.getConnection(); PreparedStatement stmt = con.prepareStatement(query.append(" ORDER BY p.Rank DESC").toString())) {
             System.out.println("Final Query: " + query.toString());
             int paramIndex = 1;
             if (district != null && !district.trim().isEmpty()) {
@@ -146,5 +144,47 @@ public class SearchDAO {
             e.printStackTrace();
         }
         return rooms;
+    }
+
+    public List<Rooms> listRoomExceptRoomId(int roomId){
+        List<Rooms> roomList = new ArrayList<>();
+        String query = "SELECT top 5 r.Room_id, r.Price, r.Area, r.Room_number, r.Apartment_id,\n"
+                + "       a.apartment_name, p.description, l.district, l.Ward, ri.Img_url,\n"
+                + "       p.Title, p.Post_date, p.Rank\n"
+                + "FROM Rooms r\n"
+                + "JOIN Apartment a ON r.Apartment_id = a.apartment_id\n"
+                + "LEFT JOIN Post p ON r.Room_id = p.Room_id\n"
+                + "JOIN Location l ON a.Location_id = l.Location_Id\n"
+                + "LEFT JOIN Rooms_img ri ON r.Room_id = ri.Room_id\n"
+                + "WHERE r.Room_id != ?\n"
+                + "ORDER BY NEWID()";
+        
+        try (Connection con = dbContext.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, roomId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Rooms room = new Rooms(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getInt(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getString(12),
+                        rs.getInt(13)
+                );
+                roomList.add(room);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return roomList;
     }
 }

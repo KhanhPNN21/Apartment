@@ -29,7 +29,8 @@
                 <div class="d-flex align-items-center flex-column">
                     <div class="d-flex align-items-center mb-2">
                         <a href="Login.jsp" class="btn btn-outline-primary me-2 featured-item">Đăng nhập</a>
-                        <a href="Signup.jsp" class="btn btn-primary featured-item">Đăng kí</a>
+                        <a href="Signup.jsp" class="btn btn-primary featured-item" style="margin-right:5px">Đăng kí</a>
+                        <a href="post.jsp" class="btn btn-danger featured-item">Đăng Tin Miễn Phí </a>
                     </div>
                     <form action="SearchServlet" method="GET" class="search-form mb-4" id="searchForm">
                         <div class="input-group">

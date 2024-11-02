@@ -8,7 +8,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Thông tin chi tiết phòng trọ</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
+        <link rel="stylesheet" href="css/home.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
         <style>
             body {
                 font-family: 'Arial', 'sans-serif';
@@ -49,8 +50,8 @@
                     </div>
 
                     <div class="row">
-                            <p>Địa chỉ: <span class="fw-bold">${room.street}, ${room.ward}, ${room.district}</span></p>
-                       
+                        <p>Địa chỉ: <span class="fw-bold">${room.street}, ${room.ward}, ${room.district}</span></p>
+
                     </div><br>
 
                     <h5 class="fw-bold text-primary">THÔNG TIN MÔ TẢ</h5>
@@ -91,10 +92,52 @@
                 <div class="col-md-4">
                     <h5 class="fw-bold text-primary">ĐỀ XUẤT KHÁC</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-decoration-none btn btn-outline-primary btn-sm mb-2">Thông tin 1</a></li>
-                        <li><a href="#" class="text-decoration-none btn btn-outline-primary btn-sm mb-2">Thông tin 2</a></li>
-                        <li><a href="#" class="text-decoration-none btn btn-outline-primary btn-sm mb-2">Thông tin 3</a></li>
-                        <li><a href="#" class="text-decoration-none btn btn-outline-primary btn-sm mb-2">Thông tin 4</a></li>
+                        <c:choose>
+                            <c:when test="${not empty rooms}">
+                                <c:forEach var="r" items="${rooms}">
+                                    <!-- Phần tử liệt kê phòng trọ -->
+                                    <div class="listing-item mb-4 p-3 border rounded featured-item">
+                                        <a href="DetailServlet?roomId=${r.roomId}" class="text-decoration-none text-dark">
+                                            <div class="row">
+                                                <!-- Cột hiển thị hình ảnh -->
+                                                <div class="col-md-4">
+                                                    <img src="https://pt123.cdn.static123.com/images/thumbs/450x300/fit/2021/03/10/z2372642429419-09c9c7a541863ae55ad41b3e267136f4_1615391265.jpg" 
+                                                         alt="Image" class="img-fluid rounded">
+                                                </div>
+
+                                                <!-- Cột hiển thị thông tin chi tiết -->
+                                                <div class="col-md-8">
+                                                    <c:choose>
+                                                        <c:when test="${r.rank == 4}">
+                                                            <strong><h5 class="mb-2 title-4"> <div style="color:orange" class="stars">★★★★★</div>${room.title}</h5></strong> 
+                                                        </c:when>
+                                                        <c:when test="${r.rank == 3}">
+                                                            <strong><h5 class="mb-2 title-3"> <div style="color: orange" class="stars">★★★★</div>${room.title}</h5></strong> 
+                                                        </c:when>
+                                                        <c:when test="${r.rank == 2}">
+                                                            <strong><h5 class="mb-2 title-2"> <div style="color: orange" class="stars">★★★</div>${room.title}</h5></strong> 
+                                                        </c:when>
+                                                        <c:when test="${r.rank == 1}">
+                                                            <strong><h5 class="mb-2 title-1"> <div style="color: orange" class="stars">★★</div>${room.title}</h5></strong> 
+                                                        </c:when>
+                                                    </c:choose>
+                                                    <ul class="list-unstyled">
+                                                        <li><strong>Giá:</strong> ${r.price} VND</li>
+                                                        <li><strong>Diện Tích:</strong> ${r.area} m²</li>
+                                                        <li><strong>Địa Chỉ:</strong> ${r.ward}</li>
+                                                        <li><strong>Số Phòng:</strong> ${r.roomNumber}</li>
+                                                        <li><strong>Ngày Đăng:</strong> ${r.postdate}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </c:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <p>Không có phòng nào.</p>
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                 </div>
             </div>

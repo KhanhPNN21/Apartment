@@ -41,7 +41,7 @@ public class Post_DAO {
             pstUpdateBalance.setInt(1, amount);
             pstUpdateBalance.setInt(2, user_id);
             pstUpdateBalance.executeUpdate();
-
+            
         } catch (Exception e) {
         }
     }
@@ -324,7 +324,7 @@ public class Post_DAO {
         try (Connection con = dbContext.getConnection()) {
             // Nếu bài đăng đã hết hạn, cập nhật lại postDate và các trường khác
             if (currentDate.isAfter(localDate)) {
-                updateSQL = "UPDATE post SET post_date = ?, time_limit = ?, amount = ? WHERE post_id = ?";
+                updateSQL = "UPDATE post SET post_date = ?, time_limit = time_Limit + ?, amount = amount + ? WHERE post_id = ?";
                 PreparedStatement updatePs = con.prepareStatement(updateSQL);
                 updatePs.setDate(1, java.sql.Date.valueOf(currentDate));
                 updatePs.setInt(2, duration);

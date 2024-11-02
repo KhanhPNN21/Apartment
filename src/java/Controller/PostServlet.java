@@ -4,13 +4,16 @@ import Model.Detail;
 import Model.Post;
 import Model.Post_DAO;
 import Model.RoomDAO;
+import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -81,7 +84,7 @@ public class PostServlet extends HttpServlet {
                 request.getRequestDispatcher("post.jsp").forward(request, response);
             }
             pDao.getPost(userId, room_id_raw, rank, amount, description, title, daylimit);
-            response.sendRedirect("HomeServlet");
+            response.sendRedirect("PostServlet?command=history&userId=" + userId);
 
         } catch (NumberFormatException e) {
             e.printStackTrace();

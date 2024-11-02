@@ -71,7 +71,7 @@ public class SearchServlet extends HttpServlet {
 
         SearchDAO searchDAO = new SearchDAO();
         List<Rooms> foundRooms = searchDAO.searchRoomByApartmentName(name);
-
+        
         // Đặt thuộc tính để gửi dữ liệu đến JSP
         request.setAttribute("roomList", foundRooms);
         request.setAttribute("count", foundRooms.size());

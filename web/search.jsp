@@ -12,7 +12,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
     </head>
-    <body>
+    <body style ="background-color: #FEF3E4;">
         <% 
             // Kiểm tra thuộc tính 'user' trong session
             if (session.getAttribute("user") != null) {

@@ -7,12 +7,15 @@ package Controller;
 
 import Model.RoomDAO;
 import Model.Detail;
+import Model.Rooms;
+import Model.SearchDAO;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -26,9 +29,11 @@ public class DetailServlet extends HttpServlet {
         int roomId = Integer.parseInt(request.getParameter("roomId"));
         RoomDAO roomDAO = new RoomDAO();
         Detail room = roomDAO.getRoomById(roomId);
-
+        SearchDAO searchDAO = new SearchDAO();
+        List<Rooms> rooms = searchDAO.listRoomExceptRoomId(roomId);
         if (room != null) {
             request.setAttribute("room", room);
+            request.setAttribute("rooms", rooms);
             RequestDispatcher dispatcher = request.getRequestDispatcher("roomDetail.jsp");
             dispatcher.forward(request, response);
         } else {

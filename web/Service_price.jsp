@@ -87,14 +87,10 @@
                             <h6><del>500.000đ</del></h6>
                             <p>Giảm 10% chỉ còn</p>
                             <h5>450.000đ</h5>
-                            <p>Giá đẩy tin: 10.000đ</p>
                             <p>Tiêu đề màu đỏ, in hoa</p>
                             <i class="bi bi-check2 check-icon"></i> Tự động duyệt <br>
                             <i class="bi bi-check2 check-icon"></i> Hiển thị số điện thoại <br>
                             <i class="bi bi-check2 check-icon"></i> Huy hiệu nổi bật
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-primary">Xem demo</a>
                         </div>
                     </div>
                 </div>
@@ -117,14 +113,10 @@
                             <h6><del>300.000đ</del></h6>
                             <p>Giảm 10% chỉ còn</p>
                             <h5>270.000đ</h5>
-                            <p>Giá đẩy tin: 5.000đ</p>
                             <p>Tiêu đề màu hồng, in hoa</p>
                             <i class="bi bi-check2 check-icon"></i> Tự động duyệt <br>
-                            <i class="bi bi-x cross-icon"></i> Hiển thị số điện thoại <br>
+                            <i class="bi bi-check2 check-icon"></i> Hiển thị số điện thoại <br>
                             <i class="bi bi-x cross-icon"></i> Huy hiệu nổi bật
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-primary">Xem demo</a>
                         </div>
                     </div>
                 </div>
@@ -146,14 +138,10 @@
                             <h6><del>200.000đ</del></h6>
                             <p>Giảm 10% chỉ còn</p>
                             <h5>180.000đ</h5>
-                            <p>Giá đẩy tin: 3.000đ</p>
                             <p>Tiêu đề màu cam, in hoa</p>
                             <i class="bi bi-check2 check-icon"></i> Tự động duyệt <br>
                             <i class="bi bi-x cross-icon"></i> Hiển thị số điện thoại <br>
                             <i class="bi bi-x cross-icon"></i> Huy hiệu nổi bật
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-primary">Xem demo</a>
                         </div>
                     </div>
                 </div>
@@ -173,14 +161,10 @@
                             <h6><del>100.000đ</del></h6>
                             <p>Giảm 10% chỉ còn</p>
                             <h5>90.000đ</h5>
-                            <p>Giá đẩy tin: 2.000đ</p>
                             <p>Tiêu đề màu xanh, in hoa</p>
                             <i class="bi bi-check2 check-icon"></i> Tự động duyệt <br>
                             <i class="bi bi-x cross-icon"></i> Hiển thị số điện thoại <br>
                             <i class="bi bi-x cross-icon"></i> Huy hiệu nổi bật
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-primary">Xem demo</a>
                         </div>
                     </div>
                 </div>

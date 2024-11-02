@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="accountBalance" value="${sessionScope.borrowerId}" />
 <!DOCTYPE html>
 <html>
     <div class="container-fluid ">
