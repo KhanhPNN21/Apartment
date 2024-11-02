@@ -17,9 +17,9 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-md-end" id="navbarNav">
                         <ul class="navbar-nav mx-10px">
-                            <li class="nav-item"><a class="nav-link" href="#">Trang chủ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Bảng giá dịch vụ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Hỗ trợ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="HomeServlet">Trang chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Service_price.jsp">Bảng giá dịch vụ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="support.jsp">Hỗ trợ</a></li>
                         </ul>
                     </div>
                 </div>

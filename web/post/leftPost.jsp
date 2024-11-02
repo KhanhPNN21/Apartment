@@ -5,8 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="accountBalance" value="${sessionScope.borrowerId}" />
 <!DOCTYPE html>
 <html>
         <div class="container-fluid">
@@ -14,7 +12,7 @@
                 <!-- Sidebar -->
                 <div class="col-md-3 sidebar d-flex flex-column ">
                     <div class="p-3">
-                        <h4>${sessionScope.user.userName}</h4>
+                        <h4>${sessionScope.user.fullName}</h4>
                         <p>Mã thành viên: ${sessionScope.user.userId}</p>
                         <p>TK Chính: ${sessionScope.user.accountBalance}</p>
                         <div class="row mb-3">
