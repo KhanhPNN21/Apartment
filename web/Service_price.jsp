@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/home.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
-
     </head>
     <body>
         <% 
@@ -65,7 +64,21 @@
             <h2 class="text-center mb-4">Bảng giá dịch vụ</h2>
             <p class="text-center">Áp dụng từ ngày 31/05/2024</p>
 
-            <div class="row row-cols-1 row-cols-md-4 g-4 pricing-table">
+            <div class="row row-cols-1 row-cols-md-5 g-4 pricing-table">
+                <div class="col label-column">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="mb-4">Dịch vụ</h5>
+                            <p>Giá ngày</p>
+                            <p>Giá tuần</p>
+                            <p>Giá tháng</p>
+                            <p>Màu sắc tiêu đề</p>
+                            <p>Tự động duyệt</p>
+                            <p>Hiển thị số điện thoại</p>
+                            <p>Huy hiệu nổi bật</p>
+                        </div>
+                    </div>
+                </div>
                 <!-- Column 1 -->
                 <div class="col">
                     <div class="card h-100">
@@ -89,9 +102,9 @@
                             <p>Giảm 10% chỉ còn</p>
                             <h5>450.000đ</h5>
                             <p>Tiêu đề màu đỏ, in hoa</p>
-                            <i class="bi bi-check2 check-icon"></i> Tự động duyệt <br>
-                            <i class="bi bi-check2 check-icon"></i> Hiển thị số điện thoại <br>
-                            <i class="bi bi-check2 check-icon"></i> Huy hiệu nổi bật
+                            <i class="bi bi-check2 check-icon"></i><br>
+                            <i class="bi bi-check2 check-icon"></i><br>
+                            <i class="bi bi-check2 check-icon"></i>
                         </div>
                     </div>
                 </div>
@@ -115,9 +128,9 @@
                             <p>Giảm 10% chỉ còn</p>
                             <h5>270.000đ</h5>
                             <p>Tiêu đề màu hồng, in hoa</p>
-                            <i class="bi bi-check2 check-icon"></i> Tự động duyệt <br>
-                            <i class="bi bi-check2 check-icon"></i> Hiển thị số điện thoại <br>
-                            <i class="bi bi-x cross-icon"></i> Huy hiệu nổi bật
+                            <i class="bi bi-check2 check-icon"></i><br>
+                            <i class="bi bi-check2 check-icon"></i><br>
+                            <i class="bi bi-x cross-icon"></i>
                         </div>
                     </div>
                 </div>
@@ -140,9 +153,9 @@
                             <p>Giảm 10% chỉ còn</p>
                             <h5>180.000đ</h5>
                             <p>Tiêu đề màu cam, in hoa</p>
-                            <i class="bi bi-check2 check-icon"></i> Tự động duyệt <br>
-                            <i class="bi bi-x cross-icon"></i> Hiển thị số điện thoại <br>
-                            <i class="bi bi-x cross-icon"></i> Huy hiệu nổi bật
+                            <i class="bi bi-check2 check-icon"></i><br>
+                            <i class="bi bi-x cross-icon"></i><br>
+                            <i class="bi bi-x cross-icon"></i>
                         </div>
                     </div>
                 </div>
@@ -163,9 +176,9 @@
                             <p>Giảm 10% chỉ còn</p>
                             <h5>90.000đ</h5>
                             <p>Tiêu đề màu xanh, in hoa</p>
-                            <i class="bi bi-check2 check-icon"></i> Tự động duyệt <br>
-                            <i class="bi bi-x cross-icon"></i> Hiển thị số điện thoại <br>
-                            <i class="bi bi-x cross-icon"></i> Huy hiệu nổi bật
+                            <i class="bi bi-check2 check-icon"></i><br>
+                            <i class="bi bi-x cross-icon"></i><br>
+                            <i class="bi bi-x cross-icon"></i>
                         </div>
                     </div>
                 </div>
