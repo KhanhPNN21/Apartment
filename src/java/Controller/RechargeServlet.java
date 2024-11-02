@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.Payment;
+import Model.Users;
 import Model.paymentDAO;
 import Model.paymentHistory;
 import jakarta.servlet.ServletException;
@@ -12,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -99,6 +101,15 @@ public class RechargeServlet extends HttpServlet {
             userId = Integer.parseInt(userId_raw);
             amount = Integer.parseInt(amount_raw);
             pDAO.depositAmount(userId, amount, method);
+            HttpSession session = request.getSession();
+            Users user = (Users) session.getAttribute("user");
+            
+           if (user != null) {
+           int currentBalance = user.getAccountBalance();
+           user.setAccountBalance(currentBalance + amount);
+           session.setAttribute("user", user);
+            }
+            
             response.sendRedirect("recharge.jsp?userId=" + userId);
         } catch (Exception e) {
         }

@@ -4,6 +4,7 @@ import Model.Detail;
 import Model.Post;
 import Model.Post_DAO;
 import Model.RoomDAO;
+import Model.Users;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -80,8 +82,17 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("error", "Số dư tài khoản hiện tại của bản không đủ");
                 request.getRequestDispatcher("post.jsp").forward(request, response);
             }
+            HttpSession session = request.getSession();
+            Users user = (Users) session.getAttribute("user");
+            
             pDao.getPost(userId, room_id_raw, rank, amount, description, title, daylimit);
-            response.sendRedirect("HomeServlet");
+            
+             if (user != null) {
+           int currentBalance = user.getAccountBalance();
+           user.setAccountBalance(currentBalance - amount);
+           session.setAttribute("user", user);
+            }
+            response.sendRedirect("PostServlet?command=history&userId=" + userId);
 
         } catch (NumberFormatException e) {
             e.printStackTrace();
@@ -192,7 +203,15 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("error", "Số dư tài khoản hiện tại của bạn không đủ");
                 request.getRequestDispatcher("post.jsp").forward(request, response);
             } else {
+                HttpSession session = request.getSession();
+                Users user = (Users) session.getAttribute("user");
                 pDao.checkAndExtendPost(userId, postId, expiryDate, timeLimit, amount);
+                
+             if (user != null) {
+           int currentBalance = user.getAccountBalance();
+           user.setAccountBalance(currentBalance - amount);
+           session.setAttribute("user", user);
+            }
                 response.sendRedirect("PostServlet?command=history&userId=" + userId);
             }
         } catch (SQLException ex) {
