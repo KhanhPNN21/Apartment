@@ -105,7 +105,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">An toàn phòng cháy, chữa cháy ở các khu trọ: Những vấn đề đặt ra</h5>
                                         <p class="card-text">Thời gian qua, tại một số tỉnh, thành trong nước liên tiếp xảy ra các vụ cháy chung cư mini, nhà cho thuê trọ</p>
-                                        <a href="http://laocaitv.vn/chinh-tri-xa-hoi/an-toan-phong-chay-chua-chay-o-cac-khu-tro-nhung-van-de-dat-ra" class="btn btn-primary">Đọc thêm</a>
+                                        <a target="blank" href="http://laocaitv.vn/chinh-tri-xa-hoi/an-toan-phong-chay-chua-chay-o-cac-khu-tro-nhung-van-de-dat-ra" class="btn btn-primary">Đọc thêm</a>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Người trẻ ở nhà thuê</h5>
                                         <p class="card-text">Điều gì đang xảy ra trong thị trường cho thuê? Hãy xem xét những xu hướng và thay đổi.</p>
-                                        <a href="https://vnexpress.net/nguoi-tre-o-nha-thue-tron-doi-la-xu-the-tat-yeu-4587728.html" class="btn btn-primary">Đọc thêm</a>
+                                        <a target="blank" href="https://vnexpress.net/nguoi-tre-o-nha-thue-tron-doi-la-xu-the-tat-yeu-4587728.html" class="btn btn-primary">Đọc thêm</a>
                                     </div>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Những lưu ý khi thuê nhà</h5>
                                         <p class="card-text">Các lưu ý hữu ích dành cho người thuê nhà để có được một trải nghiệm tốt nhất trong việc tìm kiếm nhà cho thuê.</p>
-                                        <a href="https://dantri.com.vn/bat-dong-san/kinh-nghiem-thue-nha-nhanh-va-hieu-qua-cho-nguoi-it-kinh-nghiem-20240515130148020.htm" class="btn btn-primary">Đọc thêm</a>
+                                        <a target="blank" href="https://dantri.com.vn/bat-dong-san/kinh-nghiem-thue-nha-nhanh-va-hieu-qua-cho-nguoi-it-kinh-nghiem-20240515130148020.htm" class="btn btn-primary">Đọc thêm</a>
                                     </div>
                                 </div>
                             </div>
