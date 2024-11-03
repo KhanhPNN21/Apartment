@@ -14,6 +14,30 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/home.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+        <style>
+            /* Custom CSS to only show vertical borders inside the table */
+            .table-bordered {
+                border-collapse: collapse;
+                border-left: 2px solid black;
+                border-right: 2px solid black;
+            }
+            .table-bordered th, .table-bordered td {
+                border-right: 2px solid black;
+                border-left: 2px solid black;
+                border-top: 1px solid white;
+                border-bottom: none;
+            }
+            .table-bordered thead th {
+                border-bottom: 2px solid black;
+            }
+            #border{
+                border-top: 2px solid black;
+            }
+            #borderBotColor{
+                border-bottom: 2px solid black;
+            }
+        </style>
+
     </head>
     <body>
         <% 
@@ -61,129 +85,84 @@
 
         </div>
         <div class="container my-5">
-            <h2 class="text-center mb-4">Bảng giá dịch vụ</h2>
+            <h2 class="text-center mb-4 text-primary">Bảng giá dịch vụ</h2>
             <p class="text-center">Áp dụng từ ngày 31/05/2024</p>
 
-            <div class="row row-cols-1 row-cols-md-5 g-4 pricing-table">
-                <div class="col label-column">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="mb-4">Dịch vụ</h5>
-                            <p>Giá ngày</p>
-                            <p>Giá tuần</p>
-                            <p>Giá tháng</p>
-                            <p>Màu sắc tiêu đề</p>
-                            <p>Tự động duyệt</p>
-                            <p>Hiển thị số điện thoại</p>
-                            <p>Huy hiệu nổi bật</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column 1 -->
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-header text-white" style="background-color:#ff3030">
-                            Tin VIP nổi bật
-                            <!-- Thêm các ngôi sao dưới đây -->
-                            <div>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-
-
-                        <div class="card-body">
-                            <h5>50.000đ</h5>
-                            <p>(Giới hạn 3 ngày)</p>
-                            <h5>100.000đ</h5>
-                            <h6><del>500.000đ</del></h6>
-                            <p>Giảm 10% chỉ còn</p>
-                            <h5>450.000đ</h5>
-                            <p>Tiêu đề màu đỏ, in hoa</p>
-                            <i class="bi bi-check2 check-icon"></i><br>
-                            <i class="bi bi-check2 check-icon"></i><br>
-                            <i class="bi bi-check2 check-icon"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Column 2 -->
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-header text-white" style="background-color: #ff1493">Tin VIP 1
-                            <div>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-
-                            </div></div>
-
-                        <div class="card-body">
-                            <h5>30.000đ</h5>
-                            <p>(Giới hạn 3 ngày)</p>
-                            <h5>60.000đ</h5>
-                            <h6><del>300.000đ</del></h6>
-                            <p>Giảm 10% chỉ còn</p>
-                            <h5>270.000đ</h5>
-                            <p>Tiêu đề màu hồng, in hoa</p>
-                            <i class="bi bi-check2 check-icon"></i><br>
-                            <i class="bi bi-check2 check-icon"></i><br>
-                            <i class="bi bi-x cross-icon"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Column 3 -->
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-header text-white" style="background-color:#ff8c00 ">Tin VIP 2
-                            <div>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-
-
-                            </div></div>
-                        <div class="card-body">
-                            <h5>20.000đ</h5>
-                            <p>(Giới hạn 3 ngày)</p>
-                            <h5>40.000đ</h5>
-                            <h6><del>200.000đ</del></h6>
-                            <p>Giảm 10% chỉ còn</p>
-                            <h5>180.000đ</h5>
-                            <p>Tiêu đề màu cam, in hoa</p>
-                            <i class="bi bi-check2 check-icon"></i><br>
-                            <i class="bi bi-x cross-icon"></i><br>
-                            <i class="bi bi-x cross-icon"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Column 4 -->
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-header text-white" style="background-color: #1e90ff">Tin VIP 3
-                            <div>
-                                <i class="bi bi-star-fill"></i>
-
-                            </div></div>
-                        <div class="card-body">
-                            <h5>10.000đ</h5>
-                            <p>(Giới hạn 3 ngày)</p>
-                            <h5>20.000đ</h5>
-                            <h6><del>100.000đ</del></h6>
-                            <p>Giảm 10% chỉ còn</p>
-                            <h5>90.000đ</h5>
-                            <p>Tiêu đề màu xanh, in hoa</p>
-                            <i class="bi bi-check2 check-icon"></i><br>
-                            <i class="bi bi-x cross-icon"></i><br>
-                            <i class="bi bi-x cross-icon"></i>
-                        </div>
-                    </div>
-                </div>
+            <div class="container my-5">
+                <table class="table table-bordered text-center">
+                    <thead class="table">
+                        <tr>
+                            <th class="align-middle text-center" style="background-color: #B5B5B5" id="border">Dịch vụ</th>
+                            <th style="background-color: red;" id="border"> 
+                                <h4 style="background-color: red; color: white">Tin VIP nổi bật</h4>
+                                <span style="background-color: red; color: white">⭐⭐⭐⭐⭐</span>
+                            </th>
+                            <th style="background-color: #FF1493" id="border">
+                                <h4 style="color: white; background-color: #FF1493">Tin VIP 1</h4>
+                                <span style="background-color: #FF1493">⭐⭐⭐⭐</span>
+                            </th>
+                            <th style="background-color: #CD6600" id="border">
+                                <h4 style="background-color: #CD6600; color: white">Tin VIP 2</h4>
+                                <span style="background-color: #CD6600">⭐⭐⭐</span>
+                            </th>
+                            <th style="background-color: #0000FF" id="border">
+                                <h4 style="background-color: #0000FF; color: white">Tin VIP 3</h4>
+                                <span style="background-color: #0000FF">⭐⭐</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Giá ngày</th>
+                            <td>50,000₫ <small>(Giới hạn 3 ngày)</small></td>
+                            <td>30,000₫ <small>(Giới hạn 3 ngày)</small></td>
+                            <td>20,000₫ <small>(Giới hạn 3 ngày)</small></td>
+                            <td>10,000₫ <small>(Giới hạn 3 ngày)</small></td>
+                        </tr>
+                        <tr>
+                            <th>Giá tuần</th>
+                            <td>100,000₫</td>
+                            <td>60,000₫</td>
+                            <td>40,000₫</td>
+                            <td>20,000₫</td>
+                        </tr>
+                        <tr>
+                            <th class="align-middle text-center">Giá tháng</th>
+                            <td>450,000₫ <del>500,000₫</del><br><span class="text-success">Giảm 10%</span></td>
+                            <td>270,000₫ <del>300,000₫</del><br><span class="text-success">Giảm 10%</span></td>
+                            <td>180,000₫ <del>200,000₫</del><br><span class="text-success">Giảm 10%</span></td>
+                            <td>90,000₫ <del>100,000₫</del><br><span class="text-success">Giảm 10%</span></td>
+                        </tr>
+                        <tr>
+                            <th>Màu sắc tiêu đề</th>
+                            <td>Tiêu đề màu đỏ, in hoa</td>
+                            <td>Tiêu đề màu hồng, in hoa</td>
+                            <td>Tiêu đề màu cam, in hoa</td>
+                            <td>Tiêu đề màu xanh, in hoa</td>
+                        </tr>
+                        <tr>
+                            <th>Tự động duyệt</th>
+                            <td>✔️</td>
+                            <td>✔️</td>
+                            <td>✔️</td>
+                            <td>✔️</td>
+                        </tr>
+                        <tr>
+                            <th>Hiển thị số điện thoại</th>
+                            <td>✔️</td>
+                            <td>✔️</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr id="borderBotColor">
+                            <th>Huy hiệu nổi bật</th>
+                            <td>✔️</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
-
     </body>
 </html>
