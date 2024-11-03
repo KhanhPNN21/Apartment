@@ -65,7 +65,7 @@
                                          <input type="hidden" name="userID" value="${sessionScope.user.userId}">
                                          <input type="hidden" name="paymentMethod" value="Chuyển khoản">
                                         <div>
-                                            <img src="img/qr_code.jpg" class="img-fluid" alt="QR Code">
+                                            <img src="img/G2_QR.jpg" class="img-fluid" alt="QR Code">
                                         </div>
                                         <div>
                                             <label for="amount" class="form-label">Số tiền</label>

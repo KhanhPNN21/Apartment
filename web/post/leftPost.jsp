@@ -64,8 +64,11 @@
                             <div class="col-12 mb-2">
                                 <div class="card">
                                     <div class="card-body">
-                                        <a href="#" class="nav-link text-danger">
-                                            <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                                        <a href="#" onclick="document.getElementById('logoutForm').submit()" class="nav-link text-danger">
+                                            <i class="fas fa-sign-out-alt"></i>Đăng xuất
+                                             <form id="logoutForm" action="LoginServlet" method="post" style="display: none;">
+                                            <input type="hidden" name="action" value="logout">
+                                            </form>
                                         </a>
                                     </div>
                                 </div>
