@@ -17,6 +17,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <jsp:include page="post/style.jsp" />
+        <script>
+            function confirmDelete() {
+                return confirm("Bạn có chắc chắn muốn xóa không?");
+            }
+        </script>
     </head>
     <body>
         <jsp:include page="post/headerPost.jsp" />
@@ -57,7 +62,7 @@
                                 <td>${p.rank}</td>
                                 <td>${p.amount}</td>
                                 <td>
-                                    <a href="PostServlet?command=delete&userId=${sessionScope.user.userId}&roomId=${p.roomId}&postId=${p.postId}" class="btn btn-danger">Xóa</a>
+                                    <a href="PostServlet?command=delete&userId=${sessionScope.user.userId}&roomId=${p.roomId}&postId=${p.postId}" class="btn btn-danger" onclick="return confirmDelete()">Xóa</a>
                                     <a href="PostServlet?command=update&roomId=${p.roomId}&postId=${p.postId}" class="btn btn-warning">Chỉnh sửa</a>
                                     <a href="extendPost.jsp?command=extend&userId=${sessionScope.user.userId}&postId=${p.postId}&rank=${p.rank}&timeLimit=${p.timeLimit}&expiryDate=${p.getExpiryDate()}&amount=${p.amount}" class="btn btn-primary">Gia hạn</a>
                                 </td>
