@@ -153,7 +153,7 @@
                                         <a href="DetailServlet?roomId=${r.roomId}" class="text-decoration-none text-dark">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <img src="https://pt123.cdn.static123.com/images/thumbs/450x300/fit/2021/03/10/z2372642429419-09c9c7a541863ae55ad41b3e267136f4_1615391265.jpg" alt="Image" class="img-fluid rounded">
+                                                    <img src="${r.imgUrl}" alt="Image" class="img-fluid rounded">
                                                 </div>
 
                                                 <div class="col-md-8">

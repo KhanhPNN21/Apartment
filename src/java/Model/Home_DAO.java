@@ -19,15 +19,20 @@ public class Home_DAO {
 
         try {
             con = dbContext.getConnection();
-            String query = "SELECT r.Room_id, r.Price, r.Area, r.Room_number, r.Apartment_id,\n"
-                    + "       a.apartment_name, p.description, l.district, l.Ward, ri.Img_url,\n"
-                    + "       p.Title, p.Post_date, p.Rank\n"
-                    + "FROM Rooms r\n"
-                    + "JOIN Apartment a ON r.Apartment_id = a.apartment_id\n"
-                    + "LEFT JOIN Post p ON r.Room_id = p.Room_id\n"
-                    + "JOIN Location l ON a.Location_id = l.Location_Id\n"
-                    + "LEFT JOIN Rooms_img ri ON r.Room_id = ri.Room_id\n"
-                    + "ORDER BY p.Rank DESC;";
+            String query = "SELECT Room_id, Price, Area, Room_number, Apartment_id, apartment_name, description, district, Ward, Img_url, Title, Post_date, Rank\n"
+                    + "FROM (\n"
+                    + "    SELECT r.Room_id, r.Price, r.Area, r.Room_number, r.Apartment_id,\n"
+                    + "           a.apartment_name, p.description, l.district, l.Ward, ri.Img_url,\n"
+                    + "           p.Title, p.Post_date, p.Rank,\n"
+                    + "           ROW_NUMBER() OVER (PARTITION BY r.Room_id ORDER BY p.Rank DESC, p.Post_date DESC) AS row_num\n"
+                    + "      FROM Rooms r\n"
+                    + "      JOIN Apartment a ON r.Apartment_id = a.apartment_id\n"
+                    + "      LEFT JOIN Post p ON r.Room_id = p.Room_id\n"
+                    + "      JOIN Location l ON a.Location_id = l.Location_Id\n"
+                    + "      LEFT JOIN Rooms_img ri ON r.Room_id = ri.Room_id\n"
+                    + ") AS ranked\n"
+                    + "WHERE row_num = 1\n"
+                    + "ORDER BY Rank DESC, Post_date DESC";
 
             try (PreparedStatement ps = con.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
 

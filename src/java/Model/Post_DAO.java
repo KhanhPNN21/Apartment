@@ -1,6 +1,7 @@
 package Model;
 
 import Dal.DBContext;
+import jakarta.servlet.http.Part;
 import java.sql.Connection;
 import java.sql.*;
 import java.time.LocalDate;
@@ -74,7 +75,36 @@ public class Post_DAO {
         }
         return 0; // Trả về 0 nếu không tìm thấy user
     }
+    //xử lí ảnh nhé
+    public String getImgUrlByRoomId(int room_id) throws Exception {
+        String imgUrl = null;
+        String sql = "SELECT Img_url FROM Rooms_img WHERE Room_id = ?";
 
+        try (Connection conn = dbContext.getConnection(); 
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, room_id);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                imgUrl = rs.getString("Img_url");
+            }
+        }
+        return imgUrl;
+    }
+    
+public void saveImgUrl(int room_Id, String Img_url) {
+        String sql = "INSERT INTO Rooms_img (room_Id , Img_url)VALUES (?,?)"; // Adjust your SQL as needed
+        try (Connection conn = dbContext.getConnection(); // Assume you have a method to get DB connection
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, room_Id);
+            pstmt.setString(2, Img_url);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+}
     public int getLocation(String district, String ward, String street) throws Exception {
         String sql = "INSERT INTO Location (Street, Ward, District) VALUES (?, ?, ?)";
         Connection con = dbContext.getConnection(); // Lấy kết nối từ dbContext
@@ -181,7 +211,9 @@ public class Post_DAO {
             PreparedStatement statement = con.prepareStatement("Delete FROM Post WHERE Post_id = ?");
             statement.setInt(1, post_id);
             statement.executeUpdate();
-
+            PreparedStatement stst = con.prepareStatement("Delete From Rooms_img WHERE Room_id = ?");
+            stst.setInt(1, room_id);
+            stst.executeUpdate();
             PreparedStatement st = con.prepareStatement("Delete From rooms WHERE Room_id = ?");
             st.setInt(1, room_id);
             st.executeUpdate();

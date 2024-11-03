@@ -17,8 +17,8 @@ public class DBContext {
     
     public Connection getConnection() {
         String dbUser = "sa"; 
-        String dbPassword = "123123";
-        String ServerName = "TRANHIEU";
+        String dbPassword = "123";
+        String ServerName = "LAPTOP-0H7C3AC8\\SQL2022";
         String DBName = "Room_searching";
         String driverClass = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         String dbURL = "jdbc:sqlserver://" + ServerName + ";databaseName=" + DBName + ";encrypt=false;loginTimeout=30"; 

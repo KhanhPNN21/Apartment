@@ -5,6 +5,8 @@
 package Controller;
 
 import Model.Home_DAO;
+import Model.Image_DAO;
+import Model.RoomImage;
 import Model.Rooms;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,15 +15,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.io.File;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author acer
  */
 public class HomeServlet extends HttpServlet {
+ private Image_DAO img_DAO = new Image_DAO();
+ 
  private Home_DAO home_DAO;
 
+ 
     public void init() {
         home_DAO = new Home_DAO();
 
@@ -111,8 +119,35 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       String folderPath = "D:\\Prj301project\\WebprojectG2\\web\\imgroom";
+
+        int roomId = Integer.parseInt(request.getParameter("roomId"));
+        File folder = new File(folderPath);
+        File[] listOfFiles = folder.listFiles();
+        if(listOfFiles != null){
+         for(File file : listOfFiles){
+             if(file.isFile()){
+                 String imgUrl = file.getName();
+               boolean isSuccess = img_DAO.addImage(roomId, imgUrl);   
+         if (isSuccess) {
+                        System.out.println("Đã thêm ảnh: " + imgUrl);
+                    } else {
+                        System.out.println("Lỗi khi thêm ảnh: " + imgUrl);
+                    }
+                }
+            }
+        }
+        response.getWriter().write("Upload completed.");
+     try {
+         List<Rooms> roomList = home_DAO.listAll();
+         request.setAttribute("roomList",roomList);
+         request.getRequestDispatcher("body.jsp").forward(request, response);
+     } catch (Exception ex) {
+         Logger.getLogger(HomeServlet.class.getName()).log(Level.SEVERE, null, ex);
+     }
+        
     }
+    
 
     /**
      * Returns a short description of the servlet.

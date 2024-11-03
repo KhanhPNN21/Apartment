@@ -23,6 +23,7 @@ public class Post {
     private String description;
     private int timeLimit;
 
+
     public Post() {
     }
 
@@ -36,6 +37,7 @@ public class Post {
         this.title = title;
         this.description = description;
         this.timeLimit = timeLimit;
+ 
     }
 
     public int getPostId() {
@@ -109,6 +111,8 @@ public class Post {
     public void setTimeLimit(int timeLimit) {
         this.timeLimit = timeLimit;
     }
+
+ 
 
     public String getExpiryDate() {
         try {

@@ -33,7 +33,7 @@
                     </div>
 
                     <!-- Property Posting Form -->
-                    <form action="PostServlet?userId=${param.userId}" method="POST">
+                    <form action="PostServlet?userId=${param.userId}" method="POST"enctype="multipart/form-data" >
                         <c:if test="${not empty requestScope.error}">
                             <div class="alert alert-danger" style="background-color: #FFCC99; color: black ">${requestScope.error}</div>
                         </c:if>

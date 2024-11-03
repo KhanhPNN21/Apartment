@@ -27,6 +27,9 @@ public class Rooms {
     public Rooms() {
     }
 
+    
+    
+    
     public Rooms(int roomId, int price, int area, int roomNumber, int apartmentId, String apartmentName, String description, String district, String ward, String imgUrl, String title, String postdate, int rank) {
         this.roomId = roomId;
         this.price = price;
@@ -42,6 +45,8 @@ public class Rooms {
         this.postdate = postdate;
         this.rank = rank;
     }
+
+    
 
     public int getRoomId() {
         return roomId;

@@ -7,6 +7,7 @@ import Model.RoomDAO;
 import Model.Users;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,17 +19,24 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
+import java.io.File;
+import java.util.ArrayList;
+
 
 /**
  *
  * @author acer
  */
+@MultipartConfig
 @WebServlet(name = "PostServlet", urlPatterns = {"/PostServlet"})
 public class PostServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         System.out.println("Context Path: " + request.getServletContext().getRealPath("imgroom"));
+         
         String command = request.getParameter("command");
 
         switch (command) {
@@ -51,58 +59,93 @@ public class PostServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Context Path: " + request.getContextPath());
+        try { 
             Post_DAO pDao = new Post_DAO();
 
+            // Các tham số khác từ request
             String district = request.getParameter("district");
             String ward = request.getParameter("ward");
             String street = request.getParameter("houseNumber");
-            String apartment_name = request.getParameter("apartmentName");
+            String apartmentName = request.getParameter("apartmentName");
             String title = request.getParameter("title");
             String description = request.getParameter("description");
 
-            // Parse các giá trị từ request
             int userId = Integer.parseInt(request.getParameter("userId"));
-            int available_room = Integer.parseInt(request.getParameter("roomAvailable"));
+            int availableRoom = Integer.parseInt(request.getParameter("roomAvailable"));
             int area = Integer.parseInt(request.getParameter("area"));
             int price = Integer.parseInt(request.getParameter("rentPrice"));
-            int room_number = Integer.parseInt(request.getParameter("roomNumber"));
+            int roomNumber = Integer.parseInt(request.getParameter("roomNumber"));
             int rank = Integer.parseInt(request.getParameter("level"));
-            int daylimit = Integer.parseInt(request.getParameter("duration"));
+            int dayLimit = Integer.parseInt(request.getParameter("duration"));
             int amount = Integer.parseInt(request.getParameter("price"));
 
-            // Gọi các phương thức từ Post_DAO
-            int location_id_raw = pDao.getLocation(district, ward, street);
-            int apartment_id_raw = pDao.getApartment(apartment_name, location_id_raw, available_room);
-            int room_id_raw = pDao.getRooms(price, area, room_number, apartment_id_raw);
-
-            // Lưu post
-            int currentAcountBalance = pDao.getAccountBalance(userId);
-            if (currentAcountBalance < amount) {
-                request.setAttribute("error", "Số dư tài khoản hiện tại của bản không đủ");
-                request.getRequestDispatcher("post.jsp").forward(request, response);
+            // Tạo đường dẫn lưu ảnh
+            //"D:\Prj301project\WebprojectG2\web\imgroom"
+            String uploadPath = request.getServletContext().getRealPath("imgroom");
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
             }
+
+            // Lấy danh sách các file ảnh từ request
+            // Lưu thông tin bài đăng
+            int locationIdRaw = pDao.getLocation(district, ward, street);
+            int apartmentIdRaw = pDao.getApartment(apartmentName, locationIdRaw, availableRoom);
+            int roomIdRaw = pDao.getRooms(price, area, roomNumber, apartmentIdRaw);
+   
+
+            // Kiểm tra số dư và lưu post
+            // Lấy danh sách các file ảnh từ request
+             // Kiểm tra xem có phần ảnh nào không
+            List<Part> parts = new ArrayList<>();
+            for (Part part : request.getParts()) {
+                if (part.getName().equals("image")) {
+                    parts.add(part);
+                }
+            }
+
+            // Lưu các file ảnh
+            for (Part filePart : parts) {
+                if ("image".equals(filePart.getName()) && filePart.getSize() > 0) {
+                    // Đặt tên file ảnh
+                    String fileName = "img_" + System.currentTimeMillis() + "_" + filePart.getSubmittedFileName();
+                    String filePath = uploadPath + File.separator + fileName;
+                    filePart.write(filePath);
+
+                    // Lưu URL của ảnh vào cơ sở dữ liệu
+                    pDao.saveImgUrl(roomIdRaw, "imgroom/" + fileName); // Sửa roomIdRaw thay vì roomId
+                }
+            }
+
+            int currentAccountBalance = pDao.getAccountBalance(userId);
+            if (currentAccountBalance < amount) {
+                request.setAttribute("error", "Số dư tài khoản hiện tại của bạn không đủ.");
+                request.getRequestDispatcher("post.jsp").forward(request, response);
+                return;
+            }
+
+         
+
+            // Cập nhật số dư trong session
             HttpSession session = request.getSession();
             Users user = (Users) session.getAttribute("user");
-            
-            pDao.getPost(userId, room_id_raw, rank, amount, description, title, daylimit);
-            
-             if (user != null) {
-           int currentBalance = user.getAccountBalance();
-           user.setAccountBalance(currentBalance - amount);
-           session.setAttribute("user", user);
+               pDao.getPost(userId, roomIdRaw, rank, amount, description, title, dayLimit);
+            if (user != null) {
+                int currentBalance = user.getAccountBalance();
+                user.setAccountBalance(currentBalance - amount);
+                session.setAttribute("user", user);
             }
+
             response.sendRedirect("PostServlet?command=history&userId=" + userId);
 
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            // Điều hướng đến trang lỗi nếu không thể parse int
             response.sendRedirect("errorPage.jsp?error=invalidNumber");
         } catch (Exception e) {
             e.printStackTrace();
-            // Điều hướng đến trang lỗi nếu có lỗi khác xảy ra
             response.sendRedirect("errorPage.jsp?error=generalError");
         }
     }
@@ -208,12 +251,12 @@ public class PostServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 Users user = (Users) session.getAttribute("user");
                 pDao.checkAndExtendPost(userId, postId, expiryDate, timeLimit, amount);
-                
-             if (user != null) {
-           int currentBalance = user.getAccountBalance();
-           user.setAccountBalance(currentBalance - amount);
-           session.setAttribute("user", user);
-            }
+
+                if (user != null) {
+                    int currentBalance = user.getAccountBalance();
+                    user.setAccountBalance(currentBalance - amount);
+                    session.setAttribute("user", user);
+                }
                 response.sendRedirect("PostServlet?command=history&userId=" + userId);
             }
         } catch (SQLException ex) {
