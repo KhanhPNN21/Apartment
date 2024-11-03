@@ -121,12 +121,6 @@
                                 <input type="number" required="" class="form-control" id="roomAvailable" name="roomAvailable" placeholder="Nhập số lượng phòng còn trống">
                             </div>
                         </div>
-
-                        <div class="mb-3">
-                            <label for="images" class="form-label">Hình ảnh</label>
-                            <input type="file" class="form-control" id="images" name="images[]" multiple accept=".jpg, .jpeg, .png, .img">
-                            <small class="form-text text-muted">Chọn nhiều hình ảnh (JPG, PNG, IMG).</small>
-                        </div>
                         <br>
                         <button type="submit" id="submitBtn" name="command" value="updatePost" class="btn btn-primary">Chỉnh sửa</button>
                     </form>

@@ -364,7 +364,7 @@ public void saveImgUrl(int room_Id, String Img_url) {
                 updatePs.setInt(4, postId);
                 updatePs.executeUpdate();
             } else { // Nếu bài đăng chưa hết hạn, chỉ cập nhật expiryDate, timeLimit, và amount
-                updateSQL = "UPDATE post SET time_limit = ?, amount = ? WHERE post_id = ?";
+                updateSQL = "UPDATE post SET time_limit = time_Limit + ?, amount = amount + ? WHERE post_id = ?";
                 PreparedStatement updatePs = con.prepareStatement(updateSQL);
                 updatePs.setInt(1, duration);
                 updatePs.setInt(2, price);
