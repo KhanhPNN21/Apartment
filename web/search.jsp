@@ -144,16 +144,23 @@
                     <ul class="list-group mb-4">
                         <li class="list-group-item" onclick="setPriceFilter('under1m', this)">Dưới 1 triệu</li>
                         <li class="list-group-item" onclick="setPriceFilter('between1mand2m', this)">Từ 1 - 2 triệu</li>
-                        <li class="list-group-item" onclick="setPriceFilter('between2mand3m', this)">Từ 2 - 3 triệu</li>
+                        <li class="list-group-item" onclick="setPriceFilter('between2mand5m', this)">Từ 2 - 5 triệu</li>
+                        <li class="list-group-item" onclick="setPriceFilter('upper5m', this)">Trên 5 triệu</li>
                     </ul>
 
                     <h5>Xem theo diện tích</h5>
                     <ul class="list-group">
-                        <li class="list-group-item" onclick="setAreaFilter('under20m2', this)">Dưới 20 m²</li>
+                        <li class="list-group-item" onclick="setAreaFilter('under20', this)">Dưới 20 m²</li>
                         <li class="list-group-item" onclick="setAreaFilter('between20and30', this)">Từ 20 - 30 m²</li>
                         <li class="list-group-item" onclick="setAreaFilter('between30and50', this)">Từ 30 - 50 m²</li>
+                        <li class="list-group-item" onclick="setAreaFilter('upper50', this)">Trên 50 m²</li>
                     </ul>
                 </div>
+
+                <form id="search-price-area" action="SearchServlet" method="get" style="display: none;">
+                    <input type="hidden" name="price" id="price-select">
+                    <input type="hidden" name="area" id="area-select">
+                </form>
                 <style>
                     .filter-item.selected {
                         background-color: #007bff;
@@ -202,12 +209,14 @@
         <script>
             function setPriceFilter(value) {
                 document.getElementById('price-select').value = value;
-                document.getElementById('search-form').submit();
+                document.getElementById('area-select').value = '';
+                document.getElementById('search-price-area').submit();
             }
 
             function setAreaFilter(value) {
                 document.getElementById('area-select').value = value;
-                document.getElementById('search-form').submit();
+                document.getElementById('price-select').value = '';
+                document.getElementById('search-price-area').submit();
             }
         </script>
 

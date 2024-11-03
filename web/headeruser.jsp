@@ -41,9 +41,9 @@
                         </div>
                         <a href="post.jsp?userId=${sessionScope.user.userId}" class="btn btn-danger featured-item">Đăng Tin Miễn Phí </a>
                     </div>
-                    <form action="SearchServlet" method="GET" class="search-form mb-4" id="searchForm">
+                    <form action="SearchServlet" method="Post" class="search-form mb-4" id="searchForm">
                         <div class="input-group">
-                            <input type="text" class="form-control" style="width: 300px;" name="searchQuery" placeholder="Tìm phòng trọ..." aria-label="Search" onkeypress="handleKeyPress(event)">
+                            <input type="text" class="form-control" style="width: 300px;" name="name" placeholder="Tìm phòng trọ..." aria-label="Search" onkeypress="handleKeyPress(event)">
                         </div>
                     </form>
 
