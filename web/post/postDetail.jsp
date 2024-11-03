@@ -14,14 +14,14 @@
                                         <label for="district" class="form-label">Quận/Huyện</label>
                                         <select id="district" class="form-select" name="district" >
                                             <option value="">Chọn quận huyện</option>
-                                            <option value="lien_chieu">Quận Liên Chiểu</option>
-                                            <option value="hai_chau">Quận Hải Châu</option>
-                                            <option value="ngu_hanh_son">Quận Ngũ Hành Sơn</option>
-                                            <option value="son_tra">Quận Sơn Trà</option>
-                                            <option value="cam_le">Quận Cẩm Lệ</option>
-                                            <option value="thanh_khe">Quận Thanh Khê</option>
-                                            <option value="hoa_vang">Huyện Hòa Vang</option>
-                                            <option value="hoang_sa">Huyện Hoàng Sa</option>
+                                            <option value="Quận Liên Chiểu">Quận Liên Chiểu</option>
+                                            <option value="Quận Hải Châu">Quận Hải Châu</option>
+                                            <option value="Quận Ngũ Hành Sơn">Quận Ngũ Hành Sơn</option>
+                                            <option value="Quận Sơn Trà">Quận Sơn Trà</option>
+                                            <option value="Quận Cẩm Lệ">Quận Cẩm Lệ</option>
+                                            <option value="Quận Thanh Khê">Quận Thanh Khê</option>
+                                            <option value="Huyện Hòa Vang">Huyện Hòa Vang</option>
+                                            <option value="Huyện Hoàng Sa">Huyện Hoàng Sa</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">

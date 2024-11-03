@@ -60,6 +60,7 @@
 </script>
 
 <script>
+    
     function updatePrice() {
         const level = document.getElementById('level').value;
         const duration = document.getElementById('duration').value;
