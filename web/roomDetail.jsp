@@ -64,7 +64,7 @@
                             <c:forEach var="imgUrl" items="${room.imgUrls}" varStatus="status">
                                 <div class="carousel-item ${status.first ? 'active' : ''}">
                                     <img src="${imgUrl}" class="d-block w-100 img-fluid border rounded-3 shadow-sm" 
-                                         alt="Room Image" style="max-height: 300px; object-fit: cover;">
+                                         alt="Room Image" style=" object-fit: cover;">
                                 </div>
                             </c:forEach>
                         </div>
@@ -218,6 +218,7 @@
                 </div>
             </div>
         </div>
+        <jsp:include page="footer.jsp" />
         <script>
             window.onload = function () {
                 const priceElement = document.getElementById('roomPrice');
