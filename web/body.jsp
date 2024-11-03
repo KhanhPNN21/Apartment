@@ -66,9 +66,11 @@
                                                         </c:when>
                                                     </c:choose>
                                                     <ul class="list-unstyled">
+                                                        <li><strong>Tên căn hộ:</strong> ${room.apartmentName}</li>
                                                         <li><strong>Giá:</strong> ${room.price} VND</li>
                                                         <li><strong>Diện Tích:</strong> ${room.area} m²</li>
                                                         <li><strong>Địa Chỉ:</strong> ${room.ward}</li>
+                                                        
                                                         <li><strong>Số Phòng:</strong> ${room.roomNumber}</li>
                                                         <li><strong>Ngày Đăng:</strong> ${room.postdate}</li>
                                                     </ul>
