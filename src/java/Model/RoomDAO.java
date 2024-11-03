@@ -4,6 +4,8 @@ import Dal.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,43 +15,51 @@ public class RoomDAO {
 
     DBContext dbContext = new DBContext();
 
-    public Detail getRoomById(int id) {
+   public Detail getRoomById(int id) {
+    Detail room = null;
+    List<String> imgUrls = new ArrayList<>();
 
-        try (Connection con = dbContext.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT r.*, p.*, a.*, l.*, i.*, u.*\n"
-                + "                FROM Rooms r join Post p on r.room_id = p.room_id\n"
-                + "                join Rooms_img i on r.Room_id = i.Room_id\n"
-                + "                join Apartment a on r.Apartment_id = a.apartment_id\n"
-                + "                join Location l on l.location_id = a.location_id\n"
-                + "				join Users u on u.User_id = p.User_id\n"
-                + "                where r.Room_id = ?")) {
+    try (Connection con = dbContext.getConnection();
+         PreparedStatement ps = con.prepareStatement("SELECT r.*, p.*, a.*, l.*, i.img_url, u.* " +
+                 "FROM Rooms r " +
+                 "JOIN Post p ON r.room_id = p.room_id " +
+                 "JOIN Rooms_img i ON r.room_id = i.room_id " +
+                 "JOIN Apartment a ON r.apartment_id = a.apartment_id " +
+                 "JOIN Location l ON l.location_id = a.location_id " +
+                 "JOIN Users u ON u.user_id = p.user_id " +
+                 "WHERE r.room_id = ?")) {
 
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                Detail room = new Detail(
-                        rs.getInt(1),
-                        rs.getInt(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getString(16),
-                        rs.getDate(8),
-                        rs.getString(12),
-                        rs.getString(13),
-                        rs.getInt(10),
-                        rs.getString(22),
-                        rs.getString(21),
-                        rs.getString(20),
-                        rs.getString(25),
-                        rs.getString(28),
-                        rs.getString(29),
-                        rs.getString(30)
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            if (room == null) {
+                // Chỉ khởi tạo room một lần duy nhất
+                room = new Detail(
+                        rs.getInt("room_id"),
+                        rs.getInt("price"),
+                        rs.getInt("area"),
+                        rs.getInt("room_number"),
+                        rs.getInt("apartment_id"),
+                        rs.getString("apartment_name"),
+                        rs.getDate("post_date"),
+                        rs.getString("title"),
+                        rs.getString("description"),
+                        rs.getInt("rank"),
+                        rs.getString("district"),
+                        rs.getString("ward"),
+                        rs.getString("street"),
+                        imgUrls, // Danh sách imgUrls sẽ được thêm vào sau
+                        rs.getString("full_name"),
+                        rs.getString("phone"),
+                        rs.getString("email")
                 );
-                return room;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            // Thêm từng img_url vào danh sách imgUrls
+            imgUrls.add(rs.getString("img_url"));
         }
-        return null;
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+    return room;
+   }
 }

@@ -48,13 +48,37 @@
                 <div class="col-md-8">
                     <!-- Main Card for All Room Details -->
                     <!-- Image Section -->
-                    <div class="text-center mb-4">
-                        <img src="https://feliz-home.com.vn/wp-content/uploads/2023/02/uecuhb.jpg" 
-                             alt="Room Image" 
-                             class="img-fluid border rounded-3 shadow-sm" 
-                             style="max-height: 300px; width: 100%; object-fit: cover;">
-                    </div>
+                    <div id="roomCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+                        <!-- Indicators -->
+                        <div class="carousel-indicators">
+                            <c:forEach var="imgUrl" items="${room.imgUrls}" varStatus="status">
+                                <button type="button" data-bs-target="#roomCarousel" data-bs-slide-to="${status.index}"
+                                        class="${status.first ? 'active' : ''}" 
+                                        aria-current="${status.first ? 'true' : 'false'}" 
+                                        aria-label="Slide ${status.index + 1}"></button>
+                            </c:forEach>
+                        </div>
 
+                        <!-- Carousel Images -->
+                        <div class="carousel-inner">
+                            <c:forEach var="imgUrl" items="${room.imgUrls}" varStatus="status">
+                                <div class="carousel-item ${status.first ? 'active' : ''}">
+                                    <img src="${imgUrl}" class="d-block w-100 img-fluid border rounded-3 shadow-sm" 
+                                         alt="Room Image" style="max-height: 300px; object-fit: cover;">
+                                </div>
+                            </c:forEach>
+                        </div>
+
+                        <!-- Navigation controls -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#roomCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#roomCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                     <!-- Main Card for All Room Details -->
                     <div class="card shadow-sm" style="background-color: rgba(255, 255, 255, 0.9); border: 1px solid black;">
                         <div class="card-body">
@@ -76,12 +100,12 @@
                             </c:choose>
 
                             <div class="row mb-3">
-                                    <div class="col-md-4">
-                                        <p style="color: #0d8901;">
-                                            <strong>Số tiền:</strong> 
-                                            <span class="fw-bold" id="roomPrice">${room.price}</span><strong>/tháng</strong>
-                                        </p>
-                                    </div>
+                                <div class="col-md-4">
+                                    <p style="color: #0d8901;">
+                                        <strong>Số tiền:</strong> 
+                                        <span class="fw-bold" id="roomPrice">${room.price}</span><strong>/tháng</strong>
+                                    </p>
+                                </div>
 
                                 <div class="col-md-3">
                                     <p><strong>Phòng:</strong> <span class="fw-bold"></span>${room.roomNumber}</p>
@@ -194,12 +218,13 @@
                 </div>
             </div>
         </div>
-<script>
-    window.onload = function() {
-        const priceElement = document.getElementById('roomPrice');
-        const price = parseInt(priceElement.innerText, 10);
-        priceElement.innerText = price.toLocaleString('vi-VN') + ' ₫'; // Format price and append currency symbol
-    };
-</script>
+        <script>
+            window.onload = function () {
+                const priceElement = document.getElementById('roomPrice');
+                const price = parseInt(priceElement.innerText, 10);
+                priceElement.innerText = price.toLocaleString('vi-VN') + ' ₫'; // Format price and append currency symbol
+            };
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

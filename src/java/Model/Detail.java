@@ -1,13 +1,14 @@
 package Model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Tai
  */
 public class Detail {
-    private int roomId;
+  private int roomId;
     private int price;
     private int area;
     private int roomNumber;
@@ -20,7 +21,7 @@ public class Detail {
     private String district;
     private String ward;
     private String street;
-    private String imgUrl;
+    private List<String> imgUrls; // Sửa thành danh sách
     private String fullName;
     private String phone;
     private String email;
@@ -28,7 +29,7 @@ public class Detail {
     public Detail() {
     }
 
-    public Detail(int roomId, int price, int area, int roomNumber, int apartmentId, String apartmentName, Date postDate, String title, String description, int rank, String district, String ward, String street, String imgUrl, String fullName, String phone, String email) {
+    public Detail(int roomId, int price, int area, int roomNumber, int apartmentId, String apartmentName, Date postDate, String title, String description, int rank, String district, String ward, String street, List<String> imgUrls, String fullName, String phone, String email) {
         this.roomId = roomId;
         this.price = price;
         this.area = area;
@@ -42,12 +43,13 @@ public class Detail {
         this.district = district;
         this.ward = ward;
         this.street = street;
-        this.imgUrl = imgUrl;
+        this.imgUrls = imgUrls;
         this.fullName = fullName;
         this.phone = phone;
         this.email = email;
     }
 
+  
     public int getRoomId() {
         return roomId;
     }
@@ -152,12 +154,12 @@ public class Detail {
         this.street = street;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public List<String> getImgUrls() {
+        return imgUrls;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setImgUrls(List<String> imgUrls) {
+        this.imgUrls = imgUrls;
     }
 
     public String getFullName() {
