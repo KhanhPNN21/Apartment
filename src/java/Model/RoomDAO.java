@@ -20,18 +20,14 @@ public class RoomDAO {
     List<String> imgUrls = new ArrayList<>();
 
     try (Connection con = dbContext.getConnection();
-         PreparedStatement ps = con.prepareStatement("SELECT r.*, p.*, a.*, l.*, u.*, img.img_url\n" +
-"FROM Rooms r \n" +
-"JOIN Post p ON r.room_id = p.room_id \n" +
-"JOIN Apartment a ON r.apartment_id = a.apartment_id \n" +
-"JOIN Location l ON l.location_id = a.location_id \n" +
-"JOIN Users u ON u.user_id = p.user_id \n" +
-"LEFT JOIN (\n" +
-"    SELECT room_id, img_url,\n" +
-"           ROW_NUMBER() OVER (PARTITION BY room_id ORDER BY img_url) AS rn\n" +
-"    FROM Rooms_img\n" +
-") AS img ON r.room_id = img.room_id AND img.rn = 1  -- Lấy img_url đầu tiên cho mỗi room_id\n" +
-"WHERE r.room_id = ?")) {
+         PreparedStatement ps = con.prepareStatement("SELECT r.*, p.*, a.*, l.*, i.img_url, u.* " +
+                 "FROM Rooms r " +
+                 "JOIN Post p ON r.room_id = p.room_id " +
+                 "JOIN Rooms_img i ON r.room_id = i.room_id " +
+                 "JOIN Apartment a ON r.apartment_id = a.apartment_id " +
+                 "JOIN Location l ON l.location_id = a.location_id " +
+                 "JOIN Users u ON u.user_id = p.user_id " +
+                 "WHERE r.room_id = ?")) {
 
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();

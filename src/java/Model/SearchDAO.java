@@ -159,14 +159,18 @@ public class SearchDAO {
 
     public List<Rooms> listRoomExceptRoomId(int roomId) {
         List<Rooms> roomList = new ArrayList<>();
-        String query = "SELECT top 5 r.Room_id, r.Price, r.Area, r.Room_number, r.Apartment_id,\n"
-                + "       a.apartment_name, p.description, l.district, l.Ward, ri.Img_url,\n"
+        String query = "SELECT TOP 5 r.Room_id, r.Price, r.Area, r.Room_number, r.Apartment_id,\n"
+                + "       a.apartment_name, p.description, l.district, l.Ward, img.img_url,\n"
                 + "       p.Title, p.Post_date, p.Rank\n"
                 + "FROM Rooms r\n"
                 + "JOIN Apartment a ON r.Apartment_id = a.apartment_id\n"
                 + "LEFT JOIN Post p ON r.Room_id = p.Room_id\n"
                 + "JOIN Location l ON a.Location_id = l.Location_Id\n"
-                + "LEFT JOIN Rooms_img ri ON r.Room_id = ri.Room_id\n"
+                + "LEFT JOIN (\n"
+                + "    SELECT room_id, img_url,\n"
+                + "           ROW_NUMBER() OVER (PARTITION BY room_id ORDER BY NEWID()) AS rn\n"
+                + "    FROM Rooms_img\n"
+                + ") AS img ON r.Room_id = img.room_id AND img.rn = 1  -- Lấy img_url đầu tiên cho mỗi room_id\n"
                 + "WHERE r.Room_id != ?\n"
                 + "ORDER BY NEWID()";
 
