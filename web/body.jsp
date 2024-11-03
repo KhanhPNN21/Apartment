@@ -53,16 +53,16 @@
                                                 <div class="col-md-8">
                                                     <c:choose>
                                                         <c:when test="${room.rank == 4}">
-                                                            <strong><h5 class="mb-2 title-4"> <div style="color:orange" class="stars">★★★★★</div>${room.title}</h5></strong> 
+                                                            <strong><h5 class="mb-2" style="color:red"> <div style="color:orange" class="stars">★★★★★</div>${room.title}</h5></strong> 
                                                         </c:when>
                                                         <c:when test="${room.rank == 3}">
-                                                            <strong><h5 class="mb-2 title-3"> <div style="color: orange" class="stars">★★★★</div>${room.title}</h5></strong> 
+                                                            <strong><h5 class="mb-2" style="color:#FF1493"> <div style="color: orange" class="stars">★★★★</div>${room.title}</h5></strong> 
                                                         </c:when>
                                                         <c:when test="${room.rank == 2}">
-                                                            <strong><h5 class="mb-2 title-2"> <div style="color: orange" class="stars">★★★</div>${room.title}</h5></strong> 
+                                                            <strong><h5 class="mb-2" style="color:#CD6600"> <div style="color: orange" class="stars">★★★</div>${room.title}</h5></strong> 
                                                         </c:when>
                                                         <c:when test="${room.rank == 1}">
-                                                            <strong><h5 class="mb-2 title-1"> <div style="color: orange" class="stars">★★</div>${room.title}</h5></strong> 
+                                                            <strong><h5 class="mb-2" style="color:#0000FF"> <div style="color: orange" class="stars">★★</div>${room.title}</h5></strong> 
                                                         </c:when>
                                                     </c:choose>
                                                     <ul class="list-unstyled">
