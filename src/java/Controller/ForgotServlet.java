@@ -42,13 +42,13 @@ public class ForgotServlet extends HttpServlet {
             Session mailSession = Session.getDefaultInstance(props, new jakarta.mail.Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("kiensinh20212022@gmail.com", "post cxmk rxxs sddg");
+                    return new PasswordAuthentication("apartmentprovjp@gmail.com", "ijws suhs qiwz zmuk");
                 }
             });
 
             try {
                 MimeMessage message = new MimeMessage(mailSession);
-                message.setFrom(new InternetAddress("kiensinh20212022@gmail.com"));
+                message.setFrom(new InternetAddress("apartmentprovjp@gmail.com"));
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
                 message.setSubject("OTP for Password Reset");
                 message.setText("Your OTP is: " + otpvalue);
