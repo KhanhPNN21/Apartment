@@ -46,7 +46,7 @@
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>HomeServlet</welcome-file>
-    </welcome-file-list>
+    </welcome-file-list> 
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>Controller.LoginServlet</servlet-class>

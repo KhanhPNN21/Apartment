@@ -17,6 +17,7 @@
     <style>
         /* Styling for the body and fonts */
         body {
+            background: url('image/background2.jpg') no-repeat center center fixed;
             background-position: center;
             background-color: #eee;
             background-repeat: no-repeat;
