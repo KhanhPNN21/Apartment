@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Model.Home_DAO;
 import Dal.DBContext;
 import java.sql.Connection;
 import java.io.IOException;
@@ -77,9 +78,9 @@ public class RegisterServlet extends HttpServlet {
 
         try {
             DBContext dbContext = new DBContext();
-            Connection con = null;
-            con = dbContext.getConnection();
-            
+            Connection con = dbContext.getConnection();
+            Home_DAO homeDAO = new Home_DAO();
+
             if ("signup".equals(action)) {
                 String username = request.getParameter("user");
                 String fullName = request.getParameter("fullName");
@@ -87,15 +88,20 @@ public class RegisterServlet extends HttpServlet {
                 String phone = request.getParameter("sdt");
                 String pass = request.getParameter("pass");
 
-                PreparedStatement stmt = con.prepareStatement("INSERT INTO Users (User_name, Full_name, Phone, Email, Password) VALUES (?, ?, ?, ?, ?)");
-                stmt.setString(1, username);
-                stmt.setString(2, fullName);
-                stmt.setString(3, phone);
-                stmt.setString(4, email);
-                stmt.setString(5, pass);
-                stmt.executeUpdate();
-                message = "Đăng kí thành công!";
-                
+                // Kiểm tra sự tồn tại của username và email
+                message = homeDAO.checkUsernameAndEmailExists(username, email);
+
+                if (message == null) {
+
+                    PreparedStatement stmt = con.prepareStatement("INSERT INTO Users (User_name, Full_name, Phone, Email, Password) VALUES (?, ?, ?, ?, ?)");
+                    stmt.setString(1, username);
+                    stmt.setString(2, fullName);
+                    stmt.setString(3, phone);
+                    stmt.setString(4, email);
+                    stmt.setString(5, pass);
+                    stmt.executeUpdate();
+                    message = "Đăng kí thành công!";
+                }
             } else if ("deleteStudent".equals(action)) {
                 int id = Integer.parseInt(request.getParameter("id"));
 

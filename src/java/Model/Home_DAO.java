@@ -102,6 +102,43 @@ public class Home_DAO {
         return null; // Trả về null nếu không tìm thấy người dùng
     }
 
+    public String checkUsernameAndEmailExists(String username, String email) {
+        String sql = "SELECT User_name, Email FROM Users WHERE User_name = ? OR Email = ?";
+
+        try (Connection conn = dbContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, username);
+            ps.setString(2, email);
+            ResultSet rs = ps.executeQuery();
+
+            // Kiểm tra sự tồn tại của username và email
+            boolean usernameExists = false;
+            boolean emailExists = false;
+
+            while (rs.next()) {
+                if (rs.getString("User_name").equals(username)) {
+                    usernameExists = true;
+                }
+                if (rs.getString("Email").equals(email)) {
+                    emailExists = true;
+                }
+            }
+
+            // Trả về thông báo tùy theo trường hợp
+            if (usernameExists && emailExists) {
+                return "Username và Email đã tồn tại. Vui lòng chọn Username và Email khác.";
+            } else if (usernameExists) {
+                return "Username đã tồn tại. Vui lòng chọn Username khác.";
+            } else if (emailExists) {
+                return "Email đã tồn tại. Vui lòng chọn Email khác.";
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Trả về null nếu không có lỗi xảy ra
+    }
+
     public static void main(String[] args) {
         Home_DAO homeDao = new Home_DAO();
         try {

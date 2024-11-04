@@ -79,7 +79,8 @@ public class ValidateOtp extends HttpServlet {
     }
 
     private void sendNewOtp(HttpSession session) {
-        int newOtp = new Random().nextInt(1255650); // Tạo mã OTP ngẫu nhiên mới
+        Random rand = new Random();
+        int newOtp = 100000 + rand.nextInt(900000); // Tạo mã OTP ngẫu nhiên từ 100000 đến 999999
         long newOtpGeneratedTime = System.currentTimeMillis();
         String email = (String) session.getAttribute("email");
 
@@ -106,7 +107,7 @@ public class ValidateOtp extends HttpServlet {
             message.setFrom(new InternetAddress("apartmentprovjp@gmail.com"));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             message.setSubject("New OTP for Password Reset");
-            message.setText("Your new OTP is: " + newOtp);
+            message.setText("OTP Code: " + newOtp + "\nOTP Code của quý khách tại Apartmentprovjp@gmail.com có hiệu lực trong vòng 60 giây. Quý khách không cung cấp mã này cho bất kì ai.");
             Transport.send(message);
             System.out.println("New OTP sent successfully");
         } catch (MessagingException e) {

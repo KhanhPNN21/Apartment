@@ -29,7 +29,7 @@ public class ForgotServlet extends HttpServlet {
         // Kiểm tra xem email có hợp lệ không
         if (email != null && !email.isEmpty()) {
             Random rand = new Random();
-            otpvalue = rand.nextInt(1255650); // Tạo mã OTP ngẫu nhiên
+            otpvalue = 100000 + rand.nextInt(900000); // Tạo mã OTP ngẫu nhiên từ 100000 đến 999999
 
             String to = email;
             Properties props = new Properties();
@@ -51,7 +51,7 @@ public class ForgotServlet extends HttpServlet {
                 message.setFrom(new InternetAddress("apartmentprovjp@gmail.com"));
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
                 message.setSubject("OTP for Password Reset");
-                message.setText("Your OTP is: " + otpvalue);
+                message.setText("OTP Code: " + otpvalue + "\nOTP Code của quý khách tại Apartmentprovjp@gmail.com có hiệu lực trong vòng 60 giây. Quý khách không cung cấp mã này cho bất kì ai.");
                 Transport.send(message);
                 System.out.println("OTP sent successfully");
             } catch (MessagingException e) {

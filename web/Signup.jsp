@@ -120,7 +120,18 @@
             <div class="card mx-auto">
                 <h2 class="text-center mb-4">Đăng Ký Tài Khoản <i class="fas fa-user-plus"></i></h2>
                     <c:if test="${not empty mess}">
-                    <p class="text-danger text-center">⚠️ ${mess} ⚠️</p>
+                    <div class="alert 
+                         <c:choose>
+                             <c:when test="${mess == 'Đăng kí thành công!'}">
+                                 alert-success
+                             </c:when>
+                             <c:otherwise>
+                                 alert-danger
+                             </c:otherwise>
+                         </c:choose>
+                         ">
+                        
+                    </div>
                 </c:if>
                 <form action="RegisterServlet" method="post">
                     <input type="hidden" name="action" value="signup">
@@ -251,7 +262,7 @@
                 sdtMessage.style.display = 'none';
             });
         </script>
-        
+
         <script>
             //Check 2 pass và confirPass khác thì không cho vô
             document.addEventListener("DOMContentLoaded", function () {
